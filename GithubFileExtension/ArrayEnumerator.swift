@@ -8,7 +8,7 @@
 
 import FileProvider
 
-class FileProviderEnumerator: NSObject, NSFileProviderEnumerator {
+class ArrayEnumerator: NSObject, NSFileProviderEnumerator {
     
     var enumeratedItemIdentifier: NSFileProviderItemIdentifier
     
