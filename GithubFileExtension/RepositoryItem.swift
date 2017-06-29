@@ -9,16 +9,18 @@
 import FileProvider
 
 class RepositoryItem: NSObject, NSFileProviderItem {
+    private let repository: String
 
-    // TODO: implement an initializer to create an item from your extension's backing model
-    // TODO: implement the accessors to return the values from your extension's backing model
-    
+    init(repository: String) {
+        self.repository = repository
+    }
+
     var itemIdentifier: NSFileProviderItemIdentifier {
-        return NSFileProviderItemIdentifier("")
+        return NSFileProviderItemIdentifier("repository.\(repository)")
     }
     
     var parentItemIdentifier: NSFileProviderItemIdentifier {
-        return NSFileProviderItemIdentifier("")
+        return NSFileProviderItemIdentifier.rootContainer
     }
     
     var capabilities: NSFileProviderItemCapabilities {
@@ -26,11 +28,11 @@ class RepositoryItem: NSObject, NSFileProviderItem {
     }
     
     var filename: String {
-        return ""
+        return repository
     }
     
     var typeIdentifier: String {
-        return ""
+        return "public.directory"
     }
     
 }
