@@ -142,9 +142,9 @@ class FileProviderExtension: NSFileProviderExtension {
         } else if (containerItemIdentifier == NSFileProviderItemIdentifier.allDirectories) {
             // TODO: instantiate an enumerator that recursively enumerates all directories
         } else {
-            // TODO: determine if the item is a directory or a file
-            // - for a directory, instantiate an enumerator of its subitems
-            // - for a file, instantiate an enumerator that observes changes to the file
+            if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
+                return FileEnumerator(owner: owner, name: name, parentItemIdentifier: containerItemIdentifier)
+            }
         }
         guard let enumerator = maybeEnumerator else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
