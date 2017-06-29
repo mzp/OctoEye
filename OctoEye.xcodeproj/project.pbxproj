@@ -13,7 +13,7 @@
 		1310C9F21F0513ED0020A177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F11F0513ED0020A177 /* Assets.xcassets */; };
 		1310C9F51F0513ED0020A177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */; };
 		13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F51F051658002FCDB2 /* FileProviderExtension.swift */; };
-		13A907F81F051658002FCDB2 /* FileProviderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F71F051658002FCDB2 /* FileProviderItem.swift */; };
+		13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F71F051658002FCDB2 /* RepositoryItem.swift */; };
 		13A907FA1F051658002FCDB2 /* FileProviderEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F91F051658002FCDB2 /* FileProviderEnumerator.swift */; };
 		13A907FF1F051658002FCDB2 /* GithubFileExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 13A907F31F051658002FCDB2 /* GithubFileExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -52,7 +52,7 @@
 		1310C9F61F0513ED0020A177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A907F31F051658002FCDB2 /* GithubFileExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GithubFileExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A907F51F051658002FCDB2 /* FileProviderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderExtension.swift; sourceTree = "<group>"; };
-		13A907F71F051658002FCDB2 /* FileProviderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderItem.swift; sourceTree = "<group>"; };
+		13A907F71F051658002FCDB2 /* RepositoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryItem.swift; sourceTree = "<group>"; };
 		13A907F91F051658002FCDB2 /* FileProviderEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderEnumerator.swift; sourceTree = "<group>"; };
 		13A907FB1F051658002FCDB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A907FC1F051658002FCDB2 /* GithubFileExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GithubFileExtension.entitlements; sourceTree = "<group>"; };
@@ -111,7 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				13A907F51F051658002FCDB2 /* FileProviderExtension.swift */,
-				13A907F71F051658002FCDB2 /* FileProviderItem.swift */,
+				13A907F71F051658002FCDB2 /* RepositoryItem.swift */,
 				13A907F91F051658002FCDB2 /* FileProviderEnumerator.swift */,
 				13A907FB1F051658002FCDB2 /* Info.plist */,
 				13A907FC1F051658002FCDB2 /* GithubFileExtension.entitlements */,
@@ -230,7 +230,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */,
-				13A907F81F051658002FCDB2 /* FileProviderItem.swift in Sources */,
+				13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */,
 				13A907FA1F051658002FCDB2 /* FileProviderEnumerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -456,6 +456,7 @@
 				13A908011F051658002FCDB2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
