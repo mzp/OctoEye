@@ -32,7 +32,7 @@ class RepositoryItem: NSObject, NSFileProviderItem {
     }
     
     var typeIdentifier: String {
-        return "public.directory"
+        return "public.folder"
     }
     
 }
