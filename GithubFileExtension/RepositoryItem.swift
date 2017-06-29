@@ -9,14 +9,16 @@
 import FileProvider
 
 class RepositoryItem: NSObject, NSFileProviderItem {
-    private let repository: String
+    private let owner: String
+    private let name: String
 
-    init(repository: String) {
-        self.repository = repository
+    init(owner: String, name: String) {
+        self.owner = owner
+        self.name = name
     }
 
     var itemIdentifier: NSFileProviderItemIdentifier {
-        return NSFileProviderItemIdentifier("repository.\(repository)")
+        return NSFileProviderItemIdentifier("repository.\(owner).\(name)")
     }
     
     var parentItemIdentifier: NSFileProviderItemIdentifier {
@@ -28,7 +30,7 @@ class RepositoryItem: NSObject, NSFileProviderItem {
     }
     
     var filename: String {
-        return repository
+        return "\(owner)/\(name)"
     }
     
     var typeIdentifier: String {

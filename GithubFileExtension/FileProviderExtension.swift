@@ -11,8 +11,8 @@ import FileProvider
 class FileProviderExtension: NSFileProviderExtension {
     // FIXME: make customizable
     private let repositories = [
-        "mzp/LoveLiver",
-        "banjun/SwiftBeaker"
+        ("mzp", "LoveLiver"),
+        ("banjun", "SwiftBeaker")
     ]
 
     var fileManager = FileManager()
@@ -132,7 +132,10 @@ class FileProviderExtension: NSFileProviderExtension {
     override func enumerator(forContainerItemIdentifier containerItemIdentifier: NSFileProviderItemIdentifier) throws -> NSFileProviderEnumerator {
         let maybeEnumerator: NSFileProviderEnumerator? = nil
         if (containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer) {
-            let items = repositories.map { RepositoryItem(repository: $0) }
+            let items = repositories.map { (repository : (String, String)) -> RepositoryItem in
+                let (owner, name) = repository
+                return RepositoryItem(owner: owner, name: name)
+            }
             return ArrayEnumerator(items: items)
         } else if (containerItemIdentifier == NSFileProviderItemIdentifier.workingSet) {
             // TODO: instantiate an enumerator for the working set
