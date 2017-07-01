@@ -23,8 +23,13 @@ class FileEnumerator: NSObject, NSFileProviderEnumerator {
     }
 
     func enumerateItems(for observer: NSFileProviderEnumerationObserver, startingAtPage page: Data) {
-        FetchFileItems(github: github).call(owner: owner, name: name, parentItemIdentifier: parentItemIdentifier) { items in
-            observer.didEnumerate(items)
+        FetchFileItems(github: github).call(owner: owner, name: name, parentItemIdentifier: parentItemIdentifier) {
+            switch $0 {
+            case .success(let items):
+                observer.didEnumerate(items)
+            case .failure(let e):
+                NSLog("error: \(e)")
+            }
             observer.finishEnumerating(upToPage: nil)
         }
     }

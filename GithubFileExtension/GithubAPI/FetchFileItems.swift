@@ -8,9 +8,10 @@
 
 import Foundation
 import GraphQLicious
+import Result
 
 class FetchFileItems {
-    struct Result : Codable {
+    struct Response : Codable {
         struct Entry : Codable {
             let oid : String
             let name : String
@@ -37,17 +38,13 @@ class FetchFileItems {
         self.github = github
     }
 
-    func call(owner : String, name : String, parentItemIdentifier: NSFileProviderItemIdentifier, onComplete : @escaping ([FileItem]) -> ()) {
-        try! github.query(query(owner: owner, name : name)) { (result : Result?, error : Error?) in
-            if let error = error {
-                NSLog("github api error: \(error)")
-                return
-            }
-
-            let entries = result?.repository.defaultBranchRef.target.tree.entries.map { entry in
-                return FileItem(oid: entry.oid, name: entry.name, type: entry.type, parentItemIdentifier: parentItemIdentifier)
-            }
-            onComplete(entries ?? [])
+    func call(owner : String, name : String, parentItemIdentifier: NSFileProviderItemIdentifier, onComplete : @escaping (Result<[FileItem], AnyError>) -> ()) {
+        github.query(query(owner: owner, name : name)) { (result : Result<Response, AnyError>) in
+            onComplete(result.map {
+                $0.repository.defaultBranchRef.target.tree.entries.map {
+                    FileItem(oid: $0.oid, name: $0.name, type: $0.type, parentItemIdentifier: parentItemIdentifier)
+                }
+            })
         }
     }
 
