@@ -1,5 +1,8 @@
 ### https://raw.github.com/github/gitignore/3af1c2901fe89a2a75b6669a73b0a13e3f036182/Global/xcode.gitignore
 
+# Cocoapods
+/Pods
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
