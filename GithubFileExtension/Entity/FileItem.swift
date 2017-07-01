@@ -8,6 +8,7 @@
 
 import Foundation
 import FileProvider
+import UTIKit
 
 class FileItem: NSObject, NSFileProviderItem {
     let parentItemIdentifier: NSFileProviderItemIdentifier
@@ -37,7 +38,11 @@ class FileItem: NSObject, NSFileProviderItem {
 
     var typeIdentifier: String {
         if type == "blob" {
-            return "public.item"
+            if let uti = UTI(filenameExtension: (name as NSString).pathExtension) {
+                return uti.utiString
+            } else {
+                return "public.item"
+            }
         } else {
             return "public.folder"
         }
