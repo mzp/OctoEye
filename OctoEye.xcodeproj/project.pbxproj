@@ -19,6 +19,8 @@
 		13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F71F051658002FCDB2 /* RepositoryItem.swift */; };
 		13A907FA1F051658002FCDB2 /* ArrayEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */; };
 		13A907FF1F051658002FCDB2 /* GithubFileExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 13A907F31F051658002FCDB2 /* GithubFileExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B2F4C486DC05FEB9E4F26891 /* Pods_OctoEye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 994A4F0B398B886D055F3CA4 /* Pods_OctoEye.framework */; };
+		D88C978BFD6948D3CE0713C8 /* Pods_GithubFileExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F235730901C4BC5D9ADED27D /* Pods_GithubFileExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +64,12 @@
 		13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayEnumerator.swift; sourceTree = "<group>"; };
 		13A907FB1F051658002FCDB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A907FC1F051658002FCDB2 /* GithubFileExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GithubFileExtension.entitlements; sourceTree = "<group>"; };
+		63DBFA59F8319D418401B13A /* Pods-GithubFileExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubFileExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubFileExtension/Pods-GithubFileExtension.release.xcconfig"; sourceTree = "<group>"; };
+		994A4F0B398B886D055F3CA4 /* Pods_OctoEye.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OctoEye.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A04D7381C95638DDEE3E453D /* Pods-GithubFileExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubFileExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubFileExtension/Pods-GithubFileExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		ACF1AA9BD0B9C575E2AA52C9 /* Pods-OctoEye.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoEye.release.xcconfig"; path = "Pods/Target Support Files/Pods-OctoEye/Pods-OctoEye.release.xcconfig"; sourceTree = "<group>"; };
+		F235730901C4BC5D9ADED27D /* Pods_GithubFileExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubFileExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F8B0585B3F46BD84564C313C /* Pods-OctoEye.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OctoEye.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OctoEye/Pods-OctoEye.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2F4C486DC05FEB9E4F26891 /* Pods_OctoEye.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D88C978BFD6948D3CE0713C8 /* Pods_GithubFileExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +98,8 @@
 				1310C9E91F0513ED0020A177 /* OctoEye */,
 				13A907F41F051658002FCDB2 /* GithubFileExtension */,
 				1310C9E81F0513ED0020A177 /* Products */,
+				E6CBC2221FCAB0DCB85FDC7B /* Pods */,
+				EE4370855ABC9B2177F60E03 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -152,6 +164,26 @@
 			path = FileProvider;
 			sourceTree = "<group>";
 		};
+		E6CBC2221FCAB0DCB85FDC7B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A04D7381C95638DDEE3E453D /* Pods-GithubFileExtension.debug.xcconfig */,
+				63DBFA59F8319D418401B13A /* Pods-GithubFileExtension.release.xcconfig */,
+				F8B0585B3F46BD84564C313C /* Pods-OctoEye.debug.xcconfig */,
+				ACF1AA9BD0B9C575E2AA52C9 /* Pods-OctoEye.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		EE4370855ABC9B2177F60E03 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F235730901C4BC5D9ADED27D /* Pods_GithubFileExtension.framework */,
+				994A4F0B398B886D055F3CA4 /* Pods_OctoEye.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -159,10 +191,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1310C9F91F0513ED0020A177 /* Build configuration list for PBXNativeTarget "OctoEye" */;
 			buildPhases = (
+				B5E9151338BD4B172D49620C /* [CP] Check Pods Manifest.lock */,
 				1310C9E31F0513ED0020A177 /* Sources */,
 				1310C9E41F0513ED0020A177 /* Frameworks */,
 				1310C9E51F0513ED0020A177 /* Resources */,
 				13A908031F051658002FCDB2 /* Embed App Extensions */,
+				224B1B48F32103FA2F7AE96D /* [CP] Embed Pods Frameworks */,
+				291E5C48FAB97BEEA3239C0A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -178,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13A908021F051658002FCDB2 /* Build configuration list for PBXNativeTarget "GithubFileExtension" */;
 			buildPhases = (
+				5DCEFC3C885FCAA273281D81 /* [CP] Check Pods Manifest.lock */,
 				13A907EF1F051658002FCDB2 /* Sources */,
 				13A907F01F051658002FCDB2 /* Frameworks */,
 				13A907F11F051658002FCDB2 /* Resources */,
+				1260D14736721B6F3632395C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,6 +284,84 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1260D14736721B6F3632395C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubFileExtension/Pods-GithubFileExtension-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		224B1B48F32103FA2F7AE96D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OctoEye/Pods-OctoEye-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		291E5C48FAB97BEEA3239C0A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-OctoEye/Pods-OctoEye-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5DCEFC3C885FCAA273281D81 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B5E9151338BD4B172D49620C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1310C9E31F0513ED0020A177 /* Sources */ = {
@@ -406,6 +521,7 @@
 		};
 		1310C9FA1F0513ED0020A177 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F8B0585B3F46BD84564C313C /* Pods-OctoEye.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -421,6 +537,7 @@
 		};
 		1310C9FB1F0513ED0020A177 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACF1AA9BD0B9C575E2AA52C9 /* Pods-OctoEye.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -436,6 +553,7 @@
 		};
 		13A908001F051658002FCDB2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A04D7381C95638DDEE3E453D /* Pods-GithubFileExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GithubFileExtension/GithubFileExtension.entitlements;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
@@ -451,6 +569,7 @@
 		};
 		13A908011F051658002FCDB2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63DBFA59F8319D418401B13A /* Pods-GithubFileExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = GithubFileExtension/GithubFileExtension.entitlements;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
