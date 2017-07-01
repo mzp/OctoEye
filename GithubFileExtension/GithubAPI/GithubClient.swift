@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import GraphQLicious
 
 class GithubClient {
     struct Request : Encodable {
@@ -28,12 +29,12 @@ class GithubClient {
         self.token = token
     }
 
-    func query<T : Decodable>(_ query: String, onComplete : @escaping (T?, Error?) -> ()) throws {
+    func query<T : Decodable>(_ query: Query, onComplete : @escaping (T?, Error?) -> ()) throws {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")
 
-        request.httpBody = try JSONEncoder().encode(Request(query: query))
+        request.httpBody = try JSONEncoder().encode(Request(query: query.create()))
         request.cachePolicy = .reloadIgnoringLocalCacheData // Avoid 412
 
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
