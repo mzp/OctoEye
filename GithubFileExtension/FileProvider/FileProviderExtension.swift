@@ -51,10 +51,21 @@ class FileProviderExtension: NSFileProviderExtension {
         
         return NSFileProviderItemIdentifier(pathComponents[pathComponents.count - 2])
     }
+
+    override func providePlaceholder(at url: URL, completionHandler: @escaping (Error?) -> Void) {
+        NSLog("providePlaceholder \(url)")
+        do {
+            try fileManager.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
+            fileManager.createFile(atPath: url.path, contents: nil, attributes: nil)
+            completionHandler(nil)
+        } catch let e {
+            completionHandler(e)
+        }
+    }
     
     override func startProvidingItem(at url: URL, completionHandler: ((_ error: Error?) -> Void)?) {
         // Should ensure that the actual file is in the position returned by URLForItemWithIdentifier:, then call the completion handler
-        
+        NSLog("startProvidingItem \(url)")
         /* TODO:
          This is one of the main entry points of the file provider. We need to check whether the file already exists on disk,
          whether we know of a more recent version of the file, and implement a policy for these cases. Pseudocode:
