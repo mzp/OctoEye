@@ -145,7 +145,7 @@ class FileProviderExtension: NSFileProviderExtension {
         } else {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
                 return FunctionEnumerator() { f in
-                    FetchFileItems(github: self.github)
+                    FetchRootItems(github: self.github)
                         .call(owner: owner, name: name, parentItemIdentifier: containerItemIdentifier)
                     {
                         switch $0 {

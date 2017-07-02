@@ -10,7 +10,7 @@ import Foundation
 import GraphQLicious
 import Result
 
-class FetchFileItems {
+class FetchRootItems {
     struct Response : Codable {
         struct Entry : Codable {
             let oid : String

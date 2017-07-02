@@ -15,7 +15,7 @@
 		1310C9F01F0513ED0020A177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9EE1F0513ED0020A177 /* Main.storyboard */; };
 		1310C9F21F0513ED0020A177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F11F0513ED0020A177 /* Assets.xcassets */; };
 		1310C9F51F0513ED0020A177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */; };
-		13911BBD1F07EBC6005EE2C0 /* FetchFileItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13911BBC1F07EBC6005EE2C0 /* FetchFileItems.swift */; };
+		13911BBD1F07EBC6005EE2C0 /* FetchRootItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13911BBC1F07EBC6005EE2C0 /* FetchRootItems.swift */; };
 		13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F51F051658002FCDB2 /* FileProviderExtension.swift */; };
 		13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F71F051658002FCDB2 /* RepositoryItem.swift */; };
 		13A907FA1F051658002FCDB2 /* ArrayEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */; };
@@ -59,7 +59,7 @@
 		1310C9F11F0513ED0020A177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1310C9F41F0513ED0020A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1310C9F61F0513ED0020A177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13911BBC1F07EBC6005EE2C0 /* FetchFileItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchFileItems.swift; sourceTree = "<group>"; };
+		13911BBC1F07EBC6005EE2C0 /* FetchRootItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRootItems.swift; sourceTree = "<group>"; };
 		13A907F31F051658002FCDB2 /* GithubFileExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = GithubFileExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		13A907F51F051658002FCDB2 /* FileProviderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderExtension.swift; sourceTree = "<group>"; };
 		13A907F71F051658002FCDB2 /* RepositoryItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryItem.swift; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				130324901F0530A900C0053D /* GithubClient.swift */,
-				13911BBC1F07EBC6005EE2C0 /* FetchFileItems.swift */,
+				13911BBC1F07EBC6005EE2C0 /* FetchRootItems.swift */,
 			);
 			path = GithubAPI;
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 				13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */,
 				13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */,
 				13A907FA1F051658002FCDB2 /* ArrayEnumerator.swift in Sources */,
-				13911BBD1F07EBC6005EE2C0 /* FetchFileItems.swift in Sources */,
+				13911BBD1F07EBC6005EE2C0 /* FetchRootItems.swift in Sources */,
 				130324911F05316A00C0053D /* GithubClient.swift in Sources */,
 				130324951F053A9F00C0053D /* FileItem.swift in Sources */,
 				130324931F0536D000C0053D /* FunctionEnumerator.swift in Sources */,
