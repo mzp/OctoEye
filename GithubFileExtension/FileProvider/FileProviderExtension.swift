@@ -7,6 +7,7 @@
 //
 
 import FileProvider
+import RealmSwift
 
 class FileProviderExtension: NSFileProviderExtension {
     // FIXME: make customizable
@@ -22,20 +23,18 @@ class FileProviderExtension: NSFileProviderExtension {
         super.init()
     }
     
-    func item(for identifier: NSFileProviderItemIdentifier) throws -> NSFileProviderItem? {
-        // resolve the given identifier to a record in the model
-        
-        // TODO: implement the actual lookup
-        return nil
+    private func findItem(for identifier: NSFileProviderItemIdentifier) -> NSFileProviderItem? {
+        guard let realm = try? Realm() else { return nil }
+        return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
     }
     
     override func urlForItem(withPersistentIdentifier identifier: NSFileProviderItemIdentifier) -> URL? {
-        // resolve the given identifier to a file on disk
-        guard let item = try? item(for: identifier) else {
+        guard let item = self.findItem(for: identifier) else {
             return nil
         }
-        
-        // in this implementation, all paths are structured as <base storage directory>/<item identifier>/<item file name>
+
+        // create URL as flat structure.
+        //  <base storage directory>/<item identifier>/<item file name>
         let manager = NSFileProviderManager.default
         let perItemDirectory = manager.documentStorageURL.appendingPathComponent(identifier.rawValue, isDirectory: true)
         
@@ -150,9 +149,7 @@ class FileProviderExtension: NSFileProviderExtension {
                     {
                         switch $0 {
                         case .success(let items):
-                            f(items.map {
-                                FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier).build()
-                            })
+                            f(self.create(entryObjects: items, parentItemIdentifier: containerItemIdentifier))
                         case .failure(let e):
                             NSLog("error: \(e)")
                         }
@@ -167,9 +164,7 @@ class FileProviderExtension: NSFileProviderExtension {
                         {
                             switch $0 {
                             case .success(let items):
-                                f(items.map {
-                                    FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier).build()
-                                })
+                                f(self.create(entryObjects: items, parentItemIdentifier: containerItemIdentifier))
                             case .failure(let e):
                                 NSLog("error: \(e)")
                             }
@@ -182,5 +177,29 @@ class FileProviderExtension: NSFileProviderExtension {
         }
         return enumerator
     }
-    
+
+    private func create(entryObjects : [EntryObject], parentItemIdentifier: NSFileProviderItemIdentifier) -> [GithubObjectItem] {
+        // Because realm cannot pass object between threads, I create items twice for display and for saving.
+        let items = { () in
+            return entryObjects.map {
+                FileItem(entryObject: $0, parentItemIdentifier: parentItemIdentifier).build()
+            }
+        }
+
+        DispatchQueue(label: "background").async {
+            do {
+                let realm = try Realm()
+                realm.beginWrite()
+                for item in items() {
+                    realm.add(item, update: true)
+                }
+                try realm.commitWrite()
+            } catch let e {
+                NSLog("Error: \(e)")
+                return
+            }
+        }
+
+        return items()
+    }
 }
