@@ -23,7 +23,7 @@ class FileProviderExtension: NSFileProviderExtension {
         super.init()
     }
     
-    private func findItem(for identifier: NSFileProviderItemIdentifier) -> NSFileProviderItem? {
+    private func findItem(for identifier: NSFileProviderItemIdentifier) -> GithubObjectItem? {
         guard let realm = try? Realm() else { return nil }
         return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
     }
@@ -64,36 +64,32 @@ class FileProviderExtension: NSFileProviderExtension {
     }
     
     override func startProvidingItem(at url: URL, completionHandler: ((_ error: Error?) -> Void)?) {
-        // Should ensure that the actual file is in the position returned by URLForItemWithIdentifier:, then call the completion handler
         NSLog("startProvidingItem \(url)")
-        /* TODO:
-         This is one of the main entry points of the file provider. We need to check whether the file already exists on disk,
-         whether we know of a more recent version of the file, and implement a policy for these cases. Pseudocode:
-         
-         if !fileOnDisk {
-             downloadRemoteFile()
-             callCompletion(downloadErrorOrNil)
-         } else if fileIsCurrent {
-             callCompletion(nil)
-         } else {
-             if localFileHasChanges {
-                 // in this case, a version of the file is on disk, but we know of a more recent version
-                 // we need to implement a strategy to resolve this conflict
-                 moveLocalFileAside()
-                 scheduleUploadOfLocalFile()
-                 downloadRemoteFile()
-                 callCompletion(downloadErrorOrNil)
-             } else {
-                 downloadRemoteFile()
-                 callCompletion(downloadErrorOrNil)
-             }
-         }
-         */
-        
-        completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
+        // FIXME: skip download when latest content exists on disk
+        guard let identifier = persistentIdentifierForItem(at: url) else {
+            completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
+            return
+        }
+        guard let item = findItem(for: identifier) else {
+            completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
+            return
+        }
+        FetchText(github: github)
+            .call(owner: item.owner, name: item.repositoryName, oid: item.oid) {
+            switch $0 {
+            case .success(let text):
+                do {
+                    try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+                    completionHandler?(nil)
+                } catch let e {
+                    completionHandler?(e)
+                }
+            case .failure(let e):
+                completionHandler?(e)
+            }
+        }
     }
-    
-    
+
     override func itemChanged(at url: URL) {
         // Called at some point after the file has changed; the provider may then trigger an upload
         
