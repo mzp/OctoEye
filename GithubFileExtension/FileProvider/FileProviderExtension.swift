@@ -157,6 +157,21 @@ class FileProviderExtension: NSFileProviderExtension {
                     }
                 }
             }
+
+            if let (owner, name, oid) = FileItem.parse(itemIdentifier: containerItemIdentifier) {
+                return FunctionEnumerator() { f in
+                    FetchChildItems(github: self.github)
+                        .call(owner: owner, name: name, oid: oid, parentItemIdentifier: containerItemIdentifier)
+                        {
+                            switch $0 {
+                            case .success(let items):
+                                f(items)
+                            case .failure(let e):
+                                NSLog("error: \(e)")
+                            }
+                    }
+                }
+            }
         }
         guard let enumerator = maybeEnumerator else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
