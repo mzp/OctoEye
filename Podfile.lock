@@ -1,18 +1,26 @@
 PODS:
   - GraphQLicious (0.8.2)
+  - Realm (2.8.3):
+    - Realm/Headers (= 2.8.3)
+  - Realm/Headers (2.8.3)
+  - RealmSwift (2.8.3):
+    - Realm (= 2.8.3)
   - Result (3.2.3)
   - UTIKit (2.0.1)
 
 DEPENDENCIES:
   - GraphQLicious (~> 0.8.2)
+  - RealmSwift
   - Result (~> 3.2.3)
   - UTIKit (~> 2.0.1)
 
 SPEC CHECKSUMS:
   GraphQLicious: c8468f1dcbbdc74b33fd184db1642f5ed2b0a86a
+  Realm: 3601ef091c8c499a31101d8563b991e75546cdce
+  RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   UTIKit: 5b16488927ed6df479189acd9ff1ad6a7b19f8ff
 
-PODFILE CHECKSUM: 2ee855d797c11b2fba565cec95a6c68c55cd0992
+PODFILE CHECKSUM: ea96ab3931c506c8b66ab59d85c4adaa0a7ce104
 
 COCOAPODS: 1.2.1
