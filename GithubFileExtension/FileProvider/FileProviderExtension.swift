@@ -151,7 +151,7 @@ class FileProviderExtension: NSFileProviderExtension {
                         switch $0 {
                         case .success(let items):
                             f(items.map {
-                                FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier)
+                                FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier).build()
                             })
                         case .failure(let e):
                             NSLog("error: \(e)")
@@ -168,7 +168,7 @@ class FileProviderExtension: NSFileProviderExtension {
                             switch $0 {
                             case .success(let items):
                                 f(items.map {
-                                    FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier)
+                                    FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier).build()
                                 })
                             case .failure(let e):
                                 NSLog("error: \(e)")

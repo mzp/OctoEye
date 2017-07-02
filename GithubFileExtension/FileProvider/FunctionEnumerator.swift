@@ -10,7 +10,7 @@ import FileProvider
 import GraphQLicious
 
 class FunctionEnumerator: NSObject, NSFileProviderEnumerator {
-    typealias ItemSource = (@escaping ([FileItem]) -> ()) -> ()
+    typealias ItemSource = (@escaping ([GithubObjectItem]) -> ()) -> ()
     private let enumerate : ItemSource
 
     init(enumerate : @escaping ItemSource) {
