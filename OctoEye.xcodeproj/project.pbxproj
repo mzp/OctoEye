@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		130324911F05316A00C0053D /* GithubClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130324901F0530A900C0053D /* GithubClient.swift */; };
-		130324931F0536D000C0053D /* FileEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130324921F0536D000C0053D /* FileEnumerator.swift */; };
+		130324931F0536D000C0053D /* FunctionEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130324921F0536D000C0053D /* FunctionEnumerator.swift */; };
 		130324951F053A9F00C0053D /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130324941F053A9F00C0053D /* FileItem.swift */; };
 		1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310C9EA1F0513ED0020A177 /* AppDelegate.swift */; };
 		1310C9ED1F0513ED0020A177 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310C9EC1F0513ED0020A177 /* ViewController.swift */; };
@@ -50,7 +50,7 @@
 
 /* Begin PBXFileReference section */
 		130324901F0530A900C0053D /* GithubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClient.swift; sourceTree = "<group>"; };
-		130324921F0536D000C0053D /* FileEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileEnumerator.swift; sourceTree = "<group>"; };
+		130324921F0536D000C0053D /* FunctionEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionEnumerator.swift; sourceTree = "<group>"; };
 		130324941F053A9F00C0053D /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		1310C9E71F0513ED0020A177 /* OctoEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1310C9EA1F0513ED0020A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				13A907F51F051658002FCDB2 /* FileProviderExtension.swift */,
-				130324921F0536D000C0053D /* FileEnumerator.swift */,
+				130324921F0536D000C0053D /* FunctionEnumerator.swift */,
 				13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */,
 			);
 			path = FileProvider;
@@ -386,7 +386,7 @@
 				13911BBD1F07EBC6005EE2C0 /* FetchFileItems.swift in Sources */,
 				130324911F05316A00C0053D /* GithubClient.swift in Sources */,
 				130324951F053A9F00C0053D /* FileItem.swift in Sources */,
-				130324931F0536D000C0053D /* FileEnumerator.swift in Sources */,
+				130324931F0536D000C0053D /* FunctionEnumerator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

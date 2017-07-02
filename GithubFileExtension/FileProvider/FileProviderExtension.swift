@@ -10,6 +10,7 @@ import FileProvider
 
 class FileProviderExtension: NSFileProviderExtension {
     // FIXME: make customizable
+    private let github = GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0")
     private let repositories = [
         ("mzp", "LoveLiver"),
         ("banjun", "SwiftBeaker")
@@ -143,7 +144,18 @@ class FileProviderExtension: NSFileProviderExtension {
             // TODO: instantiate an enumerator that recursively enumerates all directories
         } else {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
-                return FileEnumerator(owner: owner, name: name, parentItemIdentifier: containerItemIdentifier)
+                return FunctionEnumerator() { f in
+                    FetchFileItems(github: self.github)
+                        .call(owner: owner, name: name, parentItemIdentifier: containerItemIdentifier)
+                    {
+                        switch $0 {
+                        case .success(let items):
+                            f(items)
+                        case .failure(let e):
+                            NSLog("error: \(e)")
+                        }
+                    }
+                }
             }
         }
         guard let enumerator = maybeEnumerator else {
