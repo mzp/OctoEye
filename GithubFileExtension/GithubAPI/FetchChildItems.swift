@@ -24,19 +24,10 @@ class FetchChildItems {
         self.github = github
     }
 
-    func call(owner : String, name : String, oid : String, parentItemIdentifier: NSFileProviderItemIdentifier, onComplete : @escaping (Result<[FileItem], AnyError>) -> ()) {
+    func call(owner : String, name : String, oid : String, onComplete : @escaping (Result<[EntryObject], AnyError>) -> ()) {
         github.query(query(owner: owner, name: name, oid: oid)) { (result : Result<Response, AnyError>) in
             onComplete(result.map {
-                $0.repository.object.entries.map {
-                    FileItem(
-                        owner: owner,
-                        name: name,
-                        oid: $0.oid,
-                        filename: $0.name,
-                        type: $0.type,
-                        parentItemIdentifier: parentItemIdentifier
-                    )
-                }
+                $0.repository.object.entries
             })
         }
     }

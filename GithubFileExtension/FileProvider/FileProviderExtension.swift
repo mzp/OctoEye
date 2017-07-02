@@ -146,11 +146,13 @@ class FileProviderExtension: NSFileProviderExtension {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
                 return FunctionEnumerator() { f in
                     FetchRootItems(github: self.github)
-                        .call(owner: owner, name: name, parentItemIdentifier: containerItemIdentifier)
+                        .call(owner: owner, name: name)
                     {
                         switch $0 {
                         case .success(let items):
-                            f(items)
+                            f(items.map {
+                                FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier)
+                            })
                         case .failure(let e):
                             NSLog("error: \(e)")
                         }
@@ -161,11 +163,13 @@ class FileProviderExtension: NSFileProviderExtension {
             if let (owner, name, oid) = FileItem.parse(itemIdentifier: containerItemIdentifier) {
                 return FunctionEnumerator() { f in
                     FetchChildItems(github: self.github)
-                        .call(owner: owner, name: name, oid: oid, parentItemIdentifier: containerItemIdentifier)
+                        .call(owner: owner, name: name, oid: oid)
                         {
                             switch $0 {
                             case .success(let items):
-                                f(items)
+                                f(items.map {
+                                    FileItem(entryObject: $0, parentItemIdentifier: containerItemIdentifier)
+                                })
                             case .failure(let e):
                                 NSLog("error: \(e)")
                             }

@@ -12,32 +12,34 @@ import UTIKit
 
 class FileItem: NSObject, NSFileProviderItem {
     let parentItemIdentifier: NSFileProviderItemIdentifier
-    let filename: String
+    private let entryObject : EntryObject
 
-    private let owner: String
-    private let name: String
-    private let oid: String
-    private let type: String
-
-    init(owner : String, name : String, oid : String, filename : String, type : String, parentItemIdentifier : NSFileProviderItemIdentifier) {
-        self.owner = owner
-        self.name = name
-        self.oid = oid
-        self.filename = filename
-        self.type = type
+    init(entryObject : EntryObject, parentItemIdentifier : NSFileProviderItemIdentifier) {
+        self.entryObject = entryObject
         self.parentItemIdentifier = parentItemIdentifier
     }
 
     var itemIdentifier: NSFileProviderItemIdentifier {
-        return NSFileProviderItemIdentifier("gitobject.\(owner).\(name).\(oid)")
+        return NSFileProviderItemIdentifier(
+            [
+                "gitobject",
+                entryObject.repository.owner.login,
+                entryObject.repository.name,
+                entryObject.oid
+            ].joined(separator: ".")
+        )
     }
 
     var capabilities: NSFileProviderItemCapabilities {
         return .allowsAll
     }
 
+    var filename: String {
+        return entryObject.name
+    }
+
     var typeIdentifier: String {
-        if type == "blob" {
+        if entryObject.type == "blob" {
             if let uti = UTI(filenameExtension: (filename as NSString).pathExtension) {
                 return uti.utiString
             } else {
