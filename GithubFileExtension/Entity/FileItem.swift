@@ -12,33 +12,33 @@ import UTIKit
 
 class FileItem: NSObject, NSFileProviderItem {
     let parentItemIdentifier: NSFileProviderItemIdentifier
-    private let oid: String
+    let filename: String
+
+    private let owner: String
     private let name: String
+    private let oid: String
     private let type: String
 
-
-    init(oid : String, name : String, type : String, parentItemIdentifier : NSFileProviderItemIdentifier) {
-        self.oid = oid
+    init(owner : String, name : String, oid : String, filename : String, type : String, parentItemIdentifier : NSFileProviderItemIdentifier) {
+        self.owner = owner
         self.name = name
+        self.oid = oid
+        self.filename = filename
         self.type = type
         self.parentItemIdentifier = parentItemIdentifier
     }
 
     var itemIdentifier: NSFileProviderItemIdentifier {
-        return NSFileProviderItemIdentifier("gitobject.\(oid)")
+        return NSFileProviderItemIdentifier("gitobject.\(owner).\(name).\(oid)")
     }
 
     var capabilities: NSFileProviderItemCapabilities {
         return .allowsAll
     }
 
-    var filename: String {
-        return name
-    }
-
     var typeIdentifier: String {
         if type == "blob" {
-            if let uti = UTI(filenameExtension: (name as NSString).pathExtension) {
+            if let uti = UTI(filenameExtension: (filename as NSString).pathExtension) {
                 return uti.utiString
             } else {
                 return "public.item"
@@ -48,4 +48,13 @@ class FileItem: NSObject, NSFileProviderItem {
         }
     }
 
+    class func parse(itemIdentifier: NSFileProviderItemIdentifier) -> (String, String, String)? {
+        let xs = itemIdentifier.rawValue.components(separatedBy: ".")
+
+        if xs.count == 4 && xs[0] == "gitobject" {
+            return (xs[1], xs[2], xs[3])
+        } else {
+            return nil
+        }
+    }
 }

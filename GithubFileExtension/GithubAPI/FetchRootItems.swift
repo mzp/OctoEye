@@ -38,7 +38,14 @@ class FetchRootItems {
         github.query(query(owner: owner, name : name)) { (result : Result<Response, AnyError>) in
             onComplete(result.map {
                 $0.repository.defaultBranchRef.target.tree.entries.map {
-                    FileItem(oid: $0.oid, name: $0.name, type: $0.type, parentItemIdentifier: parentItemIdentifier)
+                    FileItem(
+                        owner: owner,
+                        name: name,
+                        oid: $0.oid,
+                        filename: $0.name,
+                        type: $0.type,
+                        parentItemIdentifier: parentItemIdentifier
+                    )
                 }
             })
         }
