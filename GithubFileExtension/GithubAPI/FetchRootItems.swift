@@ -12,14 +12,10 @@ import Result
 
 class FetchRootItems {
     struct Response : Codable {
-        struct Entry : Codable {
-            let oid : String
-            let name : String
-            let type : String
-        }
         struct Tree : Codable {
-            let entries : [Entry]
+            let entries : [EntryObject]
         }
+
         struct Target : Codable {
             let tree : Tree
         }
