@@ -12,12 +12,8 @@ import Result
 
 class FetchRootItems {
     struct Response : Codable {
-        struct Tree : Codable {
-            let entries : [EntryObject]
-        }
-
         struct Target : Codable {
-            let tree : Tree
+            let tree : TreeObject
         }
         struct Ref : Codable {
             let target : Target
@@ -63,14 +59,15 @@ class FetchRootItems {
                     Request(
                         name: "defaultBranchRef",
                         fields: [
-                            Request(name: "target", fields: ["...entries"])
+                            Request(name: "target", fields: ["...commit"])
                         ])]),
             fragments: [
-                Fragment(withAlias: "entries", name: "Commit", fields: [
+                Fragment(withAlias: "commit", name: "Commit", fields: [
                     Request(name: "tree", fields: [
-                        Request(name: "entries", fields: [ "oid", "name", "type"])
+                        "...\(TreeObject.fragmentName)"
                     ])
-                ])
+                ]),
+                TreeObject.fragment
             ])
     }
 }

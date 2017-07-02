@@ -12,11 +12,8 @@ import Result
 
 class FetchChildItems {
     struct Response : Codable {
-        struct Object : Codable {
-            let entries : [EntryObject]
-        }
         struct Repository : Codable {
-            let object : Object
+            let object : TreeObject
         }
         let repository : Repository
     }
@@ -56,12 +53,10 @@ class FetchChildItems {
                     Request(
                         name: "object",
                         arguments: [ Argument(key: "oid", values: [oid])],
-                        fields: ["...entries"]
+                        fields: ["...\(TreeObject.fragmentName)"]
                     )]),
             fragments: [
-                Fragment(withAlias: "entries", name: "Tree", fields: [
-                    Request(name: "entries", fields: [ "oid", "name", "type"])
-                ])
+                TreeObject.fragment
             ])
     }
 }
