@@ -29,6 +29,7 @@ class FileItem {
         object.owner = entryObject.repository.owner.login
         object.repositoryName = entryObject.repository.name
         object.oid = entryObject.oid
+        object.size = entryObject.object.byteSize ?? -1
         return object
     }
 
