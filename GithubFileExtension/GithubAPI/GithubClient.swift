@@ -51,6 +51,9 @@ class GithubClient {
                 let response = try JSONDecoder().decode(Response<T>.self, from: data)
                 onComplete(.success(response.data))
             } catch let e {
+                let request = String(data: request.httpBody!, encoding: .utf8) ?? ""
+                let response = String(data: data, encoding: .utf8) ?? ""
+                NSLog("\(request)\n\(response)")
                 onComplete(Result<T, AnyError>.failure(AnyError(e)))
             }
         }
