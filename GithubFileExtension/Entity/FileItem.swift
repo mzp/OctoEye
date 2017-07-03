@@ -46,7 +46,7 @@ class FileItem {
     }
 
     private func filename() -> String {
-        return entryObject.name
+        return "\(entryObject.name).github"
     }
 
     private func typeIdentifier() -> String {
