@@ -46,7 +46,11 @@ class FileItem {
     }
 
     private func filename() -> String {
-        return "\(entryObject.name).github"
+         if entryObject.type == "blob" {
+            return "\(entryObject.name).show-extension"
+         } else {
+            return entryObject.name
+        }
     }
 
     private func typeIdentifier() -> String {
