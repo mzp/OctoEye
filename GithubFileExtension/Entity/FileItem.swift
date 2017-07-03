@@ -14,6 +14,7 @@ import RealmSwift
 class FileItem {
     private let entryObject : EntryObject
     private let parentItemIdentifier : NSFileProviderItemIdentifier
+    private let kPlainTextExtensions = ["", "md"]
 
     init(entryObject : EntryObject, parentItemIdentifier : NSFileProviderItemIdentifier) {
         self.entryObject = entryObject
@@ -50,7 +51,10 @@ class FileItem {
 
     private func typeIdentifier() -> String {
         if entryObject.type == "blob" {
-            if let uti = UTI(filenameExtension: (entryObject.name as NSString).pathExtension) {
+            let filenameExtension = (entryObject.name as NSString).pathExtension
+            if kPlainTextExtensions.contains(filenameExtension) {
+                return "public.plain-text"
+            } else if let uti = UTI(filenameExtension: filenameExtension) {
                 return uti.utiString
             } else {
                 return "public.item"
