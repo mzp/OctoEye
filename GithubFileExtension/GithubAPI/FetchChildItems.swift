@@ -46,8 +46,6 @@ class FetchChildItems {
                         arguments: [ Argument(key: "oid", values: [oid])],
                         fields: ["...\(TreeObject.fragmentName)"]
                     )]),
-            fragments: [
-                TreeObject.fragment
-            ])
+            fragments: TreeObject.fragments)
     }
 }

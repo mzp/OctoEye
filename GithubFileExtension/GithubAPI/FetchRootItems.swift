@@ -52,13 +52,13 @@ class FetchRootItems {
                         fields: [
                             Request(name: "target", fields: ["...commit"])
                         ])]),
-            fragments: [
-                Fragment(withAlias: "commit", name: "Commit", fields: [
+            fragments: Array([
+                [Fragment(withAlias: "commit", name: "Commit", fields: [
                     Request(name: "tree", fields: [
                         "...\(TreeObject.fragmentName)"
-                    ])
-                ]),
-                TreeObject.fragment
-            ])
+                        ])
+                ])],
+                TreeObject.fragments
+            ].joined()))
     }
 }
