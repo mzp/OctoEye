@@ -10,15 +10,15 @@ import FileProvider
 import GraphQLicious
 
 class FunctionEnumerator: NSObject, NSFileProviderEnumerator {
-    typealias ItemSource = (@escaping ([GithubObjectItem]) -> ()) -> ()
-    private let enumerate : ItemSource
+    typealias ItemSource = (@escaping ([GithubObjectItem]) -> Void) -> Void
+    private let enumerate: ItemSource
 
     init(enumerate : @escaping ItemSource) {
         self.enumerate = enumerate
     }
 
     func enumerateItems(for observer: NSFileProviderEnumerationObserver, startingAtPage page: Data) {
-        enumerate() { items in
+        enumerate { items in
             observer.didEnumerate(items)
             observer.finishEnumerating(upToPage: nil)
         }

@@ -11,34 +11,34 @@ import GraphQLicious
 import Result
 
 class FetchChildItems {
-    struct Response : Codable {
-        struct Repository : Codable {
-            let object : TreeObject
+    struct Response: Codable {
+        struct Repository: Codable {
+            let object: TreeObject
         }
-        let repository : Repository
+        let repository: Repository
     }
 
-    private let github : GithubClient
+    private let github: GithubClient
 
-    init(github : GithubClient) {
+    init(github: GithubClient) {
         self.github = github
     }
 
-    func call(owner : String, name : String, oid : String, onComplete : @escaping (Result<[EntryObject], AnyError>) -> ()) {
-        github.query(query(owner: owner, name: name, oid: oid)) { (result : Result<Response, AnyError>) in
+    func call(owner: String, name: String, oid: String, onComplete : @escaping (Result<[EntryObject], AnyError>) -> Void) {
+        github.query(query(owner: owner, name: name, oid: oid)) { (result: Result<Response, AnyError>) in
             onComplete(result.map {
                 $0.repository.object.entries
             })
         }
     }
 
-    private func query(owner : String, name : String, oid : String) -> Query {
+    private func query(owner: String, name: String, oid: String) -> Query {
         return Query(
             request: Request(
                 name: "repository",
                 arguments: [
                     Argument(key: "owner", values: [owner]),
-                    Argument(key: "name", values: [name]),
+                    Argument(key: "name", values: [name])
                     ],
                 fields: [
                     Request(

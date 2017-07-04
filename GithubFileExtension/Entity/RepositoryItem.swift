@@ -20,19 +20,19 @@ class RepositoryItem: NSObject, NSFileProviderItem {
     var itemIdentifier: NSFileProviderItemIdentifier {
         return NSFileProviderItemIdentifier("repository.\(owner).\(name)")
     }
-    
+
     var parentItemIdentifier: NSFileProviderItemIdentifier {
         return NSFileProviderItemIdentifier.rootContainer
     }
-    
+
     var capabilities: NSFileProviderItemCapabilities {
         return .allowsAll
     }
-    
+
     var filename: String {
         return "\(owner)/\(name)"
     }
-    
+
     var typeIdentifier: String {
         return "public.folder"
     }

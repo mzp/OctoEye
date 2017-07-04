@@ -22,7 +22,7 @@ class GithubObjectItem: Object, NSFileProviderItem {
     @objc dynamic var oid = ""
 
     // Because realm cannot store NSNumber directroy, we wrap swift's Int
-    var documentSize : NSNumber? {
+    var documentSize: NSNumber? {
         if size == -1 {
             return nil
         } else {

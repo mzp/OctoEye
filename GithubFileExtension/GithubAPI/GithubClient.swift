@@ -11,26 +11,26 @@ import GraphQLicious
 import Result
 
 class GithubClient {
-    struct Request : Encodable {
-        let query : String
+    struct Request: Encodable {
+        let query: String
 
-        init(query : String) {
+        init(query: String) {
             self.query = query
         }
     }
 
-    struct Response<T : Decodable> : Decodable {
-        let data : T
+    struct Response<T: Decodable> : Decodable {
+        let data: T
     }
 
     private let url = URL(string: "https://api.github.com/graphql")!
-    private let token : String
+    private let token: String
 
     init(token: String) {
         self.token = token
     }
 
-    func query<T : Decodable>(_ query: Query, onComplete : @escaping (Result<T, AnyError>) -> ()) {
+    func query<T: Decodable>(_ query: Query, onComplete : @escaping (Result<T, AnyError>) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("bearer \(token)", forHTTPHeaderField: "Authorization")

@@ -9,7 +9,7 @@
 import FileProvider
 
 class ArrayEnumerator: NSObject, NSFileProviderEnumerator {
-    private let items : [NSFileProviderItemProtocol]
+    private let items: [NSFileProviderItemProtocol]
 
     init(items: [NSFileProviderItemProtocol]) {
         self.items = items

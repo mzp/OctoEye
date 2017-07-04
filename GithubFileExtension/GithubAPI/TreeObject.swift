@@ -9,29 +9,29 @@
 import Foundation
 import GraphQLicious
 
-struct BlobObject : Codable {
-    let byteSize : Int?
+struct BlobObject: Codable {
+    let byteSize: Int?
 }
 
-struct OwnerObject : Codable {
-    let login : String
+struct OwnerObject: Codable {
+    let login: String
 }
 
-struct RepositoryObject : Codable {
-    let owner : OwnerObject
-    let name : String
+struct RepositoryObject: Codable {
+    let owner: OwnerObject
+    let name: String
 }
 
-struct EntryObject : Codable {
-    let repository : RepositoryObject
-    let oid : String
-    let name : String
-    let type : String
-    let object : BlobObject
+struct EntryObject: Codable {
+    let repository: RepositoryObject
+    let oid: String
+    let name: String
+    let type: String
+    let object: BlobObject
 }
 
-struct TreeObject : Codable {
-    let entries : [EntryObject]
+struct TreeObject: Codable {
+    let entries: [EntryObject]
 
     static let fragmentName = "tree"
     static let fragments = [

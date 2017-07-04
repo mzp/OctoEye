@@ -12,11 +12,11 @@ import UTIKit
 import RealmSwift
 
 class FileItem {
-    private let entryObject : EntryObject
-    private let parentItemIdentifier : NSFileProviderItemIdentifier
+    private let entryObject: EntryObject
+    private let parentItemIdentifier: NSFileProviderItemIdentifier
     private let kPlainTextExtensions = ["", "md"]
 
-    init(entryObject : EntryObject, parentItemIdentifier : NSFileProviderItemIdentifier) {
+    init(entryObject: EntryObject, parentItemIdentifier: NSFileProviderItemIdentifier) {
         self.entryObject = entryObject
         self.parentItemIdentifier = parentItemIdentifier
     }
