@@ -207,6 +207,7 @@
 			buildConfigurationList = 1310C9F91F0513ED0020A177 /* Build configuration list for PBXNativeTarget "OctoEye" */;
 			buildPhases = (
 				B5E9151338BD4B172D49620C /* [CP] Check Pods Manifest.lock */,
+				13911BC11F0C543F005EE2C0 /* SwiftLint */,
 				1310C9E31F0513ED0020A177 /* Sources */,
 				1310C9E41F0513ED0020A177 /* Frameworks */,
 				1310C9E51F0513ED0020A177 /* Resources */,
@@ -315,6 +316,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GithubFileExtension/Pods-GithubFileExtension-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		13911BC11F0C543F005EE2C0 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		224B1B48F32103FA2F7AE96D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
