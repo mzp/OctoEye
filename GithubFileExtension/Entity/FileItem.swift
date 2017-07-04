@@ -68,6 +68,7 @@ class FileItem {
         }
     }
 
+    // swiftlint:disable:next large_tuple
     class func parse(itemIdentifier: NSFileProviderItemIdentifier) -> (String, String, String)? {
         let xs = itemIdentifier.rawValue.components(separatedBy: ".")
 
