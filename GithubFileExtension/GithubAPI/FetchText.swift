@@ -10,7 +10,7 @@ import Foundation
 import GraphQLicious
 import Result
 
-class FetchText {
+internal class FetchText {
     struct Blob: Codable {
         let text: String
     }

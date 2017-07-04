@@ -10,7 +10,7 @@ import Foundation
 import GraphQLicious
 import Result
 
-class GithubClient {
+internal class GithubClient {
     struct Request: Encodable {
         let query: String
 
@@ -23,7 +23,8 @@ class GithubClient {
         let data: T
     }
 
-    private let url = URL(string: "https://api.github.com/graphql")!
+    // swiftlint:disable:next force_unwrapping
+    private let url: URL = URL(string: "https://api.github.com/graphql")!
     private let token: String
 
     init(token: String) {
@@ -46,11 +47,14 @@ class GithubClient {
             if let error = error {
                 return onComplete(Result<T, AnyError>.failure(AnyError(error)))
             }
-            guard let data = data else { return }
+            guard let data = data else {
+                return
+            }
             do {
                 let response = try JSONDecoder().decode(Response<T>.self, from: data)
                 onComplete(.success(response.data))
             } catch let e {
+                // swiftlint:disable:next force_unwrapping
                 let request = String(data: request.httpBody!, encoding: .utf8) ?? ""
                 let response = String(data: data, encoding: .utf8) ?? ""
                 NSLog("\(request)\n\(response)")

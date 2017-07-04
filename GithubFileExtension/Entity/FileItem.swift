@@ -6,15 +6,15 @@
 //  Copyright © 2017 mzp. All rights reserved.
 //
 
-import Foundation
 import FileProvider
-import UTIKit
+import Foundation
 import RealmSwift
+import UTIKit
 
-class FileItem {
+internal class FileItem {
     private let entryObject: EntryObject
     private let parentItemIdentifier: NSFileProviderItemIdentifier
-    private let kPlainTextExtensions = ["", "md"]
+    private let kPlainTextExtensions: [String] = ["", "md"]
 
     init(entryObject: EntryObject, parentItemIdentifier: NSFileProviderItemIdentifier) {
         self.entryObject = entryObject

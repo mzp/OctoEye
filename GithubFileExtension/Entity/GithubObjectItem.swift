@@ -6,20 +6,20 @@
 //  Copyright © 2017 mzp. All rights reserved.
 //
 
-import Foundation
 import FileProvider
+import Foundation
 import RealmSwift
 
-class GithubObjectItem: Object, NSFileProviderItem {
-    @objc dynamic var itemIdentifier = NSFileProviderItemIdentifier("")
-    @objc dynamic var parentItemIdentifier = NSFileProviderItemIdentifier("")
-    @objc dynamic var filename = ""
-    @objc dynamic var typeIdentifier = ""
-    @objc dynamic var size = -1
+internal class GithubObjectItem: Object, NSFileProviderItem {
+    @objc dynamic var itemIdentifier: NSFileProviderItemIdentifier = NSFileProviderItemIdentifier("")
+    @objc dynamic var parentItemIdentifier: NSFileProviderItemIdentifier = NSFileProviderItemIdentifier("")
+    @objc dynamic var filename: String = ""
+    @objc dynamic var typeIdentifier: String = ""
+    @objc dynamic var size: Int = -1
 
-    @objc dynamic var owner = ""
-    @objc dynamic var repositoryName = ""
-    @objc dynamic var oid = ""
+    @objc dynamic var owner: String = ""
+    @objc dynamic var repositoryName: String = ""
+    @objc dynamic var oid: String = ""
 
     // Because realm cannot store NSNumber directroy, we wrap swift's Int
     var documentSize: NSNumber? {

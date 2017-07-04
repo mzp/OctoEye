@@ -9,20 +9,20 @@
 import Foundation
 import GraphQLicious
 
-struct BlobObject: Codable {
+internal struct BlobObject: Codable {
     let byteSize: Int?
 }
 
-struct OwnerObject: Codable {
+internal struct OwnerObject: Codable {
     let login: String
 }
 
-struct RepositoryObject: Codable {
+internal struct RepositoryObject: Codable {
     let owner: OwnerObject
     let name: String
 }
 
-struct EntryObject: Codable {
+internal struct EntryObject: Codable {
     let repository: RepositoryObject
     let oid: String
     let name: String
@@ -30,11 +30,11 @@ struct EntryObject: Codable {
     let object: BlobObject
 }
 
-struct TreeObject: Codable {
+internal struct TreeObject: Codable {
     let entries: [EntryObject]
 
-    static let fragmentName = "tree"
-    static let fragments = [
+    static let fragmentName: String = "tree"
+    static let fragments: [Fragment] = [
         Fragment(withAlias: "blob", name: "Blob", fields: [ "byteSize" ]),
         Fragment(withAlias: fragmentName, name: "Tree", fields: [
             Request(name: "entries", fields: [

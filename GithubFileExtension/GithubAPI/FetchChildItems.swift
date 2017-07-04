@@ -10,7 +10,7 @@ import Foundation
 import GraphQLicious
 import Result
 
-class FetchChildItems {
+internal class FetchChildItems {
     typealias FetchResult = Result<[EntryObject], AnyError>
     struct Repository: Codable {
         let object: TreeObject

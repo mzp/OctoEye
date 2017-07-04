@@ -8,7 +8,7 @@
 
 import FileProvider
 
-class ArrayEnumerator: NSObject, NSFileProviderEnumerator {
+internal class ArrayEnumerator: NSObject, NSFileProviderEnumerator {
     private let items: [NSFileProviderItemProtocol]
 
     init(items: [NSFileProviderItemProtocol]) {

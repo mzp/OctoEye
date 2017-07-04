@@ -8,7 +8,7 @@
 
 import FileProvider
 
-class RepositoryItem: NSObject, NSFileProviderItem {
+internal class RepositoryItem: NSObject, NSFileProviderItem {
     private let owner: String
     private let name: String
 

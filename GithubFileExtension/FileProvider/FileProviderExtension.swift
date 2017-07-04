@@ -9,22 +9,24 @@
 import FileProvider
 import RealmSwift
 
-class FileProviderExtension: NSFileProviderExtension {
+internal class FileProviderExtension: NSFileProviderExtension {
     // FIXME: make customizable
-    private let github = GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0")
-    private let repositories = [
+    private let github: GithubClient = GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0")
+    private let repositories: [(String, String)] = [
         ("mzp", "LoveLiver"),
         ("banjun", "SwiftBeaker")
     ]
 
-    var fileManager = FileManager()
+    var fileManager: FileManager = FileManager()
 
     override init() {
         super.init()
     }
 
     private func findItem(for identifier: NSFileProviderItemIdentifier) -> GithubObjectItem? {
-        guard let realm = try? Realm() else { return nil }
+        guard let realm = try? Realm() else {
+            return nil
+        }
         return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
     }
 
@@ -52,6 +54,7 @@ class FileProviderExtension: NSFileProviderExtension {
         return NSFileProviderItemIdentifier(pathComponents[pathComponents.count - 2])
     }
 
+    // swiftlint:disable:next prohibited_super_call
     override func providePlaceholder(at url: URL, completionHandler: @escaping (Error?) -> Void) {
         NSLog("providePlaceholder \(url)")
         do {
@@ -78,18 +81,18 @@ class FileProviderExtension: NSFileProviderExtension {
         }
         FetchText(github: github)
             .call(owner: item.owner, name: item.repositoryName, oid: item.oid) {
-            switch $0 {
-            case .success(let text):
-                do {
-                    try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
-                    completionHandler?(nil)
-                } catch let e {
+                switch $0 {
+                case .success(let text):
+                    do {
+                        try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+                        completionHandler?(nil)
+                    } catch let e {
+                        completionHandler?(e)
+                    }
+                case .failure(let e):
                     completionHandler?(e)
                 }
-            case .failure(let e):
-                completionHandler?(e)
             }
-        }
     }
 
     override func itemChanged(at url: URL) {
@@ -151,13 +154,13 @@ class FileProviderExtension: NSFileProviderExtension {
                 return FunctionEnumerator { enumarate in
                     FetchRootItems(github: self.github)
                         .call(owner: owner, name: name) {
-                        switch $0 {
-                        case .success(let items):
-                            enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
-                        case .failure(let e):
-                            NSLog("error: \(e)")
+                            switch $0 {
+                            case .success(let items):
+                                enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
+                            case .failure(let e):
+                                NSLog("error: \(e)")
+                            }
                         }
-                    }
                 }
             }
 
@@ -165,13 +168,13 @@ class FileProviderExtension: NSFileProviderExtension {
                 return FunctionEnumerator { enumarate in
                     FetchChildItems(github: self.github)
                         .call(owner: owner, name: name, oid: oid) {
-                            switch $0 {
-                            case .success(let items):
-                                enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
-                            case .failure(let e):
-                                NSLog("error: \(e)")
-                            }
-                    }
+                                switch $0 {
+                                case .success(let items):
+                                    enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
+                                case .failure(let e):
+                                    NSLog("error: \(e)")
+                                }
+                        }
                 }
             }
         }

@@ -10,7 +10,7 @@ import UIKit
 
 // swiftlint:disable line_length
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+internal class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 

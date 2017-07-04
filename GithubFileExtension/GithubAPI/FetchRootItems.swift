@@ -10,7 +10,7 @@ import Foundation
 import GraphQLicious
 import Result
 
-class FetchRootItems {
+internal class FetchRootItems {
     struct Target: Codable {
         let tree: TreeObject
     }
