@@ -11,6 +11,7 @@ import GraphQLicious
 import Result
 
 class FetchChildItems {
+    typealias FetchResult = Result<[EntryObject], AnyError>
     struct Repository: Codable {
         let object: TreeObject
     }
@@ -24,7 +25,7 @@ class FetchChildItems {
         self.github = github
     }
 
-    func call(owner: String, name: String, oid: String, onComplete : @escaping (Result<[EntryObject], AnyError>) -> Void) {
+    func call(owner: String, name: String, oid: String, onComplete : @escaping (FetchResult) -> Void) {
         github.query(query(owner: owner, name: name, oid: oid)) { (result: Result<Response, AnyError>) in
             onComplete(result.map {
                 $0.repository.object.entries
