@@ -11,3 +11,5 @@ end
 target 'OctoEye' do
   use_frameworks!
 end
+
+pod 'SwiftLint'

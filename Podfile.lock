@@ -6,12 +6,14 @@ PODS:
   - RealmSwift (2.8.3):
     - Realm (= 2.8.3)
   - Result (3.2.3)
+  - SwiftLint (0.20.0)
   - UTIKit (2.0.1)
 
 DEPENDENCIES:
   - GraphQLicious (~> 0.8.2)
   - RealmSwift
   - Result (~> 3.2.3)
+  - SwiftLint
   - UTIKit (~> 2.0.1)
 
 SPEC CHECKSUMS:
@@ -19,8 +21,9 @@ SPEC CHECKSUMS:
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
+  SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
   UTIKit: 5b16488927ed6df479189acd9ff1ad6a7b19f8ff
 
-PODFILE CHECKSUM: ea96ab3931c506c8b66ab59d85c4adaa0a7ce104
+PODFILE CHECKSUM: 442bdd330e0e3e749499f28adf31ef187874c72b
 
 COCOAPODS: 1.2.1
