@@ -11,14 +11,13 @@ import GraphQLicious
 import Result
 
 class FetchText {
+    struct Blob: Codable {
+        let text: String
+    }
+    struct Repository: Codable {
+        let object: Blob
+    }
     struct Response: Codable {
-        struct Blob: Codable {
-            let text: String
-        }
-
-        struct Repository: Codable {
-            let object: Blob
-        }
         let repository: Repository
     }
 

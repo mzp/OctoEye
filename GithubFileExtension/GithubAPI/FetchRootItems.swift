@@ -11,16 +11,16 @@ import GraphQLicious
 import Result
 
 class FetchRootItems {
+    struct Target: Codable {
+        let tree: TreeObject
+    }
+    struct Ref: Codable {
+        let target: Target
+    }
+    struct Repository: Codable {
+        let defaultBranchRef: Ref
+    }
     struct Response: Codable {
-        struct Target: Codable {
-            let tree: TreeObject
-        }
-        struct Ref: Codable {
-            let target: Target
-        }
-        struct Repository: Codable {
-            let defaultBranchRef: Ref
-        }
         let repository: Repository
     }
 

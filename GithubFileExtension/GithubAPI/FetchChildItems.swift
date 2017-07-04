@@ -11,10 +11,10 @@ import GraphQLicious
 import Result
 
 class FetchChildItems {
+    struct Repository: Codable {
+        let object: TreeObject
+    }
     struct Response: Codable {
-        struct Repository: Codable {
-            let object: TreeObject
-        }
         let repository: Repository
     }
 
