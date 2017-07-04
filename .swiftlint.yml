@@ -1,0 +1,7 @@
+included:
+  - OctoEye
+  - GithubFileExtension
+excluded:
+  - Pods/
+disabled_rules:
+  - todo
