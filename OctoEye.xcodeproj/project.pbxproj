@@ -105,8 +105,7 @@
 		1310C9DE1F0513ED0020A177 = {
 			isa = PBXGroup;
 			children = (
-				1310C9E91F0513ED0020A177 /* OctoEye */,
-				13A907F41F051658002FCDB2 /* GithubFileExtension */,
+				13911BC41F0C5E07005EE2C0 /* Sources */,
 				1310C9E81F0513ED0020A177 /* Products */,
 				E6CBC2221FCAB0DCB85FDC7B /* Pods */,
 				EE4370855ABC9B2177F60E03 /* Frameworks */,
@@ -133,6 +132,15 @@
 				1310C9F61F0513ED0020A177 /* Info.plist */,
 			);
 			path = OctoEye;
+			sourceTree = "<group>";
+		};
+		13911BC41F0C5E07005EE2C0 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1310C9E91F0513ED0020A177 /* OctoEye */,
+				13A907F41F051658002FCDB2 /* GithubFileExtension */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		13A907F41F051658002FCDB2 /* GithubFileExtension */ = {
@@ -329,7 +337,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+			shellScript = "cd \"${PODS_ROOT}/..\"\n\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		224B1B48F32103FA2F7AE96D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -561,7 +569,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
-				INFOPLIST_FILE = OctoEye/Info.plist;
+				INFOPLIST_FILE = Sources/OctoEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -577,7 +585,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
-				INFOPLIST_FILE = OctoEye/Info.plist;
+				INFOPLIST_FILE = Sources/OctoEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -590,9 +598,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A04D7381C95638DDEE3E453D /* Pods-GithubFileExtension.debug.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = GithubFileExtension/GithubFileExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/GithubFileExtension/GithubFileExtension.entitlements;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
-				INFOPLIST_FILE = GithubFileExtension/Info.plist;
+				INFOPLIST_FILE = Sources/GithubFileExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye.GithubFileExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -606,9 +614,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 63DBFA59F8319D418401B13A /* Pods-GithubFileExtension.release.xcconfig */;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = GithubFileExtension/GithubFileExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Sources/GithubFileExtension/GithubFileExtension.entitlements;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
-				INFOPLIST_FILE = GithubFileExtension/Info.plist;
+				INFOPLIST_FILE = Sources/GithubFileExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye.GithubFileExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";

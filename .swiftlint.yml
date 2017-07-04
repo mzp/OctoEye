@@ -1,6 +1,5 @@
 included:
-  - OctoEye
-  - GithubFileExtension
+  - Sources/
 excluded:
   - Pods/
 opt_in_rules:
