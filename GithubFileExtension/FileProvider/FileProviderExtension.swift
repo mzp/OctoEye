@@ -55,7 +55,9 @@ class FileProviderExtension: NSFileProviderExtension {
     override func providePlaceholder(at url: URL, completionHandler: @escaping (Error?) -> Void) {
         NSLog("providePlaceholder \(url)")
         do {
-            try fileManager.createDirectory(at: url.deletingLastPathComponent(), withIntermediateDirectories: true, attributes: nil)
+            try fileManager.createDirectory(at: url.deletingLastPathComponent(),
+                                            withIntermediateDirectories: true,
+                                            attributes: nil)
             fileManager.createFile(atPath: url.path, contents: nil, attributes: nil)
             completionHandler(nil)
         } catch let e {
@@ -102,11 +104,6 @@ class FileProviderExtension: NSFileProviderExtension {
     }
 
     override func stopProvidingItem(at url: URL) {
-        // Called after the last claim to the file has been released. At this point, it is safe for the file provider to remove the content file.
-        // Care should be taken that the corresponding placeholder file stays behind after the content file has been deleted.
-
-        // Called after the last claim to the file has been released. At this point, it is safe for the file provider to remove the content file.
-
         // TODO: look up whether the file has local changes
         let fileHasLocalChanges = false
 
@@ -139,15 +136,15 @@ class FileProviderExtension: NSFileProviderExtension {
     // swiftlint:disable:next line_length
     override func enumerator(forContainerItemIdentifier containerItemIdentifier: NSFileProviderItemIdentifier) throws -> NSFileProviderEnumerator {
         let maybeEnumerator: NSFileProviderEnumerator? = nil
-        if (containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer) {
+        if containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer {
             let items = repositories.map { (repository: (String, String)) -> RepositoryItem in
                 let (owner, name) = repository
                 return RepositoryItem(owner: owner, name: name)
             }
             return ArrayEnumerator(items: items)
-        } else if (containerItemIdentifier == NSFileProviderItemIdentifier.workingSet) {
+        } else if containerItemIdentifier == NSFileProviderItemIdentifier.workingSet {
             // TODO: instantiate an enumerator for the working set
-        } else if (containerItemIdentifier == NSFileProviderItemIdentifier.allDirectories) {
+        } else if containerItemIdentifier == NSFileProviderItemIdentifier.allDirectories {
             // TODO: instantiate an enumerator that recursively enumerates all directories
         } else {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
@@ -156,7 +153,7 @@ class FileProviderExtension: NSFileProviderExtension {
                         .call(owner: owner, name: name) {
                         switch $0 {
                         case .success(let items):
-                            f(self.create(entryObjects: items, parentItemIdentifier: containerItemIdentifier))
+                            f(self.create(entryObjects: items, parent: containerItemIdentifier))
                         case .failure(let e):
                             NSLog("error: \(e)")
                         }
@@ -170,7 +167,7 @@ class FileProviderExtension: NSFileProviderExtension {
                         .call(owner: owner, name: name, oid: oid) {
                             switch $0 {
                             case .success(let items):
-                                f(self.create(entryObjects: items, parentItemIdentifier: containerItemIdentifier))
+                                f(self.create(entryObjects: items, parent: containerItemIdentifier))
                             case .failure(let e):
                                 NSLog("error: \(e)")
                             }
@@ -184,11 +181,11 @@ class FileProviderExtension: NSFileProviderExtension {
         return enumerator
     }
 
-    private func create(entryObjects: [EntryObject], parentItemIdentifier: NSFileProviderItemIdentifier) -> [GithubObjectItem] {
+    private func create(entryObjects: [EntryObject], parent: NSFileProviderItemIdentifier) -> [GithubObjectItem] {
         // Because realm cannot pass object between threads, I create items twice for display and for saving.
         let items = { () in
             return entryObjects.map {
-                FileItem(entryObject: $0, parentItemIdentifier: parentItemIdentifier).build()
+                FileItem(entryObject: $0, parentItemIdentifier: parent).build()
             }
         }
 
