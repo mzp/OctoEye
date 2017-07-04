@@ -136,6 +136,7 @@ class FileProviderExtension: NSFileProviderExtension {
 
     // MARK: - Enumeration
 
+    // swiftlint:disable:next line_length
     override func enumerator(forContainerItemIdentifier containerItemIdentifier: NSFileProviderItemIdentifier) throws -> NSFileProviderEnumerator {
         let maybeEnumerator: NSFileProviderEnumerator? = nil
         if (containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer) {
