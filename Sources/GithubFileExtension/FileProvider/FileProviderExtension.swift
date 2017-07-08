@@ -11,13 +11,22 @@ import RealmSwift
 import Result
 
 internal class FileProviderExtension: NSFileProviderExtension {
-    private let github: GithubClient = GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0")
+    private let github: GithubClient
     private let repositories: [(String, String)] = [
         ("mzp", "LoveLiver"),
         ("banjun", "SwiftBeaker")
     ]
 
     var fileManager: FileManager = FileManager()
+
+    convenience override init() {
+        self.init(github: GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0"))
+    }
+
+    init(github: GithubClient) {
+        self.github = github
+        super.init()
+    }
 
     // MARK: - URL
 

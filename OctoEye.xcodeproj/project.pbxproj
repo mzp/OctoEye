@@ -24,6 +24,7 @@
 		134A63D41F106D7B005D2EBD /* fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63D31F106D7B005D2EBD /* fixture.swift */; };
 		134A63D61F106F6C005D2EBD /* treeObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 134A63D51F106F34005D2EBD /* treeObject.json */; };
 		134A63D81F106F88005D2EBD /* blobObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 134A63D71F106F88005D2EBD /* blobObject.json */; };
+		134A63DA1F1070BA005D2EBD /* FileProviderExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63D91F1070BA005D2EBD /* FileProviderExtensionSpec.swift */; };
 		135B23541F0EF6060025BB95 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1383437D1F0E7D990030DA96 /* HttpRequest.swift */; };
 		135B23551F0EF60C0025BB95 /* HttpRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1383437D1F0E7D990030DA96 /* HttpRequest.swift */; };
 		135B23571F0EF9960025BB95 /* GithubClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B23561F0EF9960025BB95 /* GithubClientSpec.swift */; };
@@ -109,6 +110,7 @@
 		134A63D31F106D7B005D2EBD /* fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = fixture.swift; sourceTree = "<group>"; };
 		134A63D51F106F34005D2EBD /* treeObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = treeObject.json; sourceTree = "<group>"; };
 		134A63D71F106F88005D2EBD /* blobObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blobObject.json; sourceTree = "<group>"; };
+		134A63D91F1070BA005D2EBD /* FileProviderExtensionSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderExtensionSpec.swift; sourceTree = "<group>"; };
 		135B23561F0EF9960025BB95 /* GithubClientSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientSpec.swift; sourceTree = "<group>"; };
 		136552A81F0DA21300B4FDD4 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		136552AC1F0DA21300B4FDD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayEnumerator.swift; sourceTree = "<group>"; };
 		13A907FB1F051658002FCDB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A907FC1F051658002FCDB2 /* GithubFileExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GithubFileExtension.entitlements; sourceTree = "<group>"; };
+		13AD05AA1F107AC100CB2B12 /* OctoEye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OctoEye.entitlements; sourceTree = "<group>"; };
 		13DC2C4B1F0FAC9900AE09AA /* FetchRootItemsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRootItemsSpec.swift; sourceTree = "<group>"; };
 		13DC2C571F0FB36500AE09AA /* FetchChildItemsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChildItemsSpec.swift; sourceTree = "<group>"; };
 		13DC2C591F0FB59B00AE09AA /* FetchTextSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTextSpec.swift; sourceTree = "<group>"; };
@@ -170,6 +173,7 @@
 		1310C9DE1F0513ED0020A177 = {
 			isa = PBXGroup;
 			children = (
+				13AD05AA1F107AC100CB2B12 /* OctoEye.entitlements */,
 				13911BC41F0C5E07005EE2C0 /* Sources */,
 				136552A91F0DA21300B4FDD4 /* Tests */,
 				1310C9E81F0513ED0020A177 /* Products */,
@@ -310,6 +314,7 @@
 		13DC2C621F1052AC00AE09AA /* FileProvider */ = {
 			isa = PBXGroup;
 			children = (
+				134A63D91F1070BA005D2EBD /* FileProviderExtensionSpec.swift */,
 				13DC2C631F1052C200AE09AA /* ArrayEnumeratorSpec.swift */,
 				134A63C91F1059E4005D2EBD /* FutureEnumeratorSpec.swift */,
 				13E732151F10568E00FE59C1 /* EnumeratorRunner.swift */,
@@ -420,6 +425,11 @@
 				TargetAttributes = {
 					1310C9E61F0513ED0020A177 = {
 						CreatedOnToolsVersion = 9.0;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					136552A71F0DA21300B4FDD4 = {
 						CreatedOnToolsVersion = 9.0;
@@ -644,6 +654,7 @@
 				13DC2C501F0FB34000AE09AA /* FetchText.swift in Sources */,
 				13DC2C531F0FB34400AE09AA /* ArrayEnumerator.swift in Sources */,
 				13DC2C4D1F0FAFD400AE09AA /* FetchRootItems.swift in Sources */,
+				134A63DA1F1070BA005D2EBD /* FileProviderExtensionSpec.swift in Sources */,
 				13DC2C4C1F0FAC9900AE09AA /* FetchRootItemsSpec.swift in Sources */,
 				134A63CA1F1059E4005D2EBD /* FutureEnumeratorSpec.swift in Sources */,
 				135B23551F0EF60C0025BB95 /* HttpRequest.swift in Sources */,
@@ -820,6 +831,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OctoEye.entitlements;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
 				INFOPLIST_FILE = Sources/OctoEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -836,6 +848,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OctoEye.entitlements;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
 				INFOPLIST_FILE = Sources/OctoEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
