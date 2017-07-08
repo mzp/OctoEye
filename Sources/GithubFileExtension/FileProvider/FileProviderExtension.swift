@@ -8,6 +8,7 @@
 
 import FileProvider
 import RealmSwift
+import Result
 
 internal class FileProviderExtension: NSFileProviderExtension {
     // FIXME: make customizable
@@ -80,16 +81,12 @@ internal class FileProviderExtension: NSFileProviderExtension {
             return
         }
         FetchText(github: github)
-            .call(owner: item.owner, name: item.repositoryName, oid: item.oid) {
-                switch $0 {
-                case .success(let text):
-                    do {
-                        try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
-                        completionHandler?(nil)
-                    } catch let e {
-                        completionHandler?(e)
-                    }
-                case .failure(let e):
+            .call(owner: item.owner, name: item.repositoryName, oid: item.oid)
+            .onSuccess { text in
+                do {
+                    try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+                    completionHandler?(nil)
+                } catch let e {
                     completionHandler?(e)
                 }
             }
@@ -151,31 +148,23 @@ internal class FileProviderExtension: NSFileProviderExtension {
             // TODO: instantiate an enumerator that recursively enumerates all directories
         } else {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
-                return FunctionEnumerator { enumarate in
+                let future =
                     FetchRootItems(github: self.github)
-                        .call(owner: owner, name: name) {
-                            switch $0 {
-                            case .success(let items):
-                                enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
-                            case .failure(let e):
-                                NSLog("error: \(e)")
-                            }
-                        }
-                }
+                    .call(owner: owner, name: name)
+                    .map {
+                        self.create(entryObjects: $0, parent: containerItemIdentifier)
+                    }
+                return FutureEnumerator(future: future)
             }
 
             if let (owner, name, oid) = FileItem.parse(itemIdentifier: containerItemIdentifier) {
-                return FunctionEnumerator { enumarate in
+                let future =
                     FetchChildItems(github: self.github)
-                        .call(owner: owner, name: name, oid: oid) {
-                                switch $0 {
-                                case .success(let items):
-                                    enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
-                                case .failure(let e):
-                                    NSLog("error: \(e)")
-                                }
+                        .call(owner: owner, name: name, oid: oid)
+                        .map {
+                            self.create(entryObjects: $0, parent: containerItemIdentifier)
                         }
-                }
+                return FutureEnumerator(future: future)
             }
         }
         guard let enumerator = maybeEnumerator else {
@@ -184,7 +173,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
         return enumerator
     }
 
-    private func create(entryObjects: [EntryObject], parent: NSFileProviderItemIdentifier) -> [GithubObjectItem] {
+    private func create(entryObjects: [EntryObject], parent: NSFileProviderItemIdentifier) -> [NSFileProviderItem] {
         // Because realm cannot pass object between threads, I create items twice for display and for saving.
         let items = { () in
             return entryObjects.map {

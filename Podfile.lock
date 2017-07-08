@@ -1,4 +1,6 @@
 PODS:
+  - BrightFutures (5.2.0):
+    - Result (~> 3.2)
   - GraphQLicious (0.8.2)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
@@ -10,6 +12,7 @@ PODS:
   - UTIKit (2.0.1)
 
 DEPENDENCIES:
+  - BrightFutures
   - GraphQLicious (~> 0.8.2)
   - RealmSwift
   - Result (~> 3.2.3)
@@ -17,6 +20,7 @@ DEPENDENCIES:
   - UTIKit (~> 2.0.1)
 
 SPEC CHECKSUMS:
+  BrightFutures: 8681dbb9fa831b69b6e7dc4a498b9e081d5daeb5
   GraphQLicious: c8468f1dcbbdc74b33fd184db1642f5ed2b0a86a
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
@@ -24,6 +28,6 @@ SPEC CHECKSUMS:
   SwiftLint: 3f7543509c931d1291395335f34e245d3919b7f2
   UTIKit: 5b16488927ed6df479189acd9ff1ad6a7b19f8ff
 
-PODFILE CHECKSUM: 7a1384a0d1a7be7fbabef4531907a583f4a1d47e
+PODFILE CHECKSUM: 12c46fdb9fc8273f7ddebb89890fd01549bf3cb4
 
 COCOAPODS: 1.2.1

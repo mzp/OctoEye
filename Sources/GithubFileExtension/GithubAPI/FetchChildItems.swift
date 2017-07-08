@@ -6,12 +6,11 @@
 //  Copyright © 2017 mzp. All rights reserved.
 //
 
-import Foundation
+import BrightFutures
 import GraphQLicious
 import Result
 
 internal class FetchChildItems {
-    typealias FetchResult = Result<[EntryObject], AnyError>
     struct Repository: Codable {
         let object: TreeObject
     }
@@ -25,11 +24,9 @@ internal class FetchChildItems {
         self.github = github
     }
 
-    func call(owner: String, name: String, oid: String, onComplete : @escaping (FetchResult) -> Void) {
-        github.query(query(owner: owner, name: name, oid: oid)) { (result: Result<Response, AnyError>) in
-            onComplete(result.map {
-                $0.repository.object.entries
-            })
+    func call(owner: String, name: String, oid: String) -> Future<[EntryObject], AnyError> {
+        return github.query(query(owner: owner, name: name, oid: oid)).map { (response: Response) in
+            response.repository.object.entries
         }
     }
 
