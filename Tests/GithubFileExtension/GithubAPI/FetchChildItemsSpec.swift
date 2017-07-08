@@ -13,7 +13,9 @@ import Result
 
 internal class FetchChildItemsSpec: QuickSpec {
     override func spec() {
-        let github = GithubClient(token: "-", httpRequest: MockHttpRequest(response: response))
+        let github = GithubClient(
+            token: "-",
+            httpRequest: MockHttpRequest(response: fixture(name: "treeObject", ofType: "json")))
         let entries = forcedFuture { _ in
             FetchChildItems(github: github).call(owner: "mzp", name: "LoveLiver", oid: "-")
         }.value
@@ -29,41 +31,4 @@ internal class FetchChildItemsSpec: QuickSpec {
             }
         }
     }
-
-    private let response: String = """
-{
-  "data": {
-    "repository": {
-      "object": {
-        "entries": [
-          {
-            "oid": "7a3bac85882e6635f2513f7137de7b1296df70e2",
-            "name": "livephoto",
-            "type": "tree",
-            "object": {},
-            "repository": {
-              "owner": {
-                "login": "mzp"
-              },
-              "name": "LoveLiver"
-            }
-          },
-          {
-            "oid": "d7453ad78c8055d2bdd4973c7cee17f60060126d",
-            "name": "original",
-            "type": "tree",
-            "object": {},
-            "repository": {
-              "owner": {
-                "login": "mzp"
-              },
-              "name": "LoveLiver"
-            }
-          }
-        ]
-      }
-    }
-  }
-}
-"""
 }

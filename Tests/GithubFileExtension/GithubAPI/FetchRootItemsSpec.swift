@@ -13,7 +13,9 @@ import Result
 
 internal class FetchRootItemsSpec: QuickSpec {
     override func spec() {
-        let github = GithubClient(token: "-", httpRequest: MockHttpRequest(response: response))
+        let github = GithubClient(
+            token: "-",
+            httpRequest: MockHttpRequest(response: fixture(name: "defaultBranch", ofType: "json")))
         let entries = forcedFuture { _ in
             FetchRootItems(github: github).call(owner: "mzp", name: "LoveLiver")
         }.value
@@ -29,49 +31,4 @@ internal class FetchRootItemsSpec: QuickSpec {
             }
         }
     }
-
-    private let response: String = """
-{
-  "data": {
-    "repository": {
-      "defaultBranchRef": {
-        "target": {
-          "tree": {
-            "entries": [
-              {
-                "oid": "71c8b4b6dcef4813a6d012b753a00eb973b616c6",
-                "name": ".gitignore",
-                "type": "blob",
-                "object": {
-                  "byteSize": 300
-                },
-                "repository": {
-                  "owner": {
-                    "login": "mzp"
-                  },
-                  "name": "LoveLiver"
-                }
-              },
-              {
-                "oid": "80e89cfb4085595e5d90d762ac716a8cd775fb38",
-                "name": "LICENSE",
-                "type": "blob",
-                "object": {
-                  "byteSize": 1065
-                },
-                "repository": {
-                  "owner": {
-                    "login": "mzp"
-                  },
-                  "name": "LoveLiver"
-                }
-              }
-            ]
-          }
-        }
-      }
-    }
-  }
-}
-"""
 }

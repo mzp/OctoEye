@@ -13,7 +13,9 @@ import Result
 
 internal class FetchTextSpec: QuickSpec {
     override func spec() {
-        let github = GithubClient(token: "-", httpRequest: MockHttpRequest(response: response))
+        let github = GithubClient(
+            token: "-",
+            httpRequest: MockHttpRequest(response: fixture(name: "blobObject", ofType: "json")))
         let text = forcedFuture { _ in
             FetchText(github: github).call(owner: "mzp", name: "LoveLiver", oid: "-")
         }.value
@@ -24,16 +26,4 @@ internal class FetchTextSpec: QuickSpec {
             }
         }
     }
-
-    private let response: String = """
-{
-  "data": {
-    "repository": {
-      "object": {
-        "text": "# Xcode (from gitignore.io)"
-      }
-    }
-  }
-}
-"""
 }
