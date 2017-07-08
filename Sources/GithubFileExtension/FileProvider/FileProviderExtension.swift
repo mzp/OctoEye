@@ -11,7 +11,6 @@ import RealmSwift
 import Result
 
 internal class FileProviderExtension: NSFileProviderExtension {
-    // FIXME: make customizable
     private let github: GithubClient = GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0")
     private let repositories: [(String, String)] = [
         ("mzp", "LoveLiver"),
@@ -20,16 +19,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
 
     var fileManager: FileManager = FileManager()
 
-    override init() {
-        super.init()
-    }
-
-    private func findItem(for identifier: NSFileProviderItemIdentifier) -> GithubObjectItem? {
-        guard let realm = try? Realm() else {
-            return nil
-        }
-        return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
-    }
+    // MARK: - URL
 
     override func urlForItem(withPersistentIdentifier identifier: NSFileProviderItemIdentifier) -> URL? {
         guard let item = self.findItem(for: identifier) else {
@@ -122,15 +112,6 @@ internal class FileProviderExtension: NSFileProviderExtension {
         }
     }
 
-    // MARK: - Actions
-
-    /* TODO: implement the actions for items here
-     each of the actions follows the same pattern:
-     - make a note of the change in the local model
-     - schedule a server request as a background task to inform the server of the change
-     - call the completion block with the modified item in its post-modification state
-     */
-
     // MARK: - Enumeration
 
     // swiftlint:disable:next line_length
@@ -171,6 +152,15 @@ internal class FileProviderExtension: NSFileProviderExtension {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
         }
         return enumerator
+    }
+
+    // MARK: - Persistent
+
+    private func findItem(for identifier: NSFileProviderItemIdentifier) -> GithubObjectItem? {
+        guard let realm = try? Realm() else {
+            return nil
+        }
+        return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
     }
 
     private func create(entryObjects: [EntryObject], parent: NSFileProviderItemIdentifier) -> [NSFileProviderItem] {
