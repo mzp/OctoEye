@@ -6,7 +6,7 @@
 //  Copyright © 2017 mzp. All rights reserved.
 //
 
-import Foundation
+import BrightFutures
 import GraphQLicious
 import Result
 
@@ -30,11 +30,9 @@ internal class FetchRootItems {
         self.github = github
     }
 
-    func call(owner: String, name: String, onComplete : @escaping (Result<[EntryObject], AnyError>) -> Void) {
-        github.query(query(owner: owner, name : name)) { (result: Result<Response, AnyError>) in
-            onComplete(result.map {
-                $0.repository.defaultBranchRef.target.tree.entries
-            })
+    func call(owner: String, name: String) -> Future<[EntryObject], AnyError> {
+        return github.query(query(owner: owner, name : name)).map { (response: Response) in
+            response.repository.defaultBranchRef.target.tree.entries
         }
     }
 

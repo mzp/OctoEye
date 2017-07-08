@@ -8,10 +8,10 @@
 
 import FileProvider
 import RealmSwift
+import Result
 
 internal class FileProviderExtension: NSFileProviderExtension {
-    // FIXME: make customizable
-    private let github: GithubClient = GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0")
+    private let github: GithubClient
     private let repositories: [(String, String)] = [
         ("mzp", "LoveLiver"),
         ("banjun", "SwiftBeaker")
@@ -19,16 +19,16 @@ internal class FileProviderExtension: NSFileProviderExtension {
 
     var fileManager: FileManager = FileManager()
 
-    override init() {
+    convenience override init() {
+        self.init(github: GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0"))
+    }
+
+    init(github: GithubClient) {
+        self.github = github
         super.init()
     }
 
-    private func findItem(for identifier: NSFileProviderItemIdentifier) -> GithubObjectItem? {
-        guard let realm = try? Realm() else {
-            return nil
-        }
-        return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
-    }
+    // MARK: - URL
 
     override func urlForItem(withPersistentIdentifier identifier: NSFileProviderItemIdentifier) -> URL? {
         guard let item = self.findItem(for: identifier) else {
@@ -80,16 +80,12 @@ internal class FileProviderExtension: NSFileProviderExtension {
             return
         }
         FetchText(github: github)
-            .call(owner: item.owner, name: item.repositoryName, oid: item.oid) {
-                switch $0 {
-                case .success(let text):
-                    do {
-                        try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
-                        completionHandler?(nil)
-                    } catch let e {
-                        completionHandler?(e)
-                    }
-                case .failure(let e):
+            .call(owner: item.owner, name: item.repositoryName, oid: item.oid)
+            .onSuccess { text in
+                do {
+                    try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+                    completionHandler?(nil)
+                } catch let e {
                     completionHandler?(e)
                 }
             }
@@ -125,15 +121,6 @@ internal class FileProviderExtension: NSFileProviderExtension {
         }
     }
 
-    // MARK: - Actions
-
-    /* TODO: implement the actions for items here
-     each of the actions follows the same pattern:
-     - make a note of the change in the local model
-     - schedule a server request as a background task to inform the server of the change
-     - call the completion block with the modified item in its post-modification state
-     */
-
     // MARK: - Enumeration
 
     // swiftlint:disable:next line_length
@@ -151,31 +138,23 @@ internal class FileProviderExtension: NSFileProviderExtension {
             // TODO: instantiate an enumerator that recursively enumerates all directories
         } else {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
-                return FunctionEnumerator { enumarate in
+                let future =
                     FetchRootItems(github: self.github)
-                        .call(owner: owner, name: name) {
-                            switch $0 {
-                            case .success(let items):
-                                enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
-                            case .failure(let e):
-                                NSLog("error: \(e)")
-                            }
-                        }
-                }
+                    .call(owner: owner, name: name)
+                    .map {
+                        self.create(entryObjects: $0, parent: containerItemIdentifier)
+                    }
+                return FutureEnumerator(future: future)
             }
 
             if let (owner, name, oid) = FileItem.parse(itemIdentifier: containerItemIdentifier) {
-                return FunctionEnumerator { enumarate in
+                let future =
                     FetchChildItems(github: self.github)
-                        .call(owner: owner, name: name, oid: oid) {
-                                switch $0 {
-                                case .success(let items):
-                                    enumarate(self.create(entryObjects: items, parent: containerItemIdentifier))
-                                case .failure(let e):
-                                    NSLog("error: \(e)")
-                                }
+                        .call(owner: owner, name: name, oid: oid)
+                        .map {
+                            self.create(entryObjects: $0, parent: containerItemIdentifier)
                         }
-                }
+                return FutureEnumerator(future: future)
             }
         }
         guard let enumerator = maybeEnumerator else {
@@ -184,7 +163,16 @@ internal class FileProviderExtension: NSFileProviderExtension {
         return enumerator
     }
 
-    private func create(entryObjects: [EntryObject], parent: NSFileProviderItemIdentifier) -> [GithubObjectItem] {
+    // MARK: - Persistent
+
+    private func findItem(for identifier: NSFileProviderItemIdentifier) -> GithubObjectItem? {
+        guard let realm = try? Realm() else {
+            return nil
+        }
+        return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
+    }
+
+    private func create(entryObjects: [EntryObject], parent: NSFileProviderItemIdentifier) -> [NSFileProviderItem] {
         // Because realm cannot pass object between threads, I create items twice for display and for saving.
         let items = { () in
             return entryObjects.map {
