@@ -11,9 +11,11 @@
 		130324951F053A9F00C0053D /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130324941F053A9F00C0053D /* FileItem.swift */; };
 		1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310C9EA1F0513ED0020A177 /* AppDelegate.swift */; };
 		1310C9ED1F0513ED0020A177 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310C9EC1F0513ED0020A177 /* ViewController.swift */; };
-		1310C9F01F0513ED0020A177 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9EE1F0513ED0020A177 /* Main.storyboard */; };
 		1310C9F21F0513ED0020A177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F11F0513ED0020A177 /* Assets.xcassets */; };
 		1310C9F51F0513ED0020A177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */; };
+		1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F17F1F12586700116545 /* GithubAuthorization.swift */; };
+		1318F1841F125C9800116545 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Preferences.swift */; };
+		1318F1851F12603E00116545 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Preferences.swift */; };
 		1328C8951F08913D00064124 /* FetchChildItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C8941F08913D00064124 /* FetchChildItems.swift */; };
 		1328C8991F08921700064124 /* TreeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C8981F08921700064124 /* TreeObject.swift */; };
 		1328C89E1F08D08E00064124 /* GithubObjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C89D1F08D08E00064124 /* GithubObjectItem.swift */; };
@@ -97,10 +99,11 @@
 		1310C9E71F0513ED0020A177 /* OctoEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1310C9EA1F0513ED0020A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1310C9EC1F0513ED0020A177 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		1310C9EF1F0513ED0020A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1310C9F11F0513ED0020A177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1310C9F41F0513ED0020A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1310C9F61F0513ED0020A177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1318F17F1F12586700116545 /* GithubAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAuthorization.swift; sourceTree = "<group>"; };
+		1318F1831F125C9800116545 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		1328C8941F08913D00064124 /* FetchChildItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChildItems.swift; sourceTree = "<group>"; };
 		1328C8981F08921700064124 /* TreeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeObject.swift; sourceTree = "<group>"; };
 		1328C89D1F08D08E00064124 /* GithubObjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubObjectItem.swift; sourceTree = "<group>"; };
@@ -195,14 +198,30 @@
 		1310C9E91F0513ED0020A177 /* OctoEye */ = {
 			isa = PBXGroup;
 			children = (
+				1318F17E1F12584100116545 /* GithubAPI */,
 				1310C9EA1F0513ED0020A177 /* AppDelegate.swift */,
 				1310C9EC1F0513ED0020A177 /* ViewController.swift */,
-				1310C9EE1F0513ED0020A177 /* Main.storyboard */,
 				1310C9F11F0513ED0020A177 /* Assets.xcassets */,
 				1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */,
 				1310C9F61F0513ED0020A177 /* Info.plist */,
 			);
 			path = OctoEye;
+			sourceTree = "<group>";
+		};
+		1318F17E1F12584100116545 /* GithubAPI */ = {
+			isa = PBXGroup;
+			children = (
+				1318F17F1F12586700116545 /* GithubAuthorization.swift */,
+			);
+			name = GithubAPI;
+			sourceTree = "<group>";
+		};
+		1318F1821F125C7500116545 /* Preferences */ = {
+			isa = PBXGroup;
+			children = (
+				1318F1831F125C9800116545 /* Preferences.swift */,
+			);
+			path = Preferences;
 			sourceTree = "<group>";
 		};
 		134A63CE1F106B10005D2EBD /* Fixtures */ = {
@@ -250,6 +269,7 @@
 		13911BC41F0C5E07005EE2C0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1318F1821F125C7500116545 /* Preferences */,
 				1310C9E91F0513ED0020A177 /* OctoEye */,
 				13A907F41F051658002FCDB2 /* GithubFileExtension */,
 			);
@@ -467,7 +487,6 @@
 			files = (
 				1310C9F51F0513ED0020A177 /* LaunchScreen.storyboard in Resources */,
 				1310C9F21F0513ED0020A177 /* Assets.xcassets in Resources */,
-				1310C9F01F0513ED0020A177 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -632,7 +651,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */,
 				1310C9ED1F0513ED0020A177 /* ViewController.swift in Sources */,
+				1318F1841F125C9800116545 /* Preferences.swift in Sources */,
 				1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,6 +702,7 @@
 				1328C89E1F08D08E00064124 /* GithubObjectItem.swift in Sources */,
 				130324911F05316A00C0053D /* GithubClient.swift in Sources */,
 				13911BBF1F0920F1005EE2C0 /* FetchText.swift in Sources */,
+				1318F1851F12603E00116545 /* Preferences.swift in Sources */,
 				130324951F053A9F00C0053D /* FileItem.swift in Sources */,
 				134A63CC1F105A04005D2EBD /* FutureEnumerator.swift in Sources */,
 				1328C8991F08921700064124 /* TreeObject.swift in Sources */,
@@ -703,14 +725,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1310C9EE1F0513ED0020A177 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1310C9EF1F0513ED0020A177 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -771,6 +785,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -819,6 +834,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;

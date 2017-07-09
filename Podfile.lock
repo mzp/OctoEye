@@ -5,6 +5,7 @@ PODS:
   - JetToTheFuture (0.3.0):
     - BrightFutures (~> 5.0)
   - Nimble (7.0.1)
+  - OAuthSwift (1.1.2)
   - Quick (1.1.0)
   - Realm (2.8.3):
     - Realm/Headers (= 2.8.3)
@@ -21,6 +22,7 @@ DEPENDENCIES:
   - GraphQLicious (~> 0.8.2)
   - JetToTheFuture
   - Nimble
+  - OAuthSwift
   - Quick
   - RealmSwift
   - Result (~> 3.2.3)
@@ -33,6 +35,7 @@ SPEC CHECKSUMS:
   GraphQLicious: c8468f1dcbbdc74b33fd184db1642f5ed2b0a86a
   JetToTheFuture: 0ef3cacbbf8d57314728bda2fe68c636ab4635c7
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
+  OAuthSwift: 5aa5659984d3ca3206ba636a9e7a9c6626b2e8bd
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   Realm: 3601ef091c8c499a31101d8563b991e75546cdce
   RealmSwift: 8183818515471b01a99abdd2970f8e4fd52b6f4a
@@ -41,6 +44,6 @@ SPEC CHECKSUMS:
   UTIKit: 5b16488927ed6df479189acd9ff1ad6a7b19f8ff
   "※ikemen": c04aecee4293a2b6deb2119f7e67e7a82c6dea06
 
-PODFILE CHECKSUM: 0fbe7c0407994983d80fbcc98938b205aacf91b6
+PODFILE CHECKSUM: a1331b4a98410fec0811e0b11b0ce342619a1225
 
 COCOAPODS: 1.2.1
