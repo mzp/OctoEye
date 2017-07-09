@@ -3,12 +3,12 @@ platform :ios, '11.0'
 abstract_target 'App' do
   use_frameworks!
 
-  pod "※ikemen"
   pod 'BrightFutures'
   pod 'GraphQLicious', '~> 0.8.2'
+  pod 'RealmSwift'
   pod 'Result', '~> 3.2.3'
   pod 'UTIKit', '~> 2.0.1'
-  pod 'RealmSwift'
+  pod '※ikemen'
 
   target 'GithubFileExtension'
   target 'OctoEye'
