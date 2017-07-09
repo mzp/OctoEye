@@ -11,7 +11,7 @@ import RealmSwift
 import Result
 
 internal class FileProviderExtension: NSFileProviderExtension {
-    private let github: GithubClient
+    private let github: GithubClient?
     private let repositories: [(String, String)] = [
         ("mzp", "LoveLiver"),
         ("banjun", "SwiftBeaker")
@@ -20,10 +20,14 @@ internal class FileProviderExtension: NSFileProviderExtension {
     var fileManager: FileManager = FileManager()
 
     convenience override init() {
-        self.init(github: GithubClient(token: "f0b36f49b425c2dcac0bdc64305da04db6ff23c0"))
+        if let token = Preferences.accessToken {
+            self.init(github: GithubClient(token: token))
+        } else {
+            self.init(github: nil)
+        }
     }
 
-    init(github: GithubClient) {
+    init(github: GithubClient?) {
         self.github = github
         super.init()
     }
@@ -69,7 +73,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
     }
 
     override func startProvidingItem(at url: URL, completionHandler: ((_ error: Error?) -> Void)?) {
-        NSLog("startProvidingItem \(url)")
+        guard let github = self.github else { return }
         // FIXME: skip download when latest content exists on disk
         guard let identifier = persistentIdentifierForItem(at: url) else {
             completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
@@ -125,6 +129,9 @@ internal class FileProviderExtension: NSFileProviderExtension {
 
     // swiftlint:disable:next line_length
     override func enumerator(forContainerItemIdentifier containerItemIdentifier: NSFileProviderItemIdentifier) throws -> NSFileProviderEnumerator {
+        guard let github = self.github else {
+            throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
+        }
         let maybeEnumerator: NSFileProviderEnumerator? = nil
         if containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer {
             let items = repositories.map { (repository: (String, String)) -> RepositoryItem in
@@ -139,7 +146,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
         } else {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
                 let future =
-                    FetchRootItems(github: self.github)
+                    FetchRootItems(github: github)
                     .call(owner: owner, name: name)
                     .map {
                         self.create(entryObjects: $0, parent: containerItemIdentifier)
@@ -149,7 +156,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
 
             if let (owner, name, oid) = FileItem.parse(itemIdentifier: containerItemIdentifier) {
                 let future =
-                    FetchChildItems(github: self.github)
+                    FetchChildItems(github: github)
                         .call(owner: owner, name: name, oid: oid)
                         .map {
                             self.create(entryObjects: $0, parent: containerItemIdentifier)
