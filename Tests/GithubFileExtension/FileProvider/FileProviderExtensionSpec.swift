@@ -86,6 +86,7 @@ internal class FileProviderExtensionSpec: QuickSpec {
         }
 
         describe("Enumeration") {
+
             var response: String!
             var subject: FileProviderExtension {
                 let github = GithubClient(
@@ -93,12 +94,18 @@ internal class FileProviderExtensionSpec: QuickSpec {
                     httpRequest: MockHttpRequest(response: response))
                 return FileProviderExtension(github: github)
             }
+
+            // swiftlint:disable:next force_try
+            let realm = try! Realm()
+
+            var items: [NSFileProviderItemProtocol]!
+
             context("root") {
                 beforeEach {
                     response = fixture(name: "defaultBranch", ofType: "json")
+                    items = self.run(subject, .rootContainer)
                 }
                 it("enumarates all repositories") {
-                    let items = self.run(subject, .rootContainer)
                     expect(items).to(haveCount(2))
                     expect(items?[0].filename) == "mzp/LoveLiver"
                     expect(items?[1].filename) == "banjun/SwiftBeaker"
@@ -107,23 +114,31 @@ internal class FileProviderExtensionSpec: QuickSpec {
             context("repository root") {
                 beforeEach {
                     response = fixture(name: "defaultBranch", ofType: "json")
+                    items = self.run(subject, NSFileProviderItemIdentifier("repository.mzp.LoveLiver"))
                 }
                 it("enumarates top level items") {
-                    let items = self.run(subject, NSFileProviderItemIdentifier("repository.mzp.LoveLiver"))
                     expect(items).to(haveCount(2))
                     expect(items?[0].filename) == ".gitignore.show-extension"
                     expect(items?[1].filename) == "LICENSE.show-extension"
+                }
+                it("stores to realm db") {
+                    let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
+                    expect(stored).toNot(beNil())
                 }
             }
             context("tree object") {
                 beforeEach {
                     response = fixture(name: "treeObject", ofType: "json")
+                    items = self.run(subject, NSFileProviderItemIdentifier("gitobject.mzp.LoveLiver.oid"))
                 }
                 it("enumarates top level items") {
-                    let items = self.run(subject, NSFileProviderItemIdentifier("gitobject.mzp.LoveLiver.oid"))
                     expect(items).to(haveCount(2))
                     expect(items?[0].filename) == "livephoto"
                     expect(items?[1].filename) == "original"
+                }
+                it("stores to realm db") {
+                    let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
+                    expect(stored).toNot(beNil())
                 }
             }
         }
