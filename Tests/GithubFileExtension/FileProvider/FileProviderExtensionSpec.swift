@@ -18,6 +18,15 @@ import Result
 internal class FileProviderExtensionSpec: QuickSpec {
     // swiftlint:disable:next function_body_length
     override func spec() {
+        beforeEach {
+            // swiftlint:disable force_try
+            let realm = try! Realm()
+            try! realm.write {
+                realm.deleteAll()
+            }
+            // swiftlint:enable force_try
+        }
+
         describe("URL") {
             var subject: FileProviderExtension {
                 let response: String! = fixture(name: "blobObject", ofType: "json")
@@ -26,19 +35,20 @@ internal class FileProviderExtensionSpec: QuickSpec {
                     httpRequest: MockHttpRequest(response: response))
                 return FileProviderExtension(github: github)
             }
+            var url: URL!
+            beforeEach {
+                let item = GithubObjectItem()
 
-            let item = GithubObjectItem()
-
-            // swiftlint:disable:next force_try
-            let realm = try! Realm()
-            item.itemIdentifier = NSFileProviderItemIdentifier("foo")
-            item.filename = "bar"
-            // swiftlint:disable:next force_try
-            try! realm.write {
-                realm.add(item, update: true)
+                // swiftlint:disable:next force_try
+                let realm = try! Realm()
+                item.itemIdentifier = NSFileProviderItemIdentifier("foo")
+                item.filename = "bar"
+                // swiftlint:disable:next force_try
+                try! realm.write {
+                    realm.add(item, update: true)
+                }
+                url = subject.urlForItem(withPersistentIdentifier: item.itemIdentifier)
             }
-
-            let url = subject.urlForItem(withPersistentIdentifier: item.itemIdentifier)
 
             it("returns flat url") {
                 expect(url?.path).to(endWith("foo/bar"))
