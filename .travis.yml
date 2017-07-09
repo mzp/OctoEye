@@ -1,0 +1,4 @@
+osx_image: xcode9
+language: swift
+script:
+  - bundle exec fastlane test --verbose
