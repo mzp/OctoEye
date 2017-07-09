@@ -95,9 +95,7 @@ internal class FileProviderExtensionSpec: QuickSpec {
                 return FileProviderExtension(github: github)
             }
 
-            // swiftlint:disable:next force_try
-            let realm = try! Realm()
-
+            // swiftlint:disable:next force_unwrapping
             var items: [NSFileProviderItemProtocol]!
 
             context("root") {
@@ -122,6 +120,8 @@ internal class FileProviderExtensionSpec: QuickSpec {
                     expect(items?[1].filename) == "LICENSE.show-extension"
                 }
                 it("stores to realm db") {
+                    // swiftlint:disable:next force_try
+                    let realm = try! Realm()
                     let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
                     expect(stored).toNot(beNil())
                 }
@@ -137,6 +137,8 @@ internal class FileProviderExtensionSpec: QuickSpec {
                     expect(items?[1].filename) == "original"
                 }
                 it("stores to realm db") {
+                    // swiftlint:disable:next force_try
+                    let realm = try! Realm()
                     let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
                     expect(stored).toNot(beNil())
                 }
