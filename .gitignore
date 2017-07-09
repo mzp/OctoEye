@@ -3,6 +3,11 @@
 # Cocoapods
 /Pods
 
+# Fastlane
+/fastlane/README.md
+/fastlane/report.xml
+/fastlane/test_output
+
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
