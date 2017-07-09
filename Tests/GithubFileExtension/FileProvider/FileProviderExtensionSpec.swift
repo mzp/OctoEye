@@ -132,6 +132,7 @@ internal class FileProviderExtensionSpec: QuickSpec {
                 it("stores to realm db") {
                     // swiftlint:disable:next force_try
                     let realm = try! Realm()
+                    realm.refresh()
                     let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
                     expect(stored).toNot(beNil())
                 }
@@ -149,6 +150,7 @@ internal class FileProviderExtensionSpec: QuickSpec {
                 it("stores to realm db") {
                     // swiftlint:disable:next force_try
                     let realm = try! Realm()
+                    realm.refresh()
                     let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
                     expect(stored).toNot(beNil())
                 }
