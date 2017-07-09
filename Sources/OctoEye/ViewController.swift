@@ -9,10 +9,13 @@
 import UIKit
 
 internal class ViewController: UIViewController {
+    private let authorization: GithubAuthorization = GithubAuthorization()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        authorization.call().onSuccess { credential in
+            NSLog("\(credential.oauthToken)")
+        }
     }
 
     override func didReceiveMemoryWarning() {

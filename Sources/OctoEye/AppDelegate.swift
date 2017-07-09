@@ -6,6 +6,7 @@
 //  Copyright © 2017 mzp. All rights reserved.
 //
 
+import OAuthSwift
 import UIKit
 
 // swiftlint:disable line_length
@@ -17,6 +18,13 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = ViewController()
         window?.makeKeyAndVisible()
+        return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if url.host == "oauth-callback" {
+            GithubAuthorization.handleCallback(url: url)
+        }
         return true
     }
 
