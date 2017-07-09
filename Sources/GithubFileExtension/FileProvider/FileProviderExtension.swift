@@ -73,7 +73,9 @@ internal class FileProviderExtension: NSFileProviderExtension {
     }
 
     override func startProvidingItem(at url: URL, completionHandler: ((_ error: Error?) -> Void)?) {
-        guard let github = self.github else { return }
+        guard let github = self.github else {
+            return
+        }
         // FIXME: skip download when latest content exists on disk
         guard let identifier = persistentIdentifierForItem(at: url) else {
             completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
