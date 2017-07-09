@@ -189,7 +189,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
             }
         }
 
-        DispatchQueue(label: "background").async {
+        DispatchQueue(label: "background").sync {
             do {
                 let realm = try Realm()
                 realm.beginWrite()
