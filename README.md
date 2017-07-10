@@ -17,7 +17,7 @@ Usage:
 ## :wrench: Build
 ### Prerequires
 
- * Xcode 9.0 beta 2 (9M137d)
+ * Xcode 9.0 beta 3 (9M174d)
  * Cocoapods
 
 ### Build
