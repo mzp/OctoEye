@@ -17,10 +17,10 @@ internal class FutureEnumerator<E: Error>: NSObject, NSFileProviderEnumerator {
         self.future = future
     }
 
-    func enumerateItems(for observer: NSFileProviderEnumerationObserver, startingAtPage page: Data) {
+    func enumerateItems(for observer: NSFileProviderEnumerationObserver, startingAt page: NSFileProviderPage) {
         future.onSuccess {
             observer.didEnumerate($0)
-            observer.finishEnumerating(upToPage: nil)
+            observer.finishEnumerating(upTo: nil)
         }
     }
 

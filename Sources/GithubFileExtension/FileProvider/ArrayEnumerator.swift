@@ -16,9 +16,9 @@ internal class ArrayEnumerator: NSObject, NSFileProviderEnumerator {
         super.init()
     }
 
-    func enumerateItems(for observer: NSFileProviderEnumerationObserver, startingAtPage page: Data) {
+    func enumerateItems(for observer: NSFileProviderEnumerationObserver, startingAt page: NSFileProviderPage) {
         observer.didEnumerate(items)
-        observer.finishEnumerating(upToPage: nil)
+        observer.finishEnumerating(upTo: nil)
     }
 
     func invalidate() {
