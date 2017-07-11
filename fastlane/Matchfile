@@ -1,0 +1,7 @@
+git_url 'git@github.com:mzp/certificates.git'
+
+type 'development'
+team_id 'VG2YYSKSHY'
+
+app_identifier %w(jp.mzp.OctoEye)
+username 'mzpppp+apple@gmail.com'
