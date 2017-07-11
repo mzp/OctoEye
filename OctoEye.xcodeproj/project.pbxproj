@@ -182,6 +182,7 @@
 				13AD05AA1F107AC100CB2B12 /* OctoEye.entitlements */,
 				13911BC41F0C5E07005EE2C0 /* Sources */,
 				136552A91F0DA21300B4FDD4 /* Tests */,
+				13E7202E1F1503F400A70CE2 /* Resources */,
 				1310C9E81F0513ED0020A177 /* Products */,
 				E6CBC2221FCAB0DCB85FDC7B /* Pods */,
 				EE4370855ABC9B2177F60E03 /* Frameworks */,
@@ -204,7 +205,6 @@
 				1318F17E1F12584100116545 /* GithubAPI */,
 				1310C9EA1F0513ED0020A177 /* AppDelegate.swift */,
 				1310C9EC1F0513ED0020A177 /* ViewController.swift */,
-				1310C9F11F0513ED0020A177 /* Assets.xcassets */,
 				1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */,
 				1310C9F61F0513ED0020A177 /* Info.plist */,
 			);
@@ -352,6 +352,14 @@
 				13E732151F10568E00FE59C1 /* EnumeratorRunner.swift */,
 			);
 			path = FileProvider;
+			sourceTree = "<group>";
+		};
+		13E7202E1F1503F400A70CE2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1310C9F11F0513ED0020A177 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		E6CBC2221FCAB0DCB85FDC7B /* Pods */ = {
