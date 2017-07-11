@@ -130,7 +130,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
     // MARK: - Enumeration
 
     // swiftlint:disable:next line_length
-    override func enumerator(forContainerItemIdentifier containerItemIdentifier: NSFileProviderItemIdentifier) throws -> NSFileProviderEnumerator {
+    override func enumerator(for containerItemIdentifier: NSFileProviderItemIdentifier) throws -> NSFileProviderEnumerator {
         guard let github = self.github else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
         }
@@ -143,8 +143,6 @@ internal class FileProviderExtension: NSFileProviderExtension {
             return ArrayEnumerator(items: items)
         } else if containerItemIdentifier == NSFileProviderItemIdentifier.workingSet {
             // TODO: instantiate an enumerator for the working set
-        } else if containerItemIdentifier == NSFileProviderItemIdentifier.allDirectories {
-            // TODO: instantiate an enumerator that recursively enumerates all directories
         } else {
             if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
                 let future =

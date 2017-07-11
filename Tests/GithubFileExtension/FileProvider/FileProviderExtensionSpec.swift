@@ -163,7 +163,7 @@ internal class FileProviderExtensionSpec: QuickSpec {
         return forcedFuture { _ in
             EnumeratorRunner(
                 // swiftlint:disable:next force_try
-                enumerator: try! provider.enumerator(forContainerItemIdentifier: identifier)
+                enumerator: try! provider.enumerator(for: identifier)
             ).run(data: Data())
         }.value
     }

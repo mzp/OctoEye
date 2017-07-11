@@ -23,7 +23,7 @@ end
 
 pod 'SwiftLint'
 
-LegacySwiftPods = %w(OAuthSwift JetToTheFuture BrightFutures Quick Nimble)
+LegacySwiftPods = %w(OAuthSwift JetToTheFuture BrightFutures Quick Nimble RealmSwift)
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

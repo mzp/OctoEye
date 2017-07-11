@@ -20,7 +20,7 @@ internal class EnumeratorRunner {
             onEnumerate(updatedItems)
         }
 
-        func finishEnumerating(upToPage nextPage: Data?) {
+        func finishEnumerating(upTo nextPage: NSFileProviderPage?) {
         }
 
         func finishEnumeratingWithError(_ error: Error) {
@@ -38,7 +38,7 @@ internal class EnumeratorRunner {
             let observer = MockObserver {
                 complete(.success($0))
             }
-            enumerator.enumerateItems(for: observer, startingAtPage: data)
+            enumerator.enumerateItems(for: observer, startingAt: NSFileProviderPage(data))
         }
     }
 }
