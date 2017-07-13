@@ -19,6 +19,14 @@ platform :ios do
     pilot(username: 'mzpppp+apple@gmail.com')
   end
 
+  desc 'Prepare for next build'
+  lane :next do
+    ensure_git_status_clean
+    build_number = increment_build_number
+    commit_version_bump
+    add_git_tag(tag: "builds/#{build_number}")
+  end
+
   desc 'Runs all the tests'
   lane :test do
     swiftlint(executable: './Pods/SwiftLint/swiftlint')
