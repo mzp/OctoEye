@@ -1,0 +1,10 @@
+scheme 'OctoEye'
+workspace 'OctoEye.xcworkspace'
+
+export_options(
+  method: 'app-store',
+  provisioningProfiles: {
+    'jp.mzp.OctoEye': 'match AppStore jp.mzp.OctoEye',
+    'jp.mzp.OctoEye.GithubFileExtension': 'match AppStore jp.mzp.OctoEye.GithubFileExtension'
+  }
+)

@@ -1,8 +1,22 @@
 default_platform :ios
+xcversion(version: '9.0')
 
 platform :ios do
   before_all do
     cocoapods
+  end
+
+  desc 'Build App'
+  lane :beta do
+    ENV['FASTLANE_ITUNES_TRANSPORTER_USE_SHELL_SCRIPT']=1
+    lane_context[SharedValues::MATCH_PROVISIONING_PROFILE_MAPPING] = {
+      'jp.mzp.OctoEye': 'match AppStore jp.mzp.OctoEye',
+      'jp.mzp.OctoEye.GithubFileExtension': 'match AppStore jp.mzp.OctoEye.GithubFileExtension'
+    }
+
+    match(type: 'appstore')
+    gym
+    pilot(username: 'mzpppp+apple@gmail.com')
   end
 
   desc 'Runs all the tests'
