@@ -182,6 +182,7 @@
 				13AD05AA1F107AC100CB2B12 /* OctoEye.entitlements */,
 				13911BC41F0C5E07005EE2C0 /* Sources */,
 				136552A91F0DA21300B4FDD4 /* Tests */,
+				13E7202E1F1503F400A70CE2 /* Resources */,
 				1310C9E81F0513ED0020A177 /* Products */,
 				E6CBC2221FCAB0DCB85FDC7B /* Pods */,
 				EE4370855ABC9B2177F60E03 /* Frameworks */,
@@ -204,7 +205,6 @@
 				1318F17E1F12584100116545 /* GithubAPI */,
 				1310C9EA1F0513ED0020A177 /* AppDelegate.swift */,
 				1310C9EC1F0513ED0020A177 /* ViewController.swift */,
-				1310C9F11F0513ED0020A177 /* Assets.xcassets */,
 				1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */,
 				1310C9F61F0513ED0020A177 /* Info.plist */,
 			);
@@ -354,6 +354,14 @@
 			path = FileProvider;
 			sourceTree = "<group>";
 		};
+		13E7202E1F1503F400A70CE2 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1310C9F11F0513ED0020A177 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E6CBC2221FCAB0DCB85FDC7B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +465,7 @@
 				TargetAttributes = {
 					1310C9E61F0513ED0020A177 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -465,10 +474,13 @@
 					};
 					136552A71F0DA21300B4FDD4 = {
 						CreatedOnToolsVersion = 9.0;
+						DevelopmentTeam = VG2YYSKSHY;
+						ProvisioningStyle = Manual;
 						TestTargetID = 1310C9E61F0513ED0020A177;
 					};
 					13A907F21F051658002FCDB2 = {
 						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -862,13 +874,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OctoEye.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
 				INFOPLIST_FILE = Sources/OctoEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "9e52c765-880a-493d-8ed1-1310d904e47d";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development jp.mzp.OctoEye";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -879,13 +897,19 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = OctoEye.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
 				INFOPLIST_FILE = Sources/OctoEye/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c60c83b8-8046-4ac3-b9f8-a1e81a0bcc0a";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore jp.mzp.OctoEye";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
@@ -926,14 +950,20 @@
 			baseConfigurationReference = 0F13358B67C99155AFCB911B /* Pods-App-GithubFileExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Sources/GithubFileExtension/GithubFileExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
 				INFOPLIST_FILE = Sources/GithubFileExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye.GithubFileExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f9e51753-29f2-4983-87f3-70a8437308b3";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development jp.mzp.OctoEye.GithubFileExtension";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -942,14 +972,20 @@
 			baseConfigurationReference = 7BA104F4B7550FD25C86209D /* Pods-App-GithubFileExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = Sources/GithubFileExtension/GithubFileExtension.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = VG2YYSKSHY;
 				INFOPLIST_FILE = Sources/GithubFileExtension/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.OctoEye.GithubFileExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "33708eaa-5c2e-4994-bc23-840989bf21a3";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore jp.mzp.OctoEye.GithubFileExtension";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
