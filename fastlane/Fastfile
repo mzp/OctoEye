@@ -31,10 +31,9 @@ platform :ios do
   lane :test do
     swiftlint(executable: './Pods/SwiftLint/swiftlint')
 
-    # skip test until travis-ci supports Xcode9b3
-    #scan(
-    #  workspace: 'OctoEye.xcworkspace',
-    #  scheme: 'OctoEye'
-    #)
+    scan(
+      workspace: 'OctoEye.xcworkspace',
+      scheme: 'OctoEye'
+    )
   end
 end
