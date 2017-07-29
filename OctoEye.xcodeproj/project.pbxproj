@@ -203,8 +203,8 @@
 			isa = PBXGroup;
 			children = (
 				1318F17E1F12584100116545 /* GithubAPI */,
+				13BAD63B1F2C0D35003F847F /* Controller */,
 				1310C9EA1F0513ED0020A177 /* AppDelegate.swift */,
-				1310C9EC1F0513ED0020A177 /* ViewController.swift */,
 				1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */,
 				1310C9F61F0513ED0020A177 /* Info.plist */,
 			);
@@ -298,6 +298,14 @@
 				13A907FC1F051658002FCDB2 /* GithubFileExtension.entitlements */,
 			);
 			path = GithubFileExtension;
+			sourceTree = "<group>";
+		};
+		13BAD63B1F2C0D35003F847F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1310C9EC1F0513ED0020A177 /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		13D8AC791F05C6B5002B1577 /* GithubAPI */ = {
