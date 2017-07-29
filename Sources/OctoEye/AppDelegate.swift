@@ -16,7 +16,13 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = PreferencesViewController()
+
+        if Preferences.accessToken != nil {
+            window?.rootViewController = PreferencesViewController()
+        } else {
+            window?.rootViewController = LoginViewController()
+        }
+
         window?.makeKeyAndVisible()
         return true
     }

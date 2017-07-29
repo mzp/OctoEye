@@ -34,5 +34,6 @@ internal class PreferencesViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         Preferences.accessToken = nil
+        present(LoginViewController(), animated: true) {}
     }
 }
