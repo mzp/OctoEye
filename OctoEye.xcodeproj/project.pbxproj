@@ -39,6 +39,7 @@
 		13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F71F051658002FCDB2 /* RepositoryItem.swift */; };
 		13A907FA1F051658002FCDB2 /* ArrayEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */; };
 		13A907FF1F051658002FCDB2 /* GithubFileExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 13A907F31F051658002FCDB2 /* GithubFileExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		13BAD63D1F2C0DA4003F847F /* PreferencesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BAD63C1F2C0DA4003F847F /* PreferencesViewController.swift */; };
 		13DC2C4C1F0FAC9900AE09AA /* FetchRootItemsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC2C4B1F0FAC9900AE09AA /* FetchRootItemsSpec.swift */; };
 		13DC2C4D1F0FAFD400AE09AA /* FetchRootItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13911BBC1F07EBC6005EE2C0 /* FetchRootItems.swift */; };
 		13DC2C4E1F0FB00000AE09AA /* TreeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C8981F08921700064124 /* TreeObject.swift */; };
@@ -130,6 +131,7 @@
 		13A907FB1F051658002FCDB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13A907FC1F051658002FCDB2 /* GithubFileExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GithubFileExtension.entitlements; sourceTree = "<group>"; };
 		13AD05AA1F107AC100CB2B12 /* OctoEye.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OctoEye.entitlements; sourceTree = "<group>"; };
+		13BAD63C1F2C0DA4003F847F /* PreferencesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesViewController.swift; sourceTree = "<group>"; };
 		13DC2C4B1F0FAC9900AE09AA /* FetchRootItemsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRootItemsSpec.swift; sourceTree = "<group>"; };
 		13DC2C571F0FB36500AE09AA /* FetchChildItemsSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChildItemsSpec.swift; sourceTree = "<group>"; };
 		13DC2C591F0FB59B00AE09AA /* FetchTextSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTextSpec.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				1310C9EC1F0513ED0020A177 /* ViewController.swift */,
+				13BAD63C1F2C0DA4003F847F /* PreferencesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -683,6 +686,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13BAD63D1F2C0DA4003F847F /* PreferencesViewController.swift in Sources */,
 				1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */,
 				1310C9ED1F0513ED0020A177 /* ViewController.swift in Sources */,
 				1318F1841F125C9800116545 /* Preferences.swift in Sources */,
