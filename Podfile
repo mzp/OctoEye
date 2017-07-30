@@ -12,7 +12,10 @@ abstract_target 'App' do
   pod '※ikemen'
 
   target 'GithubFileExtension'
-  target 'OctoEye'
+  target 'OctoEye' do
+    pod 'ReactiveCocoa', '~> 6.0'
+    pod 'ReactiveSwift', '~> 2.0'
+  end
 
   target 'Tests' do
     pod 'JetToTheFuture'
@@ -23,7 +26,7 @@ end
 
 pod 'SwiftLint'
 
-LegacySwiftPods = %w(OAuthSwift JetToTheFuture BrightFutures Quick Nimble RealmSwift)
+LegacySwiftPods = %w(OAuthSwift JetToTheFuture BrightFutures Quick Nimble RealmSwift ReactiveCocoa)
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
