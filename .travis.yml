@@ -1,4 +1,10 @@
 osx_image: xcode9
 language: swift
+cache:
+  directories:
+    - $HOME/.cocoapods/
+before_install:
+  - bundle install
+  - bundle exec pod repo update
 script:
   - bundle exec fastlane test --verbose
