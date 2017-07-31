@@ -1,5 +1,5 @@
 //
-//  RepositoriesViewController.swift
+//  AddRepositoryViewController.swift
 //  OctoEye
 //
 //  Created by mzp on 2017/08/01.
@@ -9,29 +9,16 @@
 import Ikemen
 import UIKit
 
-internal class RepositoriesViewController: UITableViewController {
+internal class AddRepositoryViewController: UITableViewController {
     let repositories: [String] = ["mzp/OctoEye"]
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        self.title = "Repositories"
+        self.title = "Add repository"
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) is not implemented")
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.rightBarButtonItem =
-            UIBarButtonItem(barButtonSystemItem: .add,
-                            target: self,
-                            action: #selector(addRepository(sender:)))
-    }
-
-    @objc
-    private func addRepository(sender: Any) {
-        navigationController?.pushViewController(AddRepositoryViewController(), animated: true)
     }
 
     // MARK: - TableView
@@ -47,5 +34,9 @@ internal class RepositoriesViewController: UITableViewController {
         return UITableViewCell(style: .default, reuseIdentifier: nil) ※ {
             $0.textLabel?.text = repositories[indexPath.row]
         }
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        navigationController?.popViewController(animated: true)
     }
 }
