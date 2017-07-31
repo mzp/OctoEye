@@ -44,7 +44,7 @@ internal class LoginViewController: UIViewController {
                 case .success(let credential):
                     Preferences.accessToken = credential.oauthToken
                     DispatchQueue.main.async {
-                        self.present(PreferencesViewController(), animated: true) {}
+                        self.present(MainNavigationViewController(), animated: true) {}
                     }
                 case .failure(let error):
                     self.presentError(title: "Github authorization error", error: error)

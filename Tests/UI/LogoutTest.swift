@@ -19,6 +19,10 @@ internal class LogoutTest: XCTestCase {
 
     public func testLogoutForm() {
         let app = XCUIApplication()
+
+        // switch to preferences page
+        app.tabBars.buttons["Preferences"].tap()
+
         // show logout button, and not show login button
         XCTAssert(!app.buttons["login"].exists)
         let logoutCell = app.tables.cells.containing(.staticText, identifier: "Logout").element

@@ -12,6 +12,7 @@ import UIKit
 internal class PreferencesViewController: UITableViewController {
     init() {
         super.init(style: .grouped)
+        self.title = "Preferences"
     }
 
     required init?(coder aDecoder: NSCoder) {

@@ -19,6 +19,9 @@
 		1328C8991F08921700064124 /* TreeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C8981F08921700064124 /* TreeObject.swift */; };
 		1328C89E1F08D08E00064124 /* GithubObjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C89D1F08D08E00064124 /* GithubObjectItem.swift */; };
 		132915071F2F638B00116D94 /* LogoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132915061F2F638B00116D94 /* LogoutTest.swift */; };
+		132915091F2F6E5E00116D94 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132915081F2F6E5E00116D94 /* MainNavigationViewController.swift */; };
+		1329150B1F2F70F100116D94 /* MainNavigationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329150A1F2F70F100116D94 /* MainNavigationTest.swift */; };
+		1329150D1F2FDD9100116D94 /* RepositoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329150C1F2FDD9100116D94 /* RepositoriesViewController.swift */; };
 		133FEAD41F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FEAD31F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift */; };
 		133FEAD61F2F4AEA0098C812 /* UIViewController+ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FEAD51F2F4AEA0098C812 /* UIViewController+ErrorReport.swift */; };
 		134A63CA1F1059E4005D2EBD /* FutureEnumeratorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63C91F1059E4005D2EBD /* FutureEnumeratorSpec.swift */; };
@@ -121,6 +124,9 @@
 		1328C8981F08921700064124 /* TreeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeObject.swift; sourceTree = "<group>"; };
 		1328C89D1F08D08E00064124 /* GithubObjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubObjectItem.swift; sourceTree = "<group>"; };
 		132915061F2F638B00116D94 /* LogoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTest.swift; sourceTree = "<group>"; };
+		132915081F2F6E5E00116D94 /* MainNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationViewController.swift; sourceTree = "<group>"; };
+		1329150A1F2F70F100116D94 /* MainNavigationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationTest.swift; sourceTree = "<group>"; };
+		1329150C1F2FDD9100116D94 /* RepositoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesViewController.swift; sourceTree = "<group>"; };
 		133FEAD31F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignalProducer+BrightFuture.swift"; sourceTree = "<group>"; };
 		133FEAD51F2F4AEA0098C812 /* UIViewController+ErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorReport.swift"; sourceTree = "<group>"; };
 		134A63C91F1059E4005D2EBD /* FutureEnumeratorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureEnumeratorSpec.swift; sourceTree = "<group>"; };
@@ -340,8 +346,10 @@
 		13BAD63B1F2C0D35003F847F /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				13BAD63C1F2C0DA4003F847F /* PreferencesViewController.swift */,
 				13BAD63E1F2C11D0003F847F /* LoginViewController.swift */,
+				132915081F2F6E5E00116D94 /* MainNavigationViewController.swift */,
+				1329150C1F2FDD9100116D94 /* RepositoriesViewController.swift */,
+				13BAD63C1F2C0DA4003F847F /* PreferencesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 			children = (
 				13DCDFD11F2F60BF00259CB1 /* LoginTest.swift */,
 				132915061F2F638B00116D94 /* LogoutTest.swift */,
+				1329150A1F2F70F100116D94 /* MainNavigationTest.swift */,
 				13DCDFD31F2F60BF00259CB1 /* Info.plist */,
 			);
 			path = UI;
@@ -774,7 +783,9 @@
 				13BAD63D1F2C0DA4003F847F /* PreferencesViewController.swift in Sources */,
 				133FEAD41F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift in Sources */,
 				1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */,
+				1329150D1F2FDD9100116D94 /* RepositoriesViewController.swift in Sources */,
 				133FEAD61F2F4AEA0098C812 /* UIViewController+ErrorReport.swift in Sources */,
+				132915091F2F6E5E00116D94 /* MainNavigationViewController.swift in Sources */,
 				1318F1841F125C9800116545 /* Preferences.swift in Sources */,
 				1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */,
 			);
@@ -839,6 +850,7 @@
 			files = (
 				132915071F2F638B00116D94 /* LogoutTest.swift in Sources */,
 				13DCDFD21F2F60BF00259CB1 /* LoginTest.swift in Sources */,
+				1329150B1F2F70F100116D94 /* MainNavigationTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

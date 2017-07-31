@@ -25,7 +25,7 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
 
         if Preferences.accessToken != nil {
-            window?.rootViewController = PreferencesViewController()
+            window?.rootViewController = MainNavigationViewController()
         } else {
             window?.rootViewController = LoginViewController()
         }
