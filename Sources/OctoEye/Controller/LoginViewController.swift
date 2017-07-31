@@ -12,6 +12,7 @@ import UIKit
 
 internal class LoginViewController: UIViewController {
     private let loginButton: UIButton = UIButton(type: .system)
+    private let authorization: GithubAuthorization = GithubAuthorization()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,10 +36,9 @@ internal class LoginViewController: UIViewController {
             anchor.isActive = true
         }
 
-        let authorization = GithubAuthorization()
         loginButton.reactive
             .mapControlEvents(.touchDown) { _ in () }
-            .flatMap(.concat) { _ in SignalProducer(authorization.call()) }
+            .flatMap(.concat) { _ in SignalProducer(self.authorization.call()) }
             .observeResult { result in
                 switch result {
                 case .success(let credential):
