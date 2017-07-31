@@ -257,8 +257,7 @@
 			isa = PBXGroup;
 			children = (
 				134A63CE1F106B10005D2EBD /* Fixtures */,
-				13688B481F128125008678AE /* Preferences */,
-				138343791F0DA9E30030DA96 /* GithubFileExtension */,
+				13DCDFB91F2F600F00259CB1 /* Unit */,
 				136552AC1F0DA21300B4FDD4 /* Info.plist */,
 			);
 			path = Tests;
@@ -377,6 +376,15 @@
 				13E732151F10568E00FE59C1 /* EnumeratorRunner.swift */,
 			);
 			path = FileProvider;
+			sourceTree = "<group>";
+		};
+		13DCDFB91F2F600F00259CB1 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				13688B481F128125008678AE /* Preferences */,
+				138343791F0DA9E30030DA96 /* GithubFileExtension */,
+			);
+			path = Unit;
 			sourceTree = "<group>";
 		};
 		13E7202E1F1503F400A70CE2 /* Resources */ = {
