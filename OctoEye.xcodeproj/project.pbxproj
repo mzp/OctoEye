@@ -19,6 +19,7 @@
 		1328C8991F08921700064124 /* TreeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C8981F08921700064124 /* TreeObject.swift */; };
 		1328C89E1F08D08E00064124 /* GithubObjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C89D1F08D08E00064124 /* GithubObjectItem.swift */; };
 		132915071F2F638B00116D94 /* LogoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132915061F2F638B00116D94 /* LogoutTest.swift */; };
+		1329150B1F2F70F100116D94 /* MainNavigationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1329150A1F2F70F100116D94 /* MainNavigationTest.swift */; };
 		133FEAD41F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FEAD31F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift */; };
 		133FEAD61F2F4AEA0098C812 /* UIViewController+ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FEAD51F2F4AEA0098C812 /* UIViewController+ErrorReport.swift */; };
 		134A63CA1F1059E4005D2EBD /* FutureEnumeratorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63C91F1059E4005D2EBD /* FutureEnumeratorSpec.swift */; };
@@ -121,6 +122,7 @@
 		1328C8981F08921700064124 /* TreeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeObject.swift; sourceTree = "<group>"; };
 		1328C89D1F08D08E00064124 /* GithubObjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubObjectItem.swift; sourceTree = "<group>"; };
 		132915061F2F638B00116D94 /* LogoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTest.swift; sourceTree = "<group>"; };
+		1329150A1F2F70F100116D94 /* MainNavigationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationTest.swift; sourceTree = "<group>"; };
 		133FEAD31F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignalProducer+BrightFuture.swift"; sourceTree = "<group>"; };
 		133FEAD51F2F4AEA0098C812 /* UIViewController+ErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorReport.swift"; sourceTree = "<group>"; };
 		134A63C91F1059E4005D2EBD /* FutureEnumeratorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureEnumeratorSpec.swift; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 			children = (
 				13DCDFD11F2F60BF00259CB1 /* LoginTest.swift */,
 				132915061F2F638B00116D94 /* LogoutTest.swift */,
+				1329150A1F2F70F100116D94 /* MainNavigationTest.swift */,
 				13DCDFD31F2F60BF00259CB1 /* Info.plist */,
 			);
 			path = UI;
@@ -839,6 +842,7 @@
 			files = (
 				132915071F2F638B00116D94 /* LogoutTest.swift in Sources */,
 				13DCDFD21F2F60BF00259CB1 /* LoginTest.swift in Sources */,
+				1329150B1F2F70F100116D94 /* MainNavigationTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
