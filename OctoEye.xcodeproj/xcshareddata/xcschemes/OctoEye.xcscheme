@@ -27,6 +27,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       language = ""
+      systemAttachmentLifetime = "keepAlways"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
          <TestableReference
@@ -36,6 +37,16 @@
                BlueprintIdentifier = "136552A71F0DA21300B4FDD4"
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
+               ReferencedContainer = "container:OctoEye.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "13DCDFCE1F2F60BE00259CB1"
+               BuildableName = "UITest.xctest"
+               BlueprintName = "UITest"
                ReferencedContainer = "container:OctoEye.xcodeproj">
             </BuildableReference>
          </TestableReference>

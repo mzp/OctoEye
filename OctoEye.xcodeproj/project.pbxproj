@@ -18,6 +18,7 @@
 		1328C8951F08913D00064124 /* FetchChildItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C8941F08913D00064124 /* FetchChildItems.swift */; };
 		1328C8991F08921700064124 /* TreeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C8981F08921700064124 /* TreeObject.swift */; };
 		1328C89E1F08D08E00064124 /* GithubObjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C89D1F08D08E00064124 /* GithubObjectItem.swift */; };
+		132915071F2F638B00116D94 /* LogoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132915061F2F638B00116D94 /* LogoutTest.swift */; };
 		133FEAD41F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FEAD31F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift */; };
 		133FEAD61F2F4AEA0098C812 /* UIViewController+ErrorReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 133FEAD51F2F4AEA0098C812 /* UIViewController+ErrorReport.swift */; };
 		134A63CA1F1059E4005D2EBD /* FutureEnumeratorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63C91F1059E4005D2EBD /* FutureEnumeratorSpec.swift */; };
@@ -58,6 +59,7 @@
 		13DC2C5F1F0FBAF000AE09AA /* GithubObjectItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC2C5E1F0FBAF000AE09AA /* GithubObjectItemSpec.swift */; };
 		13DC2C611F0FBBBC00AE09AA /* FileItemSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC2C601F0FBBBC00AE09AA /* FileItemSpec.swift */; };
 		13DC2C641F1052C200AE09AA /* ArrayEnumeratorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DC2C631F1052C200AE09AA /* ArrayEnumeratorSpec.swift */; };
+		13DCDFD21F2F60BF00259CB1 /* LoginTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DCDFD11F2F60BF00259CB1 /* LoginTest.swift */; };
 		13E732161F10568E00FE59C1 /* EnumeratorRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13E732151F10568E00FE59C1 /* EnumeratorRunner.swift */; };
 		41B8D970B967E1E3B9C6C8BD /* Pods_App_OctoEye.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC5645D7BC964DC945DD407 /* Pods_App_OctoEye.framework */; };
 		6B5F10A9530304DF16925794 /* Pods_App_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00099CE3A4A3871376697194 /* Pods_App_Tests.framework */; };
@@ -78,6 +80,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 13A907F21F051658002FCDB2;
 			remoteInfo = GithubFileExtension;
+		};
+		13DCDFD41F2F60BF00259CB1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1310C9DF1F0513ED0020A177 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1310C9E61F0513ED0020A177;
+			remoteInfo = OctoEye;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -102,7 +111,7 @@
 		130324901F0530A900C0053D /* GithubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClient.swift; sourceTree = "<group>"; };
 		130324941F053A9F00C0053D /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		1310C9E71F0513ED0020A177 /* OctoEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1310C9EA1F0513ED0020A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1310C9EA1F0513ED0020A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		1310C9F11F0513ED0020A177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1310C9F41F0513ED0020A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1310C9F61F0513ED0020A177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +120,7 @@
 		1328C8941F08913D00064124 /* FetchChildItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChildItems.swift; sourceTree = "<group>"; };
 		1328C8981F08921700064124 /* TreeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeObject.swift; sourceTree = "<group>"; };
 		1328C89D1F08D08E00064124 /* GithubObjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubObjectItem.swift; sourceTree = "<group>"; };
+		132915061F2F638B00116D94 /* LogoutTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutTest.swift; sourceTree = "<group>"; };
 		133FEAD31F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignalProducer+BrightFuture.swift"; sourceTree = "<group>"; };
 		133FEAD51F2F4AEA0098C812 /* UIViewController+ErrorReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ErrorReport.swift"; sourceTree = "<group>"; };
 		134A63C91F1059E4005D2EBD /* FutureEnumeratorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureEnumeratorSpec.swift; sourceTree = "<group>"; };
@@ -143,6 +153,9 @@
 		13DC2C5E1F0FBAF000AE09AA /* GithubObjectItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubObjectItemSpec.swift; sourceTree = "<group>"; };
 		13DC2C601F0FBBBC00AE09AA /* FileItemSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItemSpec.swift; sourceTree = "<group>"; };
 		13DC2C631F1052C200AE09AA /* ArrayEnumeratorSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrayEnumeratorSpec.swift; sourceTree = "<group>"; };
+		13DCDFCF1F2F60BE00259CB1 /* UITest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		13DCDFD11F2F60BF00259CB1 /* LoginTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTest.swift; sourceTree = "<group>"; };
+		13DCDFD31F2F60BF00259CB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		13E732151F10568E00FE59C1 /* EnumeratorRunner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumeratorRunner.swift; sourceTree = "<group>"; };
 		18A5A54E33892609B411DC7E /* Pods_App_GithubFileExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_App_GithubFileExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF5D1FC17C72172751B35CE /* Pods-App-Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-Tests/Pods-App-Tests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -179,6 +192,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		13DCDFCC1F2F60BE00259CB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -201,6 +221,7 @@
 				1310C9E71F0513ED0020A177 /* OctoEye.app */,
 				13A907F31F051658002FCDB2 /* GithubFileExtension.appex */,
 				136552A81F0DA21300B4FDD4 /* Tests.xctest */,
+				13DCDFCF1F2F60BE00259CB1 /* UITest.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -258,6 +279,7 @@
 			children = (
 				134A63CE1F106B10005D2EBD /* Fixtures */,
 				13DCDFB91F2F600F00259CB1 /* Unit */,
+				13DCDFCA1F2F609800259CB1 /* UI */,
 				136552AC1F0DA21300B4FDD4 /* Info.plist */,
 			);
 			path = Tests;
@@ -387,6 +409,16 @@
 			path = Unit;
 			sourceTree = "<group>";
 		};
+		13DCDFCA1F2F609800259CB1 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				13DCDFD11F2F60BF00259CB1 /* LoginTest.swift */,
+				132915061F2F638B00116D94 /* LogoutTest.swift */,
+				13DCDFD31F2F60BF00259CB1 /* Info.plist */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		13E7202E1F1503F400A70CE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +518,24 @@
 			productReference = 13A907F31F051658002FCDB2 /* GithubFileExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		13DCDFCE1F2F60BE00259CB1 /* UITest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 13DCDFD61F2F60BF00259CB1 /* Build configuration list for PBXNativeTarget "UITest" */;
+			buildPhases = (
+				13DCDFCB1F2F60BE00259CB1 /* Sources */,
+				13DCDFCC1F2F60BE00259CB1 /* Frameworks */,
+				13DCDFCD1F2F60BE00259CB1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				13DCDFD51F2F60BF00259CB1 /* PBXTargetDependency */,
+			);
+			name = UITest;
+			productName = UI;
+			productReference = 13DCDFCF1F2F60BE00259CB1 /* UITest.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -515,6 +565,10 @@
 						CreatedOnToolsVersion = 9.0;
 						ProvisioningStyle = Manual;
 					};
+					13DCDFCE1F2F60BE00259CB1 = {
+						CreatedOnToolsVersion = 9.0;
+						TestTargetID = 1310C9E61F0513ED0020A177;
+					};
 				};
 			};
 			buildConfigurationList = 1310C9E21F0513ED0020A177 /* Build configuration list for PBXProject "OctoEye" */;
@@ -533,6 +587,7 @@
 				1310C9E61F0513ED0020A177 /* OctoEye */,
 				13A907F21F051658002FCDB2 /* GithubFileExtension */,
 				136552A71F0DA21300B4FDD4 /* Tests */,
+				13DCDFCE1F2F60BE00259CB1 /* UITest */,
 			);
 		};
 /* End PBXProject section */
@@ -558,6 +613,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		13A907F11F051658002FCDB2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		13DCDFCD1F2F60BE00259CB1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -771,6 +833,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		13DCDFCB1F2F60BE00259CB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				132915071F2F638B00116D94 /* LogoutTest.swift in Sources */,
+				13DCDFD21F2F60BF00259CB1 /* LoginTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -783,6 +854,11 @@
 			isa = PBXTargetDependency;
 			target = 13A907F21F051658002FCDB2 /* GithubFileExtension */;
 			targetProxy = 13A907FD1F051658002FCDB2 /* PBXContainerItemProxy */;
+		};
+		13DCDFD51F2F60BF00259CB1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1310C9E61F0513ED0020A177 /* OctoEye */;
+			targetProxy = 13DCDFD41F2F60BF00259CB1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1025,6 +1101,40 @@
 			};
 			name = Release;
 		};
+		13DCDFD71F2F60BF00259CB1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				DEVELOPMENT_TEAM = VG2YYSKSHY;
+				INFOPLIST_FILE = Tests/UI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.UI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c60c83b8-8046-4ac3-b9f8-a1e81a0bcc0a";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OctoEye;
+			};
+			name = Debug;
+		};
+		13DCDFD81F2F60BF00259CB1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				DEVELOPMENT_TEAM = VG2YYSKSHY;
+				INFOPLIST_FILE = Tests/UI/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.mzp.UI;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "c60c83b8-8046-4ac3-b9f8-a1e81a0bcc0a";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OctoEye;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1060,6 +1170,15 @@
 			buildConfigurations = (
 				13A908001F051658002FCDB2 /* Debug */,
 				13A908011F051658002FCDB2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		13DCDFD61F2F60BF00259CB1 /* Build configuration list for PBXNativeTarget "UITest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				13DCDFD71F2F60BF00259CB1 /* Debug */,
+				13DCDFD81F2F60BF00259CB1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -19,6 +19,7 @@ internal class LoginViewController: UIViewController {
 
         self.view.addSubview(loginButton)
 
+        loginButton.accessibilityIdentifier = "login"
         loginButton.setTitle("🔐", for: .normal)
         loginButton.layer.cornerRadius = 2.0
         loginButton.layer.borderColor = UIColor.gray.cgColor
