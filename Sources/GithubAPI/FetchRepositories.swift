@@ -62,11 +62,9 @@ internal class FetchRepositories {
                             ],
                             fields: [
                                 Request(name: "nodes", fields: [
-                                    Request(name: "repository", fields: [
-                                        "id",
-                                        Request(name: "owner", fields: ["login"]),
-                                        "name"
-                                    ])
+                                    "id",
+                                    Request(name: "owner", fields: ["login"]),
+                                    "name"
                                 ])
                             ])
                 ])
