@@ -7,10 +7,16 @@
 //
 
 import Ikemen
+import ReactiveSwift
+import Result
 import UIKit
 
 internal class AddRepositoryViewController: UITableViewController {
-    let repositories: [String] = ["mzp/OctoEye"]
+    private let fetchRepositories: FetchRepositories? =
+        Authentication.accessToken.map {
+            FetchRepositories(github: GithubClient(token: $0))
+        }
+    private var repositories: [RepositoryObject] = []
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -19,6 +25,26 @@ internal class AddRepositoryViewController: UITableViewController {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) is not implemented")
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        guard let fetchRepositories = self.fetchRepositories else {
+            self.presentError(
+                title: "must not happen",
+                error:  NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
+            return
+        }
+        _ = SignalProducer(fetchRepositories.call())
+            .on(failed: {
+                self.presentError(title: "cannot fetch repositories", error: $0)
+            })
+            .on(value: { repositories in
+                self.repositories = repositories
+                self.tableView.reloadData()
+            })
+            .start()
     }
 
     // MARK: - TableView
@@ -32,7 +58,8 @@ internal class AddRepositoryViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell(style: .default, reuseIdentifier: nil) ※ {
-            $0.textLabel?.text = repositories[indexPath.row]
+            let repository = repositories[indexPath.row]
+            $0.textLabel?.text = "\(repository.owner.login)/\(repository.name)"
         }
     }
 
