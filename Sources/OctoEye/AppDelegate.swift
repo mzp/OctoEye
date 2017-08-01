@@ -15,12 +15,7 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        if ProcessInfo.processInfo.arguments.contains("setAccessToken") {
-            Authentication.accessToken = "mock-access-token"
-        }
-        if ProcessInfo.processInfo.arguments.contains("clearAccessToken") {
-            Authentication.accessToken = nil
-        }
+        Mock.setup()
 
         window = UIWindow(frame: UIScreen.main.bounds)
 
