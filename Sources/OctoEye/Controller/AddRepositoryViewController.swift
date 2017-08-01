@@ -13,8 +13,8 @@ import UIKit
 
 internal class AddRepositoryViewController: UITableViewController {
     private let fetchRepositories: FetchRepositories? =
-        Authentication.accessToken.map {
-            FetchRepositories(github: GithubClient(token: $0))
+        GithubClient.shared.map {
+            FetchRepositories(github: $0)
         }
     private var repositories: [RepositoryObject] = []
 

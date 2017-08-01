@@ -20,11 +20,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
     var fileManager: FileManager = FileManager()
 
     convenience override init() {
-        if let token = Authentication.accessToken {
-            self.init(github: GithubClient(token: token))
-        } else {
-            self.init(github: nil)
-        }
+        self.init(github: GithubClient.shared)
     }
 
     init(github: GithubClient?) {

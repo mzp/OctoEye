@@ -23,6 +23,12 @@ internal class GithubClient {
         let data: T
     }
 
+    static var shared: GithubClient? {
+        return Authentication.accessToken.map {
+            GithubClient(token: $0)
+        }
+    }
+
     // swiftlint:disable:next force_unwrapping
     private let url: URL = URL(string: "https://api.github.com/graphql")!
     private let token: String
