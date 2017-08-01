@@ -1,5 +1,5 @@
 //
-//  PreferencesSpec.swift
+//  AuthenticationSpec.swift
 //  Tests
 //
 //  Created by mzp on 2017/07/10.
@@ -9,12 +9,12 @@
 import Nimble
 import Quick
 
-internal class PreferencesSpec: QuickSpec {
+internal class AuthenticationSpec: QuickSpec {
     override func spec() {
         describe("accessToken") {
             it("save value") {
-                Preferences.accessToken = "some-token"
-                expect(Preferences.accessToken) == "some-token"
+                Authentication.accessToken = "some-token"
+                expect(Authentication.accessToken) == "some-token"
             }
         }
     }

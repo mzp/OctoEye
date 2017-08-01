@@ -1,5 +1,5 @@
 //
-//  Preferences.swift
+//  Authentication.swift
 //  OctoEye
 //
 //  Created by mzp on 2017/07/09.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-internal class Preferences {
+internal class Authentication {
     static let kSuiteName: String = "group.jp.mzp.OctoEye"
 
     class var accessToken: String? {

@@ -35,4 +35,24 @@ internal class MainNavigationTest: XCTestCase {
         app.tabBars.buttons["Repositories"].tap()
         XCTAssert(app.navigationBars["Repositories"].exists)
     }
+
+    func testAddRepository() {
+        let app = XCUIApplication()
+
+        // tap add button
+        let addButton = app.navigationBars.buttons["Add"]
+        XCTAssert(addButton.exists)
+        addButton.tap()
+
+        // add repository page will appear
+        XCTAssert(app.navigationBars["Add repository"].exists)
+
+        // tap some repository
+        let repositocyCell = app.tables.cells.containing(.staticText, identifier: "mzp/OctoEye").element
+        XCTAssert(repositocyCell.exists)
+        repositocyCell.tap()
+
+        // repositories page will appear
+        XCTAssert(app.navigationBars["Repositories"].exists)
+    }
 }
