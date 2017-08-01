@@ -1,0 +1,38 @@
+{
+  "data": {
+    "viewer": {
+      "repositories": {
+        "nodes": [
+          {
+            "id": "foo",
+            "name": "OctoEye",
+            "owner": {
+              "login": "mzp"
+            }
+          },
+          {
+            "id": "bar",
+            "name": "home",
+            "owner": {
+              "login": "mzp"
+            }
+          },
+          {
+            "id": "baz",
+            "name": "NorthLayout",
+            "owner": {
+              "login": "banjun"
+            }
+          },
+          {
+            "id": "xyzzy",
+            "name": "fumifumi",
+            "owner": {
+              "login": "mzp"
+            }
+          }
+        ]
+      }
+    }
+  }
+}
