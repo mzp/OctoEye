@@ -24,8 +24,12 @@ internal class GithubClient {
     }
 
     static var shared: GithubClient? {
-        return Authentication.accessToken.map {
-            GithubClient(token: $0)
+        if Mock.enabled {
+            return GithubClient(token: "", httpRequest: MockHttpRequest(response: Mock.httpResponse()))
+        } else {
+            return Authentication.accessToken.map {
+                GithubClient(token: $0)
+            }
         }
     }
 

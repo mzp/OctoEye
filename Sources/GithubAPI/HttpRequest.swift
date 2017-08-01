@@ -47,3 +47,21 @@ internal class HttpRequest: HttpRequestProtocol {
         }
     }
 }
+
+internal class MockHttpRequest: HttpRequestProtocol {
+    private let future: Future<Data, AnyError>
+
+    init(future: Future<Data, AnyError>) {
+        self.future = future
+    }
+
+    convenience init(response: String) {
+        // swiftlint:disable:next force_unwrapping
+        let value = response.data(using: .utf8)!
+        self.init(future: Future<Data, AnyError>(value: value))
+    }
+
+    func post(url: URL, query: String, accessToken: String) -> Future<Data, AnyError> {
+        return future
+    }
+}
