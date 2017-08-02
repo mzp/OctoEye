@@ -20,14 +20,9 @@ internal class AddRepositoryViewController: UITableViewController {
     private let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     private var repositories: [RepositoryObject] = []
     private var cursor: FetchRepositories.Cursor?
-    let signal: PagingSignal
-    let observer: PagingSignal.Observer
+    private var pagingObserver: PagingSignal.Observer?
 
     init() {
-        let (signal, observer) = PagingSignal.pipe()
-        self.signal = signal
-        self.observer = observer
-
         super.init(nibName: nil, bundle: nil)
         self.title = "Add repository"
     }
@@ -53,6 +48,8 @@ internal class AddRepositoryViewController: UITableViewController {
             return
         }
 
+        let (signal, observer) = PagingSignal.pipe()
+        self.pagingObserver = observer
         signal
             .skipRepeats { $0 == $1 }
             .flatMap(FlattenStrategy.concat) { cursor in
@@ -68,13 +65,13 @@ internal class AddRepositoryViewController: UITableViewController {
                     self.presentError(title: "cannot fetch repositories", error: error)
                 }
             }
-        observer.send(value: cursor)
+        pagingObserver?.send(value: cursor)
     }
 
     // MARK: - ScrollVeiw
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.bounds.size.height) {
-            observer.send(value: cursor)
+            pagingObserver?.send(value: cursor)
         }
     }
 
