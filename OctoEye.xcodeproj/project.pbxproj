@@ -48,6 +48,15 @@
 		134A63D61F106F6C005D2EBD /* treeObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 134A63D51F106F34005D2EBD /* treeObject.json */; };
 		134A63D81F106F88005D2EBD /* blobObject.json in Resources */ = {isa = PBXBuildFile; fileRef = 134A63D71F106F88005D2EBD /* blobObject.json */; };
 		134A63DA1F1070BA005D2EBD /* FileProviderExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63D91F1070BA005D2EBD /* FileProviderExtensionSpec.swift */; };
+		134B28CB1F30AB82009A93F0 /* FetchRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28CA1F30AB82009A93F0 /* FetchRepositories.swift */; };
+		134B28CC1F30AB82009A93F0 /* FetchRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28CA1F30AB82009A93F0 /* FetchRepositories.swift */; };
+		134B28CE1F30AC92009A93F0 /* viewerRepositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 134B28CD1F30AC92009A93F0 /* viewerRepositories.json */; };
+		134B28D01F30ACE3009A93F0 /* FetchRepositoriesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28CF1F30ACE3009A93F0 /* FetchRepositoriesSpec.swift */; };
+		134B28D31F31428E009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
+		134B28D41F314384009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
+		134B28D51F3143F8009A93F0 /* fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63D31F106D7B005D2EBD /* fixture.swift */; };
+		134B28D61F314404009A93F0 /* viewerRepositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 134B28CD1F30AC92009A93F0 /* viewerRepositories.json */; };
+		134B28D71F3145AD009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
 		135B23571F0EF9960025BB95 /* GithubClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B23561F0EF9960025BB95 /* GithubClientSpec.swift */; };
 		13688B4A1F12814C008678AE /* AuthenticationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13688B491F12814C008678AE /* AuthenticationSpec.swift */; };
 		13688B4B1F1281BD008678AE /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
@@ -144,6 +153,10 @@
 		134A63D51F106F34005D2EBD /* treeObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = treeObject.json; sourceTree = "<group>"; };
 		134A63D71F106F88005D2EBD /* blobObject.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blobObject.json; sourceTree = "<group>"; };
 		134A63D91F1070BA005D2EBD /* FileProviderExtensionSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileProviderExtensionSpec.swift; sourceTree = "<group>"; };
+		134B28CA1F30AB82009A93F0 /* FetchRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRepositories.swift; sourceTree = "<group>"; };
+		134B28CD1F30AC92009A93F0 /* viewerRepositories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = viewerRepositories.json; sourceTree = "<group>"; };
+		134B28CF1F30ACE3009A93F0 /* FetchRepositoriesSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRepositoriesSpec.swift; sourceTree = "<group>"; };
+		134B28D21F31428E009A93F0 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		135B23561F0EF9960025BB95 /* GithubClientSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientSpec.swift; sourceTree = "<group>"; };
 		136552A81F0DA21300B4FDD4 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		136552AC1F0DA21300B4FDD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -251,25 +264,11 @@
 			path = OctoEye;
 			sourceTree = "<group>";
 		};
-		1318F17E1F12584100116545 /* GithubAPI */ = {
-			isa = PBXGroup;
-			children = (
-				130324901F0530A900C0053D /* GithubClient.swift */,
-				1383437D1F0E7D990030DA96 /* HttpRequest.swift */,
-				13911BBC1F07EBC6005EE2C0 /* FetchRootItems.swift */,
-				1328C8941F08913D00064124 /* FetchChildItems.swift */,
-				13911BBE1F0920F1005EE2C0 /* FetchText.swift */,
-				1328C8981F08921700064124 /* TreeObject.swift */,
-				1318F17F1F12586700116545 /* GithubAuthorization.swift */,
-			);
-			name = GithubAPI;
-			path = OctoEye;
-			sourceTree = "<group>";
-		};
 		1318F1821F125C7500116545 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
 				1318F1831F125C9800116545 /* Authentication.swift */,
+				134B28D21F31428E009A93F0 /* Mock.swift */,
 			);
 			path = Preferences;
 			sourceTree = "<group>";
@@ -289,9 +288,25 @@
 				134A63D11F106B63005D2EBD /* defaultBranch.json */,
 				134A63D51F106F34005D2EBD /* treeObject.json */,
 				134A63D71F106F88005D2EBD /* blobObject.json */,
+				134B28CD1F30AC92009A93F0 /* viewerRepositories.json */,
 				134A63D31F106D7B005D2EBD /* fixture.swift */,
 			);
 			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		134B28D11F30B915009A93F0 /* GithubAPI */ = {
+			isa = PBXGroup;
+			children = (
+				130324901F0530A900C0053D /* GithubClient.swift */,
+				1383437D1F0E7D990030DA96 /* HttpRequest.swift */,
+				13911BBC1F07EBC6005EE2C0 /* FetchRootItems.swift */,
+				1328C8941F08913D00064124 /* FetchChildItems.swift */,
+				134B28CA1F30AB82009A93F0 /* FetchRepositories.swift */,
+				13911BBE1F0920F1005EE2C0 /* FetchText.swift */,
+				1328C8981F08921700064124 /* TreeObject.swift */,
+				1318F17F1F12586700116545 /* GithubAuthorization.swift */,
+			);
+			path = GithubAPI;
 			sourceTree = "<group>";
 		};
 		136552A91F0DA21300B4FDD4 /* Tests */ = {
@@ -320,6 +335,7 @@
 				13DC2C4B1F0FAC9900AE09AA /* FetchRootItemsSpec.swift */,
 				13DC2C571F0FB36500AE09AA /* FetchChildItemsSpec.swift */,
 				13DC2C591F0FB59B00AE09AA /* FetchTextSpec.swift */,
+				134B28CF1F30ACE3009A93F0 /* FetchRepositoriesSpec.swift */,
 			);
 			path = GithubAPI;
 			sourceTree = "<group>";
@@ -336,7 +352,7 @@
 		13911BC41F0C5E07005EE2C0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				1318F17E1F12584100116545 /* GithubAPI */,
+				134B28D11F30B915009A93F0 /* GithubAPI */,
 				133FEAD21F2EAD7A0098C812 /* Extensions */,
 				1318F1821F125C7500116545 /* Preferences */,
 				1310C9E91F0513ED0020A177 /* OctoEye */,
@@ -620,6 +636,7 @@
 				134A63D81F106F88005D2EBD /* blobObject.json in Resources */,
 				134A63D61F106F6C005D2EBD /* treeObject.json in Resources */,
 				134A63D21F106B7B005D2EBD /* defaultBranch.json in Resources */,
+				134B28CE1F30AC92009A93F0 /* viewerRepositories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,6 +651,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134B28D61F314404009A93F0 /* viewerRepositories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,10 +811,12 @@
 				133FEAD91F3082FF0098C812 /* FetchChildItems.swift in Sources */,
 				132915091F2F6E5E00116D94 /* MainNavigationViewController.swift in Sources */,
 				1318F1841F125C9800116545 /* Authentication.swift in Sources */,
+				134B28CB1F30AB82009A93F0 /* FetchRepositories.swift in Sources */,
 				133FEADB1F3082FF0098C812 /* HttpRequest.swift in Sources */,
 				133FEADA1F3082FF0098C812 /* GithubClient.swift in Sources */,
 				132915151F2FEBFE00116D94 /* AddRepositoryViewController.swift in Sources */,
 				1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */,
+				134B28D31F31428E009A93F0 /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,6 +838,7 @@
 				134A63CA1F1059E4005D2EBD /* FutureEnumeratorSpec.swift in Sources */,
 				133FEAE61F3084010098C812 /* FetchRootItems.swift in Sources */,
 				13DC2C511F0FB34400AE09AA /* FileProviderExtension.swift in Sources */,
+				134B28D71F3145AD009A93F0 /* Mock.swift in Sources */,
 				133FEAE81F3084010098C812 /* FetchText.swift in Sources */,
 				13DC2C551F0FB34900AE09AA /* GithubObjectItem.swift in Sources */,
 				133FEAE91F3084010098C812 /* TreeObject.swift in Sources */,
@@ -827,8 +848,10 @@
 				13688B4B1F1281BD008678AE /* Authentication.swift in Sources */,
 				13DC2C5F1F0FBAF000AE09AA /* GithubObjectItemSpec.swift in Sources */,
 				133FEAE41F3084010098C812 /* GithubClient.swift in Sources */,
+				134B28D01F30ACE3009A93F0 /* FetchRepositoriesSpec.swift in Sources */,
 				133FEAE51F3084010098C812 /* HttpRequest.swift in Sources */,
 				134A63CD1F105A04005D2EBD /* FutureEnumerator.swift in Sources */,
+				134B28CC1F30AB82009A93F0 /* FetchRepositories.swift in Sources */,
 				13688B4A1F12814C008678AE /* AuthenticationSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -840,6 +863,7 @@
 				133FEAE01F3083180098C812 /* FetchChildItems.swift in Sources */,
 				133FEAE11F3083180098C812 /* FetchText.swift in Sources */,
 				13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */,
+				134B28D41F314384009A93F0 /* Mock.swift in Sources */,
 				133FEAE21F3083180098C812 /* TreeObject.swift in Sources */,
 				13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */,
 				13A907FA1F051658002FCDB2 /* ArrayEnumerator.swift in Sources */,
@@ -860,6 +884,7 @@
 				132915071F2F638B00116D94 /* LogoutTest.swift in Sources */,
 				13DCDFD21F2F60BF00259CB1 /* LoginTest.swift in Sources */,
 				1329150B1F2F70F100116D94 /* MainNavigationTest.swift in Sources */,
+				134B28D51F3143F8009A93F0 /* fixture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

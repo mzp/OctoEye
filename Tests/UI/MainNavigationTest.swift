@@ -14,6 +14,7 @@ internal class MainNavigationTest: XCTestCase {
         continueAfterFailure = false
         let app = XCUIApplication()
         app.launchArguments = ["setAccessToken"]
+        app.launchEnvironment["httpResponse"] = fixture(name: "viewerRepositories", ofType: "json")
         app.launch()
     }
 
