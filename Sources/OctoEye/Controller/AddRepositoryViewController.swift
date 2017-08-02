@@ -12,14 +12,22 @@ import Result
 import UIKit
 
 internal class AddRepositoryViewController: UITableViewController {
+    typealias PagingSignal = Signal<String?, AnyError>
     private let fetchRepositories: FetchRepositories? =
         GithubClient.shared.map {
             FetchRepositories(github: $0)
         }
     private let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     private var repositories: [RepositoryObject] = []
+    private var cursor: FetchRepositories.Cursor?
+    let signal: PagingSignal
+    let observer: PagingSignal.Observer
 
     init() {
+        let (signal, observer) = PagingSignal.pipe()
+        self.signal = signal
+        self.observer = observer
+
         super.init(nibName: nil, bundle: nil)
         self.title = "Add repository"
     }
@@ -45,16 +53,29 @@ internal class AddRepositoryViewController: UITableViewController {
             return
         }
 
-        _ = SignalProducer(fetchRepositories.call())
-            .withIndicator(indicator: indicator)
-            .on(failed: {
-                self.presentError(title: "cannot fetch repositories", error: $0)
-            })
-            .on(value: { repositories in
-                self.repositories = repositories
-                self.tableView.reloadData()
-            })
-            .start()
+        signal
+            .skipRepeats { $0 == $1 }
+            .flatMap(FlattenStrategy.concat) { cursor in
+                return SignalProducer(fetchRepositories.call(after: cursor)).withIndicator(indicator: self.indicator)
+            }
+            .observeResult { result in
+                switch result {
+                case .success((let repositories, let cursor)):
+                    self.cursor = cursor
+                    self.repositories.append(contentsOf: repositories)
+                    self.tableView.reloadData()
+                case .failure(let error):
+                    self.presentError(title: "cannot fetch repositories", error: error)
+                }
+            }
+        observer.send(value: cursor)
+    }
+
+    // MARK: - ScrollVeiw
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if tableView.contentOffset.y >= (tableView.contentSize.height - tableView.bounds.size.height) {
+            observer.send(value: cursor)
+        }
     }
 
     // MARK: - TableView

@@ -56,4 +56,27 @@ internal class MainNavigationTest: XCTestCase {
         // repositories page will appear
         XCTAssert(app.navigationBars["Repositories"].exists)
     }
+
+    func testPaging() {
+        let app = XCUIApplication()
+
+        // tap add button
+        let addButton = app.navigationBars.buttons["Add"]
+        XCTAssert(addButton.exists)
+        addButton.tap()
+
+        // add repository page will appear
+        XCTAssert(app.navigationBars["Add repository"].exists)
+
+        // paging
+        let cells = app.tables.cells
+        let count4 = NSPredicate(format: "count == 4")
+        let count8 = NSPredicate(format: "count == 8")
+
+        wait(for: [expectation(for: count4, evaluatedWith: cells, handler: nil)], timeout: 1)
+
+        app.tables.cells.containing(.staticText, identifier: "mzp/OctoEye").element.swipeUp()
+
+        wait(for: [expectation(for: count8, evaluatedWith: cells, handler: nil)], timeout: 1)
+    }
 }
