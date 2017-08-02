@@ -16,6 +16,7 @@ internal class AddRepositoryViewController: UITableViewController {
         GithubClient.shared.map {
             FetchRepositories(github: $0)
         }
+    private let indicator: UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: .gray)
     private var repositories: [RepositoryObject] = []
 
     init() {
@@ -27,6 +28,13 @@ internal class AddRepositoryViewController: UITableViewController {
         fatalError("init(coder:) is not implemented")
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        indicator.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: 44)
+        indicator.hidesWhenStopped = true
+        tableView.tableFooterView = indicator
+    }
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -36,7 +44,9 @@ internal class AddRepositoryViewController: UITableViewController {
                 error:  NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
             return
         }
+
         _ = SignalProducer(fetchRepositories.call())
+            .withIndicator(indicator: indicator)
             .on(failed: {
                 self.presentError(title: "cannot fetch repositories", error: $0)
             })
