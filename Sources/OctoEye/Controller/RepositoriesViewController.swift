@@ -31,7 +31,11 @@ internal class RepositoriesViewController: UITableViewController {
 
     @objc
     private func addRepository(sender: Any) {
-        navigationController?.pushViewController(AddRepositoryViewController(), animated: true)
+        let controller = AddRepositoryViewController()
+        controller.added.observeValues { repository in
+            NSLog("\(repository.owner.login)/\(repository.name)")
+        }
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     // MARK: - TableView

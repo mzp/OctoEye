@@ -21,8 +21,13 @@ internal class AddRepositoryViewController: UITableViewController {
     private var repositories: [RepositoryObject] = []
     private var cursor: FetchRepositories.Cursor?
     private var pagingObserver: PagingSignal.Observer?
+    let added: Signal<RepositoryObject, NoError>
+    private let addedObserver: Signal<RepositoryObject, NoError>.Observer
 
     init() {
+        let (signal, observer) = Signal<RepositoryObject, NoError>.pipe()
+        self.added = signal
+        self.addedObserver = observer
         super.init(nibName: nil, bundle: nil)
         self.title = "Add repository"
     }
@@ -92,6 +97,8 @@ internal class AddRepositoryViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        addedObserver.send(value: repositories[indexPath.row])
+        addedObserver.sendCompleted()
         navigationController?.popViewController(animated: true)
     }
 }
