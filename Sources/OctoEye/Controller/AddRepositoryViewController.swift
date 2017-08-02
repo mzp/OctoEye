@@ -50,8 +50,8 @@ internal class AddRepositoryViewController: UITableViewController {
             .on(failed: {
                 self.presentError(title: "cannot fetch repositories", error: $0)
             })
-            .on(value: { repositories in
-                self.repositories = repositories
+            .on(value: {
+                self.repositories = $0.0
                 self.tableView.reloadData()
             })
             .start()

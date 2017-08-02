@@ -55,12 +55,13 @@
 		134B28D31F31428E009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
 		134B28D41F314384009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
 		134B28D51F3143F8009A93F0 /* fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63D31F106D7B005D2EBD /* fixture.swift */; };
-		134B28D61F314404009A93F0 /* viewerRepositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 134B28CD1F30AC92009A93F0 /* viewerRepositories.json */; };
 		134B28D71F3145AD009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
 		134B28D91F31F1AF009A93F0 /* SignalProducer+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D81F31F1AF009A93F0 /* SignalProducer+Indicator.swift */; };
 		135B23571F0EF9960025BB95 /* GithubClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B23561F0EF9960025BB95 /* GithubClientSpec.swift */; };
 		13688B4A1F12814C008678AE /* AuthenticationSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13688B491F12814C008678AE /* AuthenticationSpec.swift */; };
 		13688B4B1F1281BD008678AE /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
+		1392229E1F31FD9A00D8BE97 /* viewerRepositories-last.json in Resources */ = {isa = PBXBuildFile; fileRef = 134B28DA1F31F979009A93F0 /* viewerRepositories-last.json */; };
+		1392229F1F32187800D8BE97 /* viewerRepositories.json in Resources */ = {isa = PBXBuildFile; fileRef = 134B28CD1F30AC92009A93F0 /* viewerRepositories.json */; };
 		13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F51F051658002FCDB2 /* FileProviderExtension.swift */; };
 		13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F71F051658002FCDB2 /* RepositoryItem.swift */; };
 		13A907FA1F051658002FCDB2 /* ArrayEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */; };
@@ -159,6 +160,7 @@
 		134B28CF1F30ACE3009A93F0 /* FetchRepositoriesSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRepositoriesSpec.swift; sourceTree = "<group>"; };
 		134B28D21F31428E009A93F0 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
 		134B28D81F31F1AF009A93F0 /* SignalProducer+Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignalProducer+Indicator.swift"; sourceTree = "<group>"; };
+		134B28DA1F31F979009A93F0 /* viewerRepositories-last.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "viewerRepositories-last.json"; sourceTree = "<group>"; };
 		135B23561F0EF9960025BB95 /* GithubClientSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientSpec.swift; sourceTree = "<group>"; };
 		136552A81F0DA21300B4FDD4 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		136552AC1F0DA21300B4FDD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				134A63D51F106F34005D2EBD /* treeObject.json */,
 				134A63D71F106F88005D2EBD /* blobObject.json */,
 				134B28CD1F30AC92009A93F0 /* viewerRepositories.json */,
+				134B28DA1F31F979009A93F0 /* viewerRepositories-last.json */,
 				134A63D31F106D7B005D2EBD /* fixture.swift */,
 			);
 			path = Fixtures;
@@ -636,6 +639,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1392229E1F31FD9A00D8BE97 /* viewerRepositories-last.json in Resources */,
 				134A63D81F106F88005D2EBD /* blobObject.json in Resources */,
 				134A63D61F106F6C005D2EBD /* treeObject.json in Resources */,
 				134A63D21F106B7B005D2EBD /* defaultBranch.json in Resources */,
@@ -654,7 +658,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				134B28D61F314404009A93F0 /* viewerRepositories.json in Resources */,
+				1392229F1F32187800D8BE97 /* viewerRepositories.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

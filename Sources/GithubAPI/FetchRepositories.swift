@@ -24,8 +24,14 @@ internal class InputObject: ArgumentValue {
 }
 
 internal class FetchRepositories {
+    typealias Cursor = String
+    struct PageInfo: Codable {
+        let endCursor: String
+        let hasNextPage: Bool
+    }
     struct Repositories: Codable {
         let nodes: [RepositoryObject]
+        let pageInfo: PageInfo
     }
     struct Viewer: Codable {
         let repositories: Repositories
@@ -40,13 +46,17 @@ internal class FetchRepositories {
         self.github = github
     }
 
-    func call() -> Future<[RepositoryObject], AnyError> {
-        return github.query(query()).map { (response: Response) in
-            response.viewer.repositories.nodes
+    func call(after: Cursor? = nil) -> Future<([RepositoryObject], Cursor?), AnyError> {
+        return github.query(query(after: after)).map { (response: Response) in
+            var cursor: Cursor? = nil
+            if response.viewer.repositories.pageInfo.hasNextPage {
+                cursor = response.viewer.repositories.pageInfo.endCursor
+            }
+            return (response.viewer.repositories.nodes, cursor)
         }
     }
 
-    private func query() -> Query {
+    private func query(after: Cursor? = nil) -> Query {
         return Query(
             request: Request(
                 name: "viewer",
@@ -59,15 +69,23 @@ internal class FetchRepositories {
                                     "field": "PUSHED_AT",
                                     "direction": "DESC"
                                 ]))
-                            ],
+                            ] + pagingQuery(after: after),
                             fields: [
                                 Request(name: "nodes", fields: [
                                     "id",
                                     Request(name: "owner", fields: ["login"]),
                                     "name"
+                                ]),
+                                Request(name: "pageInfo", fields: [
+                                    "endCursor",
+                                    "hasNextPage"
                                 ])
                             ])
                 ])
             )
+    }
+
+    private func pagingQuery(after: Cursor?) -> [Argument] {
+        return after.map { [Argument(key: "after", value: $0)] } ?? []
     }
 }
