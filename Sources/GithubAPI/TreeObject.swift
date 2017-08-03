@@ -50,3 +50,26 @@ internal struct TreeObject: Codable {
             ])
     ]
 }
+
+// MARK: Equatable
+extension OwnerObject: Equatable {}
+internal func == (lhs: OwnerObject, rhs: OwnerObject) -> Bool {
+    return lhs.login == rhs.login
+}
+
+extension RepositoryObject: Equatable {}
+internal func == (lhs: RepositoryObject, rhs: RepositoryObject) -> Bool {
+    return lhs.owner == rhs.owner && lhs.name == rhs.name
+}
+
+// MARK: Comparable
+extension OwnerObject: Comparable {
+    static func < (lhs: OwnerObject, rhs: OwnerObject) -> Bool {
+        return lhs.login < rhs.login
+    }
+}
+extension RepositoryObject: Comparable {
+    static func < (lhs: RepositoryObject, rhs: RepositoryObject) -> Bool {
+        return (lhs.owner < rhs.owner) || (lhs.owner == rhs.owner && lhs.name < rhs.name)
+    }
+}
