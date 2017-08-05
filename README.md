@@ -65,6 +65,8 @@ bundle exec fastlane beta
 |:peach:            |improve reactive feature. (peach came from stream) |
 
 ### Other
+|emoji              |mean                                    |
+|-------------------|----------------------------------------|
 |:police_car:|improve code format drived by lint police|
 |:lock:      |improve something related with signing   |
 
