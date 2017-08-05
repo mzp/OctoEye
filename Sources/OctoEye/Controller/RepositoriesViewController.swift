@@ -15,6 +15,7 @@ internal class RepositoriesViewController: UITableViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Repositories"
+        self.tableView.allowsSelection = false
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -53,6 +54,15 @@ internal class RepositoriesViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell(style: .default, reuseIdentifier: nil) ※ {
             $0.textLabel?.text = repositories[indexPath.row].stringValue
+        }
+    }
+
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            repositories.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
 }
