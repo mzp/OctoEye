@@ -58,6 +58,13 @@ internal class MainNavigationTest: XCTestCase {
 
         // repositories page will appear
         XCTAssert(app.navigationBars["Repositories"].exists)
+        let cell = app.tables.cells.containing(.staticText, identifier: "mzp/OctoEye").element
+        XCTAssert(cell.exists)
+
+        // remove repositories
+        cell.swipeLeft()
+        cell.buttons.element(boundBy: 0).tap()
+        XCTAssert(!cell.exists)
     }
 
     func testPaging() {
