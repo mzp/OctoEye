@@ -8,9 +8,9 @@
 
 import Foundation
 
-internal class Authentication {
-    static let kSuiteName: String = "group.jp.mzp.OctoEye"
+internal let kSuiteName: String = "group.jp.mzp.OctoEye"
 
+internal class Authentication {
     class var accessToken: String? {
         get {
             return UserDefaults(suiteName: kSuiteName)?.value(forKey: "github.accessToken") as? String
