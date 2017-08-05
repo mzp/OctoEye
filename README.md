@@ -30,5 +30,11 @@ pod install
 
 Open `OctoEye.xcworkspace` and build `OctoEye` scheme.
 
+### Testflight
+```shell
+bundle exec fastlane next
+bundle exec fastlane beta
+```
+
 ## :copyright: LICENSE
 MIT
