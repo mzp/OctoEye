@@ -49,6 +49,9 @@ internal class MainNavigationTest: XCTestCase {
         XCTAssert(app.navigationBars["Add repository"].exists)
 
         // tap some repository
+        let cells = app.tables.cells
+        let count4 = NSPredicate(format: "count == 4")
+        wait(for: [expectation(for: count4, evaluatedWith: cells, handler: nil)], timeout: 5)
         let repositocyCell = app.tables.cells.containing(.staticText, identifier: "mzp/OctoEye").element
         XCTAssert(repositocyCell.exists)
         repositocyCell.tap()
@@ -73,10 +76,10 @@ internal class MainNavigationTest: XCTestCase {
         let count4 = NSPredicate(format: "count == 4")
         let count8 = NSPredicate(format: "count == 8")
 
-        wait(for: [expectation(for: count4, evaluatedWith: cells, handler: nil)], timeout: 1)
+        wait(for: [expectation(for: count4, evaluatedWith: cells, handler: nil)], timeout: 5)
 
         app.tables.cells.containing(.staticText, identifier: "mzp/OctoEye").element.swipeUp()
 
-        wait(for: [expectation(for: count8, evaluatedWith: cells, handler: nil)], timeout: 1)
+        wait(for: [expectation(for: count8, evaluatedWith: cells, handler: nil)], timeout: 5)
     }
 }
