@@ -54,6 +54,19 @@ internal class WatchingRepositoriesSpec: QuickSpec {
             }
         }
 
+        describe("remove") {
+            beforeEach {
+                xs.append(alice_b)
+                xs.append(alice_a)
+            }
+
+            it("removes specified element") {
+                xs.remove(at: 0)
+                expect(xs.count) == 1
+                expect(xs[0]) == alice_b
+            }
+        }
+
         describe("clear") {
             it("clears all contents") {
                 xs.append(bob)

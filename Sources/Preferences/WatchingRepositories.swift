@@ -49,6 +49,10 @@ internal class WatchingRepositories {
         }
     }
 
+    func remove(at: Int) {
+        array.remove(at: at)
+    }
+
     subscript(index: Int) -> RepositoryObject {
         return array[index]
     }
