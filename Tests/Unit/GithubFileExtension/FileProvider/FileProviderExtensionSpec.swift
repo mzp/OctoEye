@@ -111,12 +111,19 @@ internal class FileProviderExtensionSpec: QuickSpec {
             context("root") {
                 beforeEach {
                     response = fixture(name: "defaultBranch", ofType: "json")
+                    WatchingRepositories.shared.clear()
+                    WatchingRepositories.shared.append(
+                        RepositoryObject(owner: OwnerObject(login: "mzp"), name: "LoveLiver")
+                    )
+                    WatchingRepositories.shared.append(
+                        RepositoryObject(owner: OwnerObject(login: "banjun"), name: "SwiftBeaker")
+                    )
                     items = self.run(subject, .rootContainer)
                 }
                 it("enumarates all repositories") {
                     expect(items).to(haveCount(2))
-                    expect(items?[0].filename) == "mzp/LoveLiver"
-                    expect(items?[1].filename) == "banjun/SwiftBeaker"
+                    expect(items?[0].filename) == "banjun/SwiftBeaker"
+                    expect(items?[1].filename) == "mzp/LoveLiver"
                 }
             }
             context("repository root") {

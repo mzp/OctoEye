@@ -10,7 +10,7 @@ import Ikemen
 import UIKit
 
 internal class RepositoriesViewController: UITableViewController {
-    let repositories: [String] = ["mzp/OctoEye"]
+    private let repositories: WatchingRepositories = WatchingRepositories.shared
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -31,7 +31,14 @@ internal class RepositoriesViewController: UITableViewController {
 
     @objc
     private func addRepository(sender: Any) {
-        navigationController?.pushViewController(AddRepositoryViewController(), animated: true)
+        let controller = AddRepositoryViewController()
+        controller.added.observeValues { repository in
+            self.repositories.append(repository)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+        navigationController?.pushViewController(controller, animated: true)
     }
 
     // MARK: - TableView
@@ -45,7 +52,7 @@ internal class RepositoriesViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         return UITableViewCell(style: .default, reuseIdentifier: nil) ※ {
-            $0.textLabel?.text = repositories[indexPath.row]
+            $0.textLabel?.text = repositories[indexPath.row].stringValue
         }
     }
 }

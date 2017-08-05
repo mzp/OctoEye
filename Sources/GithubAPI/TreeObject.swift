@@ -20,6 +20,23 @@ internal struct OwnerObject: Codable {
 internal struct RepositoryObject: Codable {
     let owner: OwnerObject
     let name: String
+
+    var stringValue: String {
+        return "\(owner.login)/\(name)"
+    }
+
+    init(owner: OwnerObject, name: String) {
+        self.owner = owner
+        self.name = name
+    }
+
+    init?(identifier: String) {
+        let xs = identifier.components(separatedBy: "/")
+        if xs.count != 2 {
+            return nil
+        }
+        self.init(owner: OwnerObject(login: xs[0]), name: xs[1])
+    }
 }
 
 internal struct EntryObject: Codable {
@@ -49,4 +66,27 @@ internal struct TreeObject: Codable {
                 ])
             ])
     ]
+}
+
+// MARK: Equatable
+extension OwnerObject: Equatable {}
+internal func == (lhs: OwnerObject, rhs: OwnerObject) -> Bool {
+    return lhs.login == rhs.login
+}
+
+extension RepositoryObject: Equatable {}
+internal func == (lhs: RepositoryObject, rhs: RepositoryObject) -> Bool {
+    return lhs.owner == rhs.owner && lhs.name == rhs.name
+}
+
+// MARK: Comparable
+extension OwnerObject: Comparable {
+    static func < (lhs: OwnerObject, rhs: OwnerObject) -> Bool {
+        return lhs.login < rhs.login
+    }
+}
+extension RepositoryObject: Comparable {
+    static func < (lhs: RepositoryObject, rhs: RepositoryObject) -> Bool {
+        return (lhs.owner < rhs.owner) || (lhs.owner == rhs.owner && lhs.name < rhs.name)
+    }
 }
