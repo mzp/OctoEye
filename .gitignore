@@ -32,4 +32,5 @@ xcshareddata/
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
-
+*.ipa
+*.dSYM.zip
