@@ -12,10 +12,7 @@ import Result
 
 internal class FileProviderExtension: NSFileProviderExtension {
     private let github: GithubClient?
-    private let repositories: [(String, String)] = [
-        ("mzp", "LoveLiver"),
-        ("banjun", "SwiftBeaker")
-    ]
+    private let repositories: WatchingRepositories = WatchingRepositories.shared
 
     var fileManager: FileManager = FileManager()
 
@@ -132,9 +129,8 @@ internal class FileProviderExtension: NSFileProviderExtension {
         }
         let maybeEnumerator: NSFileProviderEnumerator? = nil
         if containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer {
-            let items = repositories.map { (repository: (String, String)) -> RepositoryItem in
-                let (owner, name) = repository
-                return RepositoryItem(owner: owner, name: name)
+            let items = repositories.map {
+                RepositoryItem(owner: $0.owner.login, name: $0.name)
             }
             return ArrayEnumerator(items: items)
         } else if containerItemIdentifier == NSFileProviderItemIdentifier.workingSet {

@@ -66,6 +66,7 @@
 		139222A21F33532300D8BE97 /* WatchingRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139222A01F329AB200D8BE97 /* WatchingRepositories.swift */; };
 		139222A41F33533600D8BE97 /* WatchingRepositoriesSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139222A31F33533600D8BE97 /* WatchingRepositoriesSpec.swift */; };
 		139EF9661F35A727009DB51D /* TreeObjectSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139EF9651F35A727009DB51D /* TreeObjectSpec.swift */; };
+		139EF9671F35A9C5009DB51D /* WatchingRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139222A01F329AB200D8BE97 /* WatchingRepositories.swift */; };
 		13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F51F051658002FCDB2 /* FileProviderExtension.swift */; };
 		13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F71F051658002FCDB2 /* RepositoryItem.swift */; };
 		13A907FA1F051658002FCDB2 /* ArrayEnumerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13A907F91F051658002FCDB2 /* ArrayEnumerator.swift */; };
@@ -885,6 +886,7 @@
 				133FEAE01F3083180098C812 /* FetchChildItems.swift in Sources */,
 				133FEAE11F3083180098C812 /* FetchText.swift in Sources */,
 				13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */,
+				139EF9671F35A9C5009DB51D /* WatchingRepositories.swift in Sources */,
 				134B28D41F314384009A93F0 /* Mock.swift in Sources */,
 				133FEAE21F3083180098C812 /* TreeObject.swift in Sources */,
 				13A907F81F051658002FCDB2 /* RepositoryItem.swift in Sources */,
