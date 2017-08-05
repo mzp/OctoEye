@@ -49,4 +49,8 @@ internal class WatchingRepositories {
     subscript(index: Int) -> RepositoryObject {
         return array[index]
     }
+
+    func map<T>(_ transform: (RepositoryObject) throws -> T) rethrows -> [T] {
+        return try array.map(transform)
+    }
 }

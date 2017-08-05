@@ -9,6 +9,7 @@
 import Nimble
 import Quick
 
+// swiftlint:disable function_body_length
 internal class WatchingRepositoriesSpec: QuickSpec {
     override func spec() {
         var xs: WatchingRepositories!
@@ -66,6 +67,19 @@ internal class WatchingRepositoriesSpec: QuickSpec {
             it("store data") {
                 let ys = WatchingRepositories.shared
                 expect(ys.count) == 2
+            }
+        }
+
+        describe("map") {
+            beforeEach {
+                xs.append(alice_a)
+                xs.append(alice_b)
+            }
+
+            it("should be transformed") {
+                expect(xs.map { $0.stringValue }) == [
+                    "alice/a", "alice/b"
+                ]
             }
         }
     }
