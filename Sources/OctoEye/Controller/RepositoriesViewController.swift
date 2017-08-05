@@ -56,4 +56,13 @@ internal class RepositoriesViewController: UITableViewController {
             $0.textLabel?.text = repositories[indexPath.row].stringValue
         }
     }
+
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCellEditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            repositories.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
 }
