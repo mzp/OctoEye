@@ -15,6 +15,7 @@ internal class RepositoriesViewController: UITableViewController {
     init() {
         super.init(nibName: nil, bundle: nil)
         self.title = "Repositories"
+        self.tableView.allowsSelection = false
     }
 
     required init?(coder aDecoder: NSCoder) {
