@@ -20,6 +20,23 @@ internal struct OwnerObject: Codable {
 internal struct RepositoryObject: Codable {
     let owner: OwnerObject
     let name: String
+
+    var stringValue: String {
+        return "\(owner.login)/\(name)"
+    }
+
+    init(owner: OwnerObject, name: String) {
+        self.owner = owner
+        self.name = name
+    }
+
+    init?(identifier: String) {
+        let xs = identifier.components(separatedBy: "/")
+        if xs.count != 2 {
+            return nil
+        }
+        self.init(owner: OwnerObject(login: xs[0]), name: xs[1])
+    }
 }
 
 internal struct EntryObject: Codable {
