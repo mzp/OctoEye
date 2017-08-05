@@ -36,5 +36,37 @@ bundle exec fastlane next
 bundle exec fastlane beta
 ```
 
+### :+1: Commit symbols
+
+#### What's mean of this task
+|emoji              |mean                                    |
+|-------------------|----------------------------------------|
+|:rotating_light:   |add/improve test                        |
+|:sparkles:         |add new feature                         |
+|:lipstick:         |improve the format/structure of the code|
+|:bug:              |fix bug                                 |
+|:wrench:           |improve development environment         |
+|:memo:             |improve document                        |
+
+#### What's do for this task
+|emoji              |mean                                    |
+|-------------------|----------------------------------------|
+|:hocho:            |split code                              |
+|:truck:            |move files                              |
+|:fire:             |remove code/files/...                   |
+|:chocolate_bar:    |install/remove new cocoapods            |
+|:see_no_evil:      |ignore something                        |
+
+### Where's updated for this task
+|emoji              |mean                                    |
+|-------------------|----------------------------------------|
+|:art:              |update user interface                   |
+|:file_cabinet:     |improve data storage                    |
+|:peach:            |improve reactive feature. (peach came from stream) |
+
+### Other
+|:police_car:|improve code format drived by lint police|
+|:lock:      |improve something related with signing   |
+
 ## :copyright: LICENSE
 MIT
