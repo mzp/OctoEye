@@ -49,6 +49,7 @@ internal class WatchingRepositories {
         }
     }
 
+    // swiftlint:disable:next identifier_name
     func remove(at: Int) {
         array.remove(at: at)
     }
