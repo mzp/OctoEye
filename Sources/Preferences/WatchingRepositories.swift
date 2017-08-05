@@ -39,8 +39,11 @@ internal class WatchingRepositories {
     }
 
     func append(_ repository: RepositoryObject) {
-        if let index = array.index(where: { repository < $0 }) {
-            array.insert(repository, at: index)
+        if let index = array.index(where: { repository <= $0 }) {
+            let it = array[index]
+            if it != repository {
+                array.insert(repository, at: index)
+            }
         } else {
             array.append(repository)
         }

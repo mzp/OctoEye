@@ -35,7 +35,7 @@ internal class WatchingRepositoriesSpec: QuickSpec {
             }
         }
 
-        describe("append and subscription") {
+        describe("append") {
             it("append in alphabet order") {
                 xs.append(bob)
                 xs.append(alice_a)
@@ -44,6 +44,13 @@ internal class WatchingRepositoriesSpec: QuickSpec {
                 expect(xs[0]) == alice_a
                 expect(xs[1]) == alice_b
                 expect(xs[2]) == bob
+            }
+
+            it("appends in uniqueness") {
+                xs.append(bob)
+                xs.append(bob)
+                xs.append(bob)
+                expect(xs.count) == 1
             }
         }
 
