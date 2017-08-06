@@ -11,6 +11,16 @@
 		1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310C9EA1F0513ED0020A177 /* AppDelegate.swift */; };
 		1310C9F21F0513ED0020A177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F11F0513ED0020A177 /* Assets.xcassets */; };
 		1310C9F51F0513ED0020A177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */; };
+		1318DAD01F37064200FAACF1 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318DACF1F37064200FAACF1 /* WalkThroughViewController.swift */; };
+		1318DAD51F37067000FAACF1 /* introduction.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DAD31F37066C00FAACF1 /* introduction.png */; };
+		1318DAD61F37067000FAACF1 /* introduction@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DAD21F37066C00FAACF1 /* introduction@2x.png */; };
+		1318DAD71F37067000FAACF1 /* introduction@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DAD41F37066C00FAACF1 /* introduction@3x.png */; };
+		1318DADB1F370A0B00FAACF1 /* repositories.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DAD81F370A0800FAACF1 /* repositories.png */; };
+		1318DADC1F370A0B00FAACF1 /* repositories@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DAD91F370A0800FAACF1 /* repositories@2x.png */; };
+		1318DADD1F370A0B00FAACF1 /* repositories@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DADA1F370A0800FAACF1 /* repositories@3x.png */; };
+		1318DAE11F370A7B00FAACF1 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DAE01F370A7700FAACF1 /* location.png */; };
+		1318DAE21F370A7B00FAACF1 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DADF1F370A7700FAACF1 /* location@2x.png */; };
+		1318DAE31F370A7B00FAACF1 /* location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DADE1F370A7700FAACF1 /* location@3x.png */; };
 		1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F17F1F12586700116545 /* GithubAuthorization.swift */; };
 		1318F1841F125C9800116545 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
 		1318F1851F12603E00116545 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
@@ -141,6 +151,16 @@
 		1310C9F11F0513ED0020A177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1310C9F41F0513ED0020A177 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1310C9F61F0513ED0020A177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1318DACF1F37064200FAACF1 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalkThroughViewController.swift; sourceTree = "<group>"; };
+		1318DAD21F37066C00FAACF1 /* introduction@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "introduction@2x.png"; sourceTree = "<group>"; };
+		1318DAD31F37066C00FAACF1 /* introduction.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = introduction.png; sourceTree = "<group>"; };
+		1318DAD41F37066C00FAACF1 /* introduction@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "introduction@3x.png"; sourceTree = "<group>"; };
+		1318DAD81F370A0800FAACF1 /* repositories.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = repositories.png; sourceTree = "<group>"; };
+		1318DAD91F370A0800FAACF1 /* repositories@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repositories@2x.png"; sourceTree = "<group>"; };
+		1318DADA1F370A0800FAACF1 /* repositories@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "repositories@3x.png"; sourceTree = "<group>"; };
+		1318DADE1F370A7700FAACF1 /* location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@3x.png"; sourceTree = "<group>"; };
+		1318DADF1F370A7700FAACF1 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		1318DAE01F370A7700FAACF1 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
 		1318F17F1F12586700116545 /* GithubAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAuthorization.swift; sourceTree = "<group>"; };
 		1318F1831F125C9800116545 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		1328C8941F08913D00064124 /* FetchChildItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChildItems.swift; sourceTree = "<group>"; };
@@ -276,6 +296,22 @@
 			path = OctoEye;
 			sourceTree = "<group>";
 		};
+		1318DAD11F37065700FAACF1 /* WalkTthrough */ = {
+			isa = PBXGroup;
+			children = (
+				1318DAD31F37066C00FAACF1 /* introduction.png */,
+				1318DAD21F37066C00FAACF1 /* introduction@2x.png */,
+				1318DAD41F37066C00FAACF1 /* introduction@3x.png */,
+				1318DAD81F370A0800FAACF1 /* repositories.png */,
+				1318DAD91F370A0800FAACF1 /* repositories@2x.png */,
+				1318DADA1F370A0800FAACF1 /* repositories@3x.png */,
+				1318DAE01F370A7700FAACF1 /* location.png */,
+				1318DADF1F370A7700FAACF1 /* location@2x.png */,
+				1318DADE1F370A7700FAACF1 /* location@3x.png */,
+			);
+			path = WalkTthrough;
+			sourceTree = "<group>";
+		};
 		1318F1821F125C7500116545 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				13BAD63E1F2C11D0003F847F /* LoginViewController.swift */,
+				1318DACF1F37064200FAACF1 /* WalkThroughViewController.swift */,
 				132915081F2F6E5E00116D94 /* MainNavigationViewController.swift */,
 				1329150C1F2FDD9100116D94 /* RepositoriesViewController.swift */,
 				132915141F2FEBFE00116D94 /* AddRepositoryViewController.swift */,
@@ -466,6 +503,7 @@
 		13E7202E1F1503F400A70CE2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1318DAD11F37065700FAACF1 /* WalkTthrough */,
 				1310C9F11F0513ED0020A177 /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -642,7 +680,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				1310C9F51F0513ED0020A177 /* LaunchScreen.storyboard in Resources */,
+				1318DADD1F370A0B00FAACF1 /* repositories@3x.png in Resources */,
+				1318DADB1F370A0B00FAACF1 /* repositories.png in Resources */,
 				1310C9F21F0513ED0020A177 /* Assets.xcassets in Resources */,
+				1318DAE31F370A7B00FAACF1 /* location@3x.png in Resources */,
+				1318DAE11F370A7B00FAACF1 /* location.png in Resources */,
+				1318DADC1F370A0B00FAACF1 /* repositories@2x.png in Resources */,
+				1318DAD61F37067000FAACF1 /* introduction@2x.png in Resources */,
+				1318DAE21F370A7B00FAACF1 /* location@2x.png in Resources */,
+				1318DAD71F37067000FAACF1 /* introduction@3x.png in Resources */,
+				1318DAD51F37067000FAACF1 /* introduction.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -886,6 +933,7 @@
 				133FEAD71F3082FF0098C812 /* FetchRootItems.swift in Sources */,
 				133FEAD91F3082FF0098C812 /* FetchChildItems.swift in Sources */,
 				132915091F2F6E5E00116D94 /* MainNavigationViewController.swift in Sources */,
+				1318DAD01F37064200FAACF1 /* WalkThroughViewController.swift in Sources */,
 				1318F1841F125C9800116545 /* Authentication.swift in Sources */,
 				134B28CB1F30AB82009A93F0 /* FetchRepositories.swift in Sources */,
 				133FEADB1F3082FF0098C812 /* HttpRequest.swift in Sources */,
