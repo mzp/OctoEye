@@ -17,9 +17,39 @@ internal class LoginTest: XCTestCase {
         app.launch()
     }
 
-    public func testLoginForm() {
+    public func testWalkThrought() {
         let app = XCUIApplication()
+
+        assertPageTitle("Empower Files with Github")
+        app.swipeLeft()
+
+        assertPageTitle("Add favorited repositories")
+        app.swipeLeft()
+
+        assertPageTitle("Github location is available")
+        app.swipeLeft()
+
         let loginButton = app.buttons["login"]
         XCTAssert(loginButton.exists)
+    }
+
+    public func testSkipButton() {
+        let app = XCUIApplication()
+
+        app.buttons["Skip"].tap()
+
+        let loginButton = app.buttons["login"]
+        XCTAssert(loginButton.exists)
+    }
+
+    private func assertPageTitle(_ title: String) {
+        let app = XCUIApplication()
+        let window = app.windows.element(boundBy: 0)
+
+        let predicate = NSPredicate(format: "label contains '\(title)'")
+        let element = app.buttons.containing(predicate).element
+        XCTAssert(element.exists)
+        XCTAssert(window.frame.contains(element.frame))
+
     }
 }
