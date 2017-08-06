@@ -13,6 +13,7 @@ abstract_target 'App' do
 
   target 'GithubFileExtension'
   target 'OctoEye' do
+    pod 'EAIntroView'
     pod 'ReactiveCocoa', '~> 6.0'
     pod 'ReactiveSwift', '~> 2.0'
   end
