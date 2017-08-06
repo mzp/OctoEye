@@ -21,6 +21,7 @@
 		1318DAE11F370A7B00FAACF1 /* location.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DAE01F370A7700FAACF1 /* location.png */; };
 		1318DAE21F370A7B00FAACF1 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DADF1F370A7700FAACF1 /* location@2x.png */; };
 		1318DAE31F370A7B00FAACF1 /* location@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1318DADE1F370A7700FAACF1 /* location@3x.png */; };
+		1318DAEC1F3742AE00FAACF1 /* SMRippleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318DAEB1F3742AE00FAACF1 /* SMRippleView.swift */; };
 		1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F17F1F12586700116545 /* GithubAuthorization.swift */; };
 		1318F1841F125C9800116545 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
 		1318F1851F12603E00116545 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
@@ -161,6 +162,7 @@
 		1318DADE1F370A7700FAACF1 /* location@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@3x.png"; sourceTree = "<group>"; };
 		1318DADF1F370A7700FAACF1 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
 		1318DAE01F370A7700FAACF1 /* location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = location.png; sourceTree = "<group>"; };
+		1318DAEB1F3742AE00FAACF1 /* SMRippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRippleView.swift; sourceTree = "<group>"; };
 		1318F17F1F12586700116545 /* GithubAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAuthorization.swift; sourceTree = "<group>"; };
 		1318F1831F125C9800116545 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
 		1328C8941F08913D00064124 /* FetchChildItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChildItems.swift; sourceTree = "<group>"; };
@@ -312,6 +314,14 @@
 			path = WalkTthrough;
 			sourceTree = "<group>";
 		};
+		1318DAEA1F37428900FAACF1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1318DAEB1F3742AE00FAACF1 /* SMRippleView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		1318F1821F125C7500116545 /* Preferences */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +415,7 @@
 		13911BC41F0C5E07005EE2C0 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				1318DAEA1F37428900FAACF1 /* View */,
 				134B28D11F30B915009A93F0 /* GithubAPI */,
 				133FEAD21F2EAD7A0098C812 /* Extensions */,
 				1318F1821F125C7500116545 /* Preferences */,
@@ -941,6 +952,7 @@
 				132915151F2FEBFE00116D94 /* AddRepositoryViewController.swift in Sources */,
 				1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */,
 				139222A11F329AB200D8BE97 /* WatchingRepositories.swift in Sources */,
+				1318DAEC1F3742AE00FAACF1 /* SMRippleView.swift in Sources */,
 				134B28D31F31428E009A93F0 /* Mock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
