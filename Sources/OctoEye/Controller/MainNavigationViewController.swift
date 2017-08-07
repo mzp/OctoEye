@@ -15,8 +15,8 @@ internal class MainNavigationViewController: UITabBarController {
 
         setViewControllers(
             [
-                tab(title: "Repositories", rootViewController: RepositoriesViewController(), tag: 1),
-                tab(title: "Preferences", rootViewController: PreferencesViewController(), tag: 2)
+                tab(title: "Repositories", rootViewController: RepositoriesViewController(), image: "home.png"),
+                tab(title: "Preferences", rootViewController: PreferencesViewController(), image: "preference.png")
             ],
             animated: false)
     }
@@ -33,10 +33,12 @@ internal class MainNavigationViewController: UITabBarController {
         super.viewDidLoad()
     }
 
-    private func tab(title: String, rootViewController: UIViewController, tag: Int) -> UIViewController {
+    private func tab(title: String, rootViewController: UIViewController, image: String) -> UIViewController {
         return UINavigationController(rootViewController: rootViewController) ※ { nvc in
             nvc.navigationBar.prefersLargeTitles = true
-            nvc.tabBarItem = UITabBarItem(title: title, image: nil, tag: tag)
+            nvc.tabBarItem = UITabBarItem(title: title,
+                                          image: UIImage(named: image),
+                                          selectedImage: UIImage(named: "selected \(image)"))
         }
     }
 }
