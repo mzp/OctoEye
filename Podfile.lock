@@ -1,6 +1,9 @@
 PODS:
   - BrightFutures (5.2.0):
     - Result (~> 3.2)
+  - EAIntroView (2.10.0):
+    - EARestrictedScrollView (~> 1.1.0)
+  - EARestrictedScrollView (1.1.0)
   - GraphQLicious (0.8.2)
   - JetToTheFuture (0.3.0):
     - BrightFutures (~> 5.0)
@@ -23,6 +26,7 @@ PODS:
 
 DEPENDENCIES:
   - BrightFutures
+  - EAIntroView
   - GraphQLicious (~> 0.8.2)
   - JetToTheFuture
   - Nimble
@@ -38,6 +42,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   BrightFutures: 8681dbb9fa831b69b6e7dc4a498b9e081d5daeb5
+  EAIntroView: 3494b7bbd1212e3a4f7e8d16194a1b00e7b9abb2
+  EARestrictedScrollView: b0c2a3f92fb2610bb44d71c5e4893777c89e45ef
   GraphQLicious: c8468f1dcbbdc74b33fd184db1642f5ed2b0a86a
   JetToTheFuture: 0ef3cacbbf8d57314728bda2fe68c636ab4635c7
   Nimble: 657d000e11df8aebe27cdaf9d244de7f30ed87f7
@@ -52,6 +58,6 @@ SPEC CHECKSUMS:
   UTIKit: 5b16488927ed6df479189acd9ff1ad6a7b19f8ff
   ※ikemen: c04aecee4293a2b6deb2119f7e67e7a82c6dea06
 
-PODFILE CHECKSUM: 8c705eba6548b7b54a4a08ec32ac92326e7c86a7
+PODFILE CHECKSUM: a16dadc11f8d46602e662d518bf96df1b5cb4f8c
 
 COCOAPODS: 1.3.0

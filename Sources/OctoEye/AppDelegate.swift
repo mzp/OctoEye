@@ -22,7 +22,7 @@ internal class AppDelegate: UIResponder, UIApplicationDelegate {
         if Authentication.accessToken != nil {
             window?.rootViewController = MainNavigationViewController()
         } else {
-            window?.rootViewController = LoginViewController()
+            window?.rootViewController = WalkThroughViewController()
         }
 
         window?.makeKeyAndVisible()
