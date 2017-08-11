@@ -8,6 +8,8 @@
 import UIKit
 
 internal class Mock {
+    private static var firstResponse: Bool = true
+
     static func setup() {
         if ProcessInfo.processInfo.arguments.contains("setAccessToken") {
             Authentication.accessToken = "mock-access-token"
@@ -18,7 +20,17 @@ internal class Mock {
     }
 
     static func httpResponse() -> String {
-        return ProcessInfo.processInfo.environment["httpResponse"] ?? ""
+        let response: String
+
+        if firstResponse {
+            response = ProcessInfo.processInfo.environment["httpResponse"] ?? ""
+            firstResponse = false
+        } else {
+            response = ProcessInfo.processInfo.environment["httpResponse_later"] ??
+                ProcessInfo.processInfo.environment["httpResponse"] ??
+                ""
+        }
+        return response
     }
 
     static var enabled: Bool {
