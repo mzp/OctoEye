@@ -1,0 +1,72 @@
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "name": "swift",
+          "owner": {
+            "login": "apple"
+          }
+        },
+        {
+          "name": "appledoc",
+          "owner": {
+            "login": "tomaz"
+          }
+        },
+        {
+          "name": "AppleDNS",
+          "owner": {
+            "login": "gongjianhui"
+          }
+        },
+        {
+          "name": "swift-evolution",
+          "owner": {
+            "login": "apple"
+          }
+        },
+        {
+          "name": "appleseed",
+          "owner": {
+            "login": "appleseedhq"
+          }
+        },
+        {
+          "name": "swift-package-manager",
+          "owner": {
+            "login": "apple"
+          }
+        },
+        {
+          "name": "apple-ios-samples",
+          "owner": {
+            "login": "robovm"
+          }
+        },
+        {
+          "name": "swift-corelibs-foundation",
+          "owner": {
+            "login": "apple"
+          }
+        },
+        {
+          "name": "Apple-ID-AppleScript",
+          "owner": {
+            "login": "aaronfreimark"
+          }
+        },
+        {
+          "name": "awesome-apple",
+          "owner": {
+            "login": "joeljfischer"
+          }
+        }
+      ],
+      "pageInfo": {
+        "endCursor": "Y3Vyc29yOjEw",
+        "hasNextPage": true
+      }
+    }
+  }
+}
