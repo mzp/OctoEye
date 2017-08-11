@@ -67,7 +67,6 @@
 		134B28D41F314384009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
 		134B28D51F3143F8009A93F0 /* fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134A63D31F106D7B005D2EBD /* fixture.swift */; };
 		134B28D71F3145AD009A93F0 /* Mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D21F31428E009A93F0 /* Mock.swift */; };
-		134B28D91F31F1AF009A93F0 /* SignalProducer+Indicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134B28D81F31F1AF009A93F0 /* SignalProducer+Indicator.swift */; };
 		135B23571F0EF9960025BB95 /* GithubClientSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135B23561F0EF9960025BB95 /* GithubClientSpec.swift */; };
 		136562EB1F3D55A00097E4C3 /* PagingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136562EA1F3D55A00097E4C3 /* PagingDataSource.swift */; };
 		136562ED1F3D55E90097E4C3 /* OwnRepositoriesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 136562EC1F3D55E90097E4C3 /* OwnRepositoriesDataSource.swift */; };
@@ -206,7 +205,6 @@
 		134B28CD1F30AC92009A93F0 /* viewerRepositories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = viewerRepositories.json; sourceTree = "<group>"; };
 		134B28CF1F30ACE3009A93F0 /* FetchRepositoriesSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRepositoriesSpec.swift; sourceTree = "<group>"; };
 		134B28D21F31428E009A93F0 /* Mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mock.swift; sourceTree = "<group>"; };
-		134B28D81F31F1AF009A93F0 /* SignalProducer+Indicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SignalProducer+Indicator.swift"; sourceTree = "<group>"; };
 		134B28DA1F31F979009A93F0 /* viewerRepositories-last.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "viewerRepositories-last.json"; sourceTree = "<group>"; };
 		135B23561F0EF9960025BB95 /* GithubClientSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientSpec.swift; sourceTree = "<group>"; };
 		136552A81F0DA21300B4FDD4 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -376,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				133FEAD31F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift */,
-				134B28D81F31F1AF009A93F0 /* SignalProducer+Indicator.swift */,
 				133FEAD51F2F4AEA0098C812 /* UIViewController+ErrorReport.swift */,
 			);
 			path = Extensions;
@@ -1026,7 +1023,6 @@
 				13BAD63D1F2C0DA4003F847F /* PreferencesViewController.swift in Sources */,
 				133FEAD41F2EAD9A0098C812 /* SignalProducer+BrightFuture.swift in Sources */,
 				1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */,
-				134B28D91F31F1AF009A93F0 /* SignalProducer+Indicator.swift in Sources */,
 				1329150D1F2FDD9100116D94 /* RepositoriesViewController.swift in Sources */,
 				133FEAD61F2F4AEA0098C812 /* UIViewController+ErrorReport.swift in Sources */,
 				136562ED1F3D55E90097E4C3 /* OwnRepositoriesDataSource.swift in Sources */,
