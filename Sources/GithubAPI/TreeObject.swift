@@ -37,6 +37,11 @@ internal struct RepositoryObject: Codable {
         }
         self.init(owner: OwnerObject(login: xs[0]), name: xs[1])
     }
+
+    static let fragment: Fragment = Fragment(withAlias: "repository", name: "Repository", fields: [
+        Request(name: "owner", fields: ["login"]),
+        "name"
+    ])
 }
 
 internal struct EntryObject: Codable {
@@ -66,6 +71,16 @@ internal struct TreeObject: Codable {
                 ])
             ])
     ]
+}
+
+internal struct PageInfoObject: Codable {
+    let endCursor: String?
+    let hasNextPage: Bool
+
+    static let fragment: Fragment = Fragment(withAlias: "pageInfo", name: "PageInfo", fields: [
+        "endCursor",
+        "hasNextPage"
+    ])
 }
 
 // MARK: Equatable
