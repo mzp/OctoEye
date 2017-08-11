@@ -1,8 +1,7 @@
 osx_image: xcode9
 language: swift
 cache:
-  directories:
-    - $HOME/.cocoapods/
+  - cocoapods
 before_install:
   - bundle install
   - bundle exec pod repo update
