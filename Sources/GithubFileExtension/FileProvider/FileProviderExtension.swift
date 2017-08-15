@@ -78,7 +78,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
             completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
             return
         }
-        FetchText(github: github)
+        FetchBlob(github: github)
             .call(owner: item.owner, name: item.repositoryName, oid: item.oid)
             .onSuccess { data in
                 do {

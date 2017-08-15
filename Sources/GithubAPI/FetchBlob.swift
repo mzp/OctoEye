@@ -10,7 +10,7 @@ import BrightFutures
 import GraphQLicious
 import Result
 
-internal class FetchText {
+internal class FetchBlob {
     private let github: GithubClient
 
     init(github: GithubClient) {

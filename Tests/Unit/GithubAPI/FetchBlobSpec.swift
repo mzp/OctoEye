@@ -11,13 +11,13 @@ import Nimble
 import Quick
 import Result
 
-internal class FetchTextSpec: QuickSpec {
+internal class FetchBlobSpec: QuickSpec {
     override func spec() {
         let github = GithubClient(
             token: "-",
             httpRequest: MockHttpRequest(response: fixture(name: "content", ofType: "txt")))
         let data = forcedFuture { _ in
-            FetchText(github: github).call(owner: "octocat", name: "example", oid: "-")
+            FetchBlob(github: github).call(owner: "octocat", name: "example", oid: "-")
         }.value
         // swiftlint:disable:next force_unwrapping
         let text = String(data: data!, encoding: String.Encoding.utf8)
