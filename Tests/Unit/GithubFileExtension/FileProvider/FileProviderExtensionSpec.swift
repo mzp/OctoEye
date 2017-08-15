@@ -29,7 +29,7 @@ internal class FileProviderExtensionSpec: QuickSpec {
 
         describe("URL") {
             var subject: FileProviderExtension {
-                let response: String! = fixture(name: "blobObject", ofType: "json")
+                let response: String! = fixture(name: "content", ofType: "txt")
                 let github = GithubClient(
                     token: "-",
                     httpRequest: MockHttpRequest(response: response))
@@ -91,7 +91,7 @@ internal class FileProviderExtensionSpec: QuickSpec {
                 // swiftlint:disable:next force_try force_unwrapping
                 let data = try! Data(contentsOf: url!)
                 let content = String(data: data, encoding: .utf8)
-                expect(content) == "# Xcode (from gitignore.io)"
+                expect(content) == "Content of the blob\n"
             }
         }
 
