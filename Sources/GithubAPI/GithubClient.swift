@@ -34,7 +34,7 @@ internal class GithubClient {
     }
 
     // swiftlint:disable:next force_unwrapping
-    private let url: URL = URL(string: "https://api.github.com/graphql")!
+    private let url: URL = URL(string: "https://api.github.com")!
     private let token: String
     private let httpRequest: () -> HttpRequestProtocol
 
@@ -49,12 +49,17 @@ internal class GithubClient {
 
     func query<T: Decodable>(_ query: Query) -> Future<T, AnyError> {
         return httpRequest()
-            .post(url: url, query: query.create(), accessToken: token)
+            .post(url: url.appendingPathComponent("graphql"), query: query.create(), accessToken: token)
             .flatMap { data in
                 Result {
                     let response = try JSONDecoder().decode(Response<T>.self, from: data)
                     return response.data
                 }
             }
+    }
+
+    func get(_ path: String) -> Future<Data, AnyError> {
+        return httpRequest()
+            .get(url: url.appendingPathComponent(path), accessToken: token)
     }
 }
