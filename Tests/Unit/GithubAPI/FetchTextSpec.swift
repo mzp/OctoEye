@@ -15,14 +15,16 @@ internal class FetchTextSpec: QuickSpec {
     override func spec() {
         let github = GithubClient(
             token: "-",
-            httpRequest: MockHttpRequest(response: fixture(name: "blobObject", ofType: "json")))
-        let text = forcedFuture { _ in
-            FetchText(github: github).call(owner: "mzp", name: "LoveLiver", oid: "-")
+            httpRequest: MockHttpRequest(response: fixture(name: "content", ofType: "txt")))
+        let data = forcedFuture { _ in
+            FetchText(github: github).call(owner: "octocat", name: "example", oid: "-")
         }.value
+        // swiftlint:disable:next force_unwrapping
+        let text = String(data: data!, encoding: String.Encoding.utf8)
 
         describe("text") {
             it("returns file content") {
-                expect(text) == "# Xcode (from gitignore.io)"
+                expect(text) == "Content of the blob\n"
             }
         }
     }

@@ -80,13 +80,16 @@ internal class FileProviderExtension: NSFileProviderExtension {
         }
         FetchText(github: github)
             .call(owner: item.owner, name: item.repositoryName, oid: item.oid)
-            .onSuccess { text in
+            .onSuccess { data in
                 do {
-                    try text.write(to: url, atomically: true, encoding: String.Encoding.utf8)
+                    try data.write(to: url)
                     completionHandler?(nil)
                 } catch let e {
                     completionHandler?(e)
                 }
+            }
+            .onFailure { error in
+                NSLog("FetchTextError: \(error)")
             }
     }
 
