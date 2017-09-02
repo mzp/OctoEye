@@ -11,7 +11,7 @@ import Foundation
 import RealmSwift
 import UTIKit
 
-internal class FileItem {
+internal class GithubObjectItemBuilder {
     private let entryObject: EntryObject
     private let parentItemIdentifier: NSFileProviderItemIdentifier
     private let kPlainTextExtensions: [String] = ["", "md"]

@@ -149,7 +149,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
                 return FutureEnumerator(future: future)
             }
 
-            if let (owner, name, oid) = FileItem.parse(itemIdentifier: containerItemIdentifier) {
+            if let (owner, name, oid) = GithubObjectItemBuilder.parse(itemIdentifier: containerItemIdentifier) {
                 let future =
                     FetchChildItems(github: github)
                         .call(owner: owner, name: name, oid: oid)
@@ -178,7 +178,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
         // Because realm cannot pass object between threads, I create items twice for display and for saving.
         let items = { () in
             return entryObjects.map {
-                FileItem(entryObject: $0, parentItemIdentifier: parent).build()
+                GithubObjectItemBuilder(entryObject: $0, parentItemIdentifier: parent).build()
             }
         }
 

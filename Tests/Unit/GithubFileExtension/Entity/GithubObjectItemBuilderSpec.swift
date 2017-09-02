@@ -9,7 +9,7 @@
 import Nimble
 import Quick
 
-internal class FileItemSpec: QuickSpec {
+internal class GithubObjectItemBuilderSpec: QuickSpec {
     func make(name: String = "README.txt", type: String = "blob") -> EntryObject {
         let owner = OwnerObject(login: "mzp")
         let repository = RepositoryObject(owner: owner, name: "OctoEye")
@@ -29,7 +29,7 @@ internal class FileItemSpec: QuickSpec {
 
         var subject: GithubObjectItem {
             get {
-                return FileItem(
+                return GithubObjectItemBuilder(
                     entryObject: entry,
                     parentItemIdentifier: NSFileProviderItemIdentifier("parent")
                 ).build()
