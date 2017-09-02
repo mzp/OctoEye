@@ -130,7 +130,6 @@ internal class FileProviderExtension: NSFileProviderExtension {
         guard let github = self.github else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
         }
-        let maybeEnumerator: NSFileProviderEnumerator? = nil
         if containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer {
             let items = repositories.map {
                 RepositoryItem(owner: $0.owner.login, name: $0.name)
@@ -159,10 +158,8 @@ internal class FileProviderExtension: NSFileProviderExtension {
                 return FutureEnumerator(future: future)
             }
         }
-        guard let enumerator = maybeEnumerator else {
-            throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
-        }
-        return enumerator
+
+        throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
     }
 
     // MARK: - Persistent
