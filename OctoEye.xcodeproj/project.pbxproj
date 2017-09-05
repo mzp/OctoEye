@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		130324951F053A9F00C0053D /* GithubObjectItemBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130324941F053A9F00C0053D /* GithubObjectItemBuilder.swift */; };
+		1308C3D31F5B980B004AF1E4 /* JsonCacheSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308C3D21F5B980B004AF1E4 /* JsonCacheSpec.swift */; };
+		1308C3D41F5B9817004AF1E4 /* JsonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308C3CF1F5B91B3004AF1E4 /* JsonCache.swift */; };
+		1308C3D71F5B9D4D004AF1E4 /* JsonCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1308C3CF1F5B91B3004AF1E4 /* JsonCache.swift */; };
 		1310C9EB1F0513ED0020A177 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1310C9EA1F0513ED0020A177 /* AppDelegate.swift */; };
 		1310C9F21F0513ED0020A177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F11F0513ED0020A177 /* Assets.xcassets */; };
 		1310C9F51F0513ED0020A177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1310C9F31F0513ED0020A177 /* LaunchScreen.storyboard */; };
@@ -170,6 +173,8 @@
 		0F13358B67C99155AFCB911B /* Pods-App-GithubFileExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-App-GithubFileExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-App-GithubFileExtension/Pods-App-GithubFileExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		130324901F0530A900C0053D /* GithubClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClient.swift; sourceTree = "<group>"; };
 		130324941F053A9F00C0053D /* GithubObjectItemBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubObjectItemBuilder.swift; sourceTree = "<group>"; };
+		1308C3CF1F5B91B3004AF1E4 /* JsonCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCache.swift; sourceTree = "<group>"; };
+		1308C3D21F5B980B004AF1E4 /* JsonCacheSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonCacheSpec.swift; sourceTree = "<group>"; };
 		1310C9E71F0513ED0020A177 /* OctoEye.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OctoEye.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1310C9EA1F0513ED0020A177 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		1310C9F11F0513ED0020A177 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -306,6 +311,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1308C3CE1F5B9197004AF1E4 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				1308C3CF1F5B91B3004AF1E4 /* JsonCache.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		1308C3D11F5B97F9004AF1E4 /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				1308C3D21F5B980B004AF1E4 /* JsonCacheSpec.swift */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
 		1310C9DE1F0513ED0020A177 = {
 			isa = PBXGroup;
 			children = (
@@ -477,6 +498,7 @@
 				134B28D11F30B915009A93F0 /* GithubAPI */,
 				133FEAD21F2EAD7A0098C812 /* Extensions */,
 				1318F1821F125C7500116545 /* Preferences */,
+				1308C3CE1F5B9197004AF1E4 /* Store */,
 				1310C9E91F0513ED0020A177 /* OctoEye */,
 				13A907F41F051658002FCDB2 /* GithubFileExtension */,
 			);
@@ -572,6 +594,7 @@
 			children = (
 				138343781F0DA9D00030DA96 /* GithubAPI */,
 				13688B481F128125008678AE /* Preferences */,
+				1308C3D11F5B97F9004AF1E4 /* Store */,
 				138343791F0DA9E30030DA96 /* GithubFileExtension */,
 			);
 			path = Unit;
@@ -1071,6 +1094,7 @@
 				136562F61F3D94F90097E4C3 /* SearchRepositoriesSpec.swift in Sources */,
 				13DC2C611F0FBBBC00AE09AA /* GithubObjectItemBuilderSpec.swift in Sources */,
 				13DC2C531F0FB34400AE09AA /* ArrayEnumerator.swift in Sources */,
+				1308C3D31F5B980B004AF1E4 /* JsonCacheSpec.swift in Sources */,
 				134A63DA1F1070BA005D2EBD /* FileProviderExtensionSpec.swift in Sources */,
 				13DC2C4C1F0FAC9900AE09AA /* FetchRootItemsSpec.swift in Sources */,
 				134A63CA1F1059E4005D2EBD /* FutureEnumeratorSpec.swift in Sources */,
@@ -1088,6 +1112,7 @@
 				13688B4B1F1281BD008678AE /* Authentication.swift in Sources */,
 				13DC2C5F1F0FBAF000AE09AA /* GithubObjectItemSpec.swift in Sources */,
 				133FEAE41F3084010098C812 /* GithubClient.swift in Sources */,
+				1308C3D71F5B9D4D004AF1E4 /* JsonCache.swift in Sources */,
 				134B28D01F30ACE3009A93F0 /* FetchRepositoriesSpec.swift in Sources */,
 				133FEAE51F3084010098C812 /* HttpRequest.swift in Sources */,
 				134A63CD1F105A04005D2EBD /* FutureEnumerator.swift in Sources */,
@@ -1102,6 +1127,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				133FEAE01F3083180098C812 /* FetchChildItems.swift in Sources */,
+				1308C3D41F5B9817004AF1E4 /* JsonCache.swift in Sources */,
 				133FEAE11F3083180098C812 /* FetchBlob.swift in Sources */,
 				13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */,
 				139EF9671F35A9C5009DB51D /* WatchingRepositories.swift in Sources */,
