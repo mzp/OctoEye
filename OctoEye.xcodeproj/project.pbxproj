@@ -28,6 +28,9 @@
 		1318F1801F12586700116545 /* GithubAuthorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F17F1F12586700116545 /* GithubAuthorization.swift */; };
 		1318F1841F125C9800116545 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
 		1318F1851F12603E00116545 /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1318F1831F125C9800116545 /* Authentication.swift */; };
+		131E0E451F5F64B20060BB2E /* FileItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131E0E441F5F64B20060BB2E /* FileItemIdentifier.swift */; };
+		131E0E461F5F64B20060BB2E /* FileItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131E0E441F5F64B20060BB2E /* FileItemIdentifier.swift */; };
+		131E0E481F5F67400060BB2E /* FleItemIdentifierSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131E0E471F5F67400060BB2E /* FleItemIdentifierSpec.swift */; };
 		1328C89E1F08D08E00064124 /* GithubObjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1328C89D1F08D08E00064124 /* GithubObjectItem.swift */; };
 		132915071F2F638B00116D94 /* LogoutTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132915061F2F638B00116D94 /* LogoutTest.swift */; };
 		132915091F2F6E5E00116D94 /* MainNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 132915081F2F6E5E00116D94 /* MainNavigationViewController.swift */; };
@@ -193,6 +196,8 @@
 		1318DAEB1F3742AE00FAACF1 /* SMRippleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMRippleView.swift; sourceTree = "<group>"; };
 		1318F17F1F12586700116545 /* GithubAuthorization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubAuthorization.swift; sourceTree = "<group>"; };
 		1318F1831F125C9800116545 /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
+		131E0E441F5F64B20060BB2E /* FileItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItemIdentifier.swift; sourceTree = "<group>"; };
+		131E0E471F5F67400060BB2E /* FleItemIdentifierSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleItemIdentifierSpec.swift; sourceTree = "<group>"; };
 		1328C8941F08913D00064124 /* FetchChildItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchChildItems.swift; sourceTree = "<group>"; };
 		1328C8981F08921700064124 /* TreeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeObject.swift; sourceTree = "<group>"; };
 		1328C89D1F08D08E00064124 /* GithubObjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubObjectItem.swift; sourceTree = "<group>"; };
@@ -314,6 +319,7 @@
 		1308C3CE1F5B9197004AF1E4 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				131E0E441F5F64B20060BB2E /* FileItemIdentifier.swift */,
 				1308C3CF1F5B91B3004AF1E4 /* JsonCache.swift */,
 			);
 			path = Store;
@@ -322,6 +328,7 @@
 		1308C3D11F5B97F9004AF1E4 /* Store */ = {
 			isa = PBXGroup;
 			children = (
+				131E0E471F5F67400060BB2E /* FleItemIdentifierSpec.swift */,
 				1308C3D21F5B980B004AF1E4 /* JsonCacheSpec.swift */,
 			);
 			path = Store;
@@ -1097,6 +1104,8 @@
 				1308C3D31F5B980B004AF1E4 /* JsonCacheSpec.swift in Sources */,
 				134A63DA1F1070BA005D2EBD /* FileProviderExtensionSpec.swift in Sources */,
 				13DC2C4C1F0FAC9900AE09AA /* FetchRootItemsSpec.swift in Sources */,
+				131E0E481F5F67400060BB2E /* FleItemIdentifierSpec.swift in Sources */,
+				131E0E461F5F64B20060BB2E /* FileItemIdentifier.swift in Sources */,
 				134A63CA1F1059E4005D2EBD /* FutureEnumeratorSpec.swift in Sources */,
 				133FEAE61F3084010098C812 /* FetchRootItems.swift in Sources */,
 				13DC2C511F0FB34400AE09AA /* FileProviderExtension.swift in Sources */,
@@ -1129,6 +1138,7 @@
 				133FEAE01F3083180098C812 /* FetchChildItems.swift in Sources */,
 				1308C3D41F5B9817004AF1E4 /* JsonCache.swift in Sources */,
 				133FEAE11F3083180098C812 /* FetchBlob.swift in Sources */,
+				131E0E451F5F64B20060BB2E /* FileItemIdentifier.swift in Sources */,
 				13A907F61F051658002FCDB2 /* FileProviderExtension.swift in Sources */,
 				139EF9671F35A9C5009DB51D /* WatchingRepositories.swift in Sources */,
 				134B28D41F314384009A93F0 /* Mock.swift in Sources */,
