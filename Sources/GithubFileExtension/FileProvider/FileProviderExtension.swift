@@ -130,7 +130,6 @@ internal class FileProviderExtension: NSFileProviderExtension {
         guard let github = self.github else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
         }
-        let maybeEnumerator: NSFileProviderEnumerator? = nil
         if containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer {
             let items = repositories.map {
                 RepositoryItem(owner: $0.owner.login, name: $0.name)
@@ -149,7 +148,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
                 return FutureEnumerator(future: future)
             }
 
-            if let (owner, name, oid) = FileItem.parse(itemIdentifier: containerItemIdentifier) {
+            if let (owner, name, oid) = GithubObjectItemBuilder.parse(itemIdentifier: containerItemIdentifier) {
                 let future =
                     FetchChildItems(github: github)
                         .call(owner: owner, name: name, oid: oid)
@@ -159,10 +158,8 @@ internal class FileProviderExtension: NSFileProviderExtension {
                 return FutureEnumerator(future: future)
             }
         }
-        guard let enumerator = maybeEnumerator else {
-            throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
-        }
-        return enumerator
+
+        throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
     }
 
     // MARK: - Persistent
@@ -178,7 +175,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
         // Because realm cannot pass object between threads, I create items twice for display and for saving.
         let items = { () in
             return entryObjects.map {
-                FileItem(entryObject: $0, parentItemIdentifier: parent).build()
+                GithubObjectItemBuilder(entryObject: $0, parentItemIdentifier: parent).build()
             }
         }
 
