@@ -14,10 +14,17 @@ import Quick
 import Result
 
 internal class FutureEnumeratorSpec: QuickSpec {
+    class Item: NSObject, NSFileProviderItem {
+        var itemIdentifier: NSFileProviderItemIdentifier = NSFileProviderItemIdentifier(rawValue: "")
+        var parentItemIdentifier: NSFileProviderItemIdentifier = NSFileProviderItemIdentifier(rawValue: "")
+        var filename: String = ""
+        var typeIdentifier: String = ""
+    }
+
     override func spec() {
         let items: [NSFileProviderItemProtocol] = [
-            GithubObjectItem() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("0") },
-            GithubObjectItem() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("1") }
+            Item() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("0") },
+            Item() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("1") }
         ]
         let future = Future<[NSFileProviderItemProtocol], NoError>(value: items)
 

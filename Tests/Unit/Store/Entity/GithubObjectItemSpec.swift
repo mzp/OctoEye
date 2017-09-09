@@ -1,5 +1,5 @@
 //
-//  FileItemSpec.swift
+//  GithubObjectItemSpec.swift
 //  Tests
 //
 //  Created by mzp on 2017/07/07.
@@ -9,12 +9,12 @@
 import Nimble
 import Quick
 
-internal class GithubObjectItemBuilderSpec: QuickSpec {
+// swiftlint:disable force_unwrapping
+internal class GithubObjectItemSpec: QuickSpec {
     func make(name: String = "README.txt", type: String = "blob") -> EntryObject {
         let owner = OwnerObject(login: "mzp")
         let repository = RepositoryObject(owner: owner, name: "OctoEye")
         let object = BlobObject(byteSize: 42)
-
         return EntryObject(
             repository: repository,
             oid: "oid",
@@ -26,13 +26,14 @@ internal class GithubObjectItemBuilderSpec: QuickSpec {
     // swiftlint:disable:next function_body_length
     override func spec() {
         var entry: EntryObject!
+        let parent = FileItemIdentifier.repository(owner: "mzp", name: "OctoEye")
 
         var subject: GithubObjectItem {
             get {
-                return GithubObjectItemBuilder(
+                return GithubObjectItem(
                     entryObject: entry,
-                    parentItemIdentifier: NSFileProviderItemIdentifier("parent")
-                ).build()
+                    parent: parent
+                )!
             }
         }
 
@@ -41,11 +42,13 @@ internal class GithubObjectItemBuilderSpec: QuickSpec {
                 entry = self.make()
             }
             it("has copied fields") {
-                expect(subject.itemIdentifier) == NSFileProviderItemIdentifier("gitobject.mzp.OctoEye.oid")
-                expect(subject.parentItemIdentifier) == NSFileProviderItemIdentifier("parent")
-                expect(subject.owner) == "mzp"
-                expect(subject.repositoryName) == "OctoEye"
-                expect(subject.oid) == "oid"
+                expect(subject.itemIdentifier) == FileItemIdentifier.entry(
+                    owner: "mzp",
+                    name: "OctoEye",
+                    oid: "oid",
+                    path: ["README.txt"]
+                ).identifer
+                expect(subject.parentItemIdentifier) == parent.identifer
                 expect(subject.size) == 42
             }
         }

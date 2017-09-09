@@ -6,7 +6,6 @@ abstract_target 'App' do
   pod 'BrightFutures'
   pod 'GraphQLicious', '~> 0.8.2'
   pod 'OAuthSwift'
-  pod 'RealmSwift'
   pod 'Result', '~> 3.2.3'
   pod 'UTIKit', '~> 2.0.1'
   pod '※ikemen'
@@ -27,7 +26,7 @@ end
 
 pod 'SwiftLint'
 
-LegacySwiftPods = %w(OAuthSwift JetToTheFuture BrightFutures Quick Nimble RealmSwift ReactiveCocoa)
+LegacySwiftPods = %w(OAuthSwift JetToTheFuture BrightFutures Quick Nimble ReactiveCocoa)
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

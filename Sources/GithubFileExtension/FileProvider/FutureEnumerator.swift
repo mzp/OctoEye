@@ -10,10 +10,10 @@ import BrightFutures
 import FileProvider
 import Result
 
-internal class FutureEnumerator<E: Error>: NSObject, NSFileProviderEnumerator {
-    private let future: Future<[NSFileProviderItemProtocol], E>
+internal class FutureEnumerator<T: NSFileProviderItemProtocol, E: Error>: NSObject, NSFileProviderEnumerator {
+    private let future: Future<[T], E>
 
-    init(future: Future<[NSFileProviderItemProtocol], E>) {
+    init(future: Future<[T], E>) {
         self.future = future
     }
 
