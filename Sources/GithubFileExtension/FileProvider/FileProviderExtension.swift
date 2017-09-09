@@ -7,12 +7,13 @@
 //
 
 import FileProvider
-import RealmSwift
+import Ikemen
 import Result
 
 internal class FileProviderExtension: NSFileProviderExtension {
     private let github: GithubClient?
     private let repositories: WatchingRepositories = WatchingRepositories.shared
+    private let fileItemStore: FileItemStore = FileItemStore()
 
     var fileManager: FileManager = FileManager()
 
@@ -28,7 +29,10 @@ internal class FileProviderExtension: NSFileProviderExtension {
     // MARK: - URL
 
     override func urlForItem(withPersistentIdentifier identifier: NSFileProviderItemIdentifier) -> URL? {
-        guard let item = self.findItem(for: identifier) else {
+        guard let id = FileItemIdentifier.parse(identifier) else {
+            return nil
+        }
+        guard let item = fileItemStore[id] else {
             return nil
         }
 
@@ -37,7 +41,7 @@ internal class FileProviderExtension: NSFileProviderExtension {
         let manager = NSFileProviderManager.default
         let perItemDirectory = manager.documentStorageURL.appendingPathComponent(identifier.rawValue, isDirectory: true)
 
-        return perItemDirectory.appendingPathComponent(item.filename, isDirectory:false)
+        return perItemDirectory.appendingPathComponent(item.key, isDirectory:false)
     }
 
     override func persistentIdentifierForItem(at url: URL) -> NSFileProviderItemIdentifier? {
@@ -74,23 +78,25 @@ internal class FileProviderExtension: NSFileProviderExtension {
             completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
             return
         }
-        guard let item = findItem(for: identifier) else {
-            completionHandler?(NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:]))
-            return
+
+        switch FileItemIdentifier.parse(identifier) {
+            case .some(.entry(owner: let owner, name: let name, let oid, path: _)):
+                FetchBlob(github: github)
+                    .call(owner: owner, name: name, oid: oid)
+                    .onSuccess { data in
+                        do {
+                            try data.write(to: url)
+                            completionHandler?(nil)
+                        } catch let e {
+                            completionHandler?(e)
+                        }
+                    }
+                    .onFailure { error in
+                        NSLog("FetchTextError: \(error)")
+                    }
+            default:
+                ()
         }
-        FetchBlob(github: github)
-            .call(owner: item.owner, name: item.repositoryName, oid: item.oid)
-            .onSuccess { data in
-                do {
-                    try data.write(to: url)
-                    completionHandler?(nil)
-                } catch let e {
-                    completionHandler?(e)
-                }
-            }
-            .onFailure { error in
-                NSLog("FetchTextError: \(error)")
-            }
     }
 
     override func itemChanged(at url: URL) {
@@ -130,69 +136,42 @@ internal class FileProviderExtension: NSFileProviderExtension {
         guard let github = self.github else {
             throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
         }
-        if containerItemIdentifier == NSFileProviderItemIdentifier.rootContainer {
+
+        let identifier = FileItemIdentifier.parse(containerItemIdentifier) ?? .root
+        switch identifier {
+        case .root:
             let items = repositories.map {
                 RepositoryItem(owner: $0.owner.login, name: $0.name)
             }
             return ArrayEnumerator(items: items)
-        } else if containerItemIdentifier == NSFileProviderItemIdentifier.workingSet {
-            // TODO: instantiate an enumerator for the working set
-        } else {
-            if let (owner, name) = RepositoryItem.parse(itemIdentifier: containerItemIdentifier) {
-                let future =
-                    FetchRootItems(github: github)
+        case .repository(owner: let owner, name: let name):
+            let future =
+                FetchRootItems(github: github)
                     .call(owner: owner, name: name)
                     .map {
-                        self.create(entryObjects: $0, parent: containerItemIdentifier)
-                    }
-                return FutureEnumerator(future: future)
-            }
-
-            if let (owner, name, oid) = GithubObjectItemBuilder.parse(itemIdentifier: containerItemIdentifier) {
-                let future =
-                    FetchChildItems(github: github)
-                        .call(owner: owner, name: name, oid: oid)
-                        .map {
-                            self.create(entryObjects: $0, parent: containerItemIdentifier)
+                        $0.flatMap {
+                            GithubObjectItem(entryObject: $0, parent: identifier)
+                        } ※ {
+                            try? self.fileItemStore.append(parent: identifier, entries: $0.toDictionary {
+                                $0.key
+                            })
                         }
-                return FutureEnumerator(future: future)
-            }
+                    }
+            return FutureEnumerator(future: future)
+        case .entry(owner: let owner, name: let name, oid: let oid, path: _):
+            let future =
+                FetchChildItems(github: github)
+                    .call(owner: owner, name: name, oid: oid)
+                    .map {
+                        $0.flatMap {
+                            GithubObjectItem(entryObject: $0, parent: identifier)
+                        } ※ {
+                            try? self.fileItemStore.append(parent: identifier, entries: $0.toDictionary {
+                                $0.key
+                            })
+                        }
+                    }
+            return FutureEnumerator(future: future)
         }
-
-        throw NSError(domain: NSCocoaErrorDomain, code: NSFeatureUnsupportedError, userInfo:[:])
-    }
-
-    // MARK: - Persistent
-
-    private func findItem(for identifier: NSFileProviderItemIdentifier) -> GithubObjectItem? {
-        guard let realm = try? Realm() else {
-            return nil
-        }
-        return realm.object(ofType: GithubObjectItem.self, forPrimaryKey: identifier.rawValue)
-    }
-
-    private func create(entryObjects: [EntryObject], parent: NSFileProviderItemIdentifier) -> [NSFileProviderItem] {
-        // Because realm cannot pass object between threads, I create items twice for display and for saving.
-        let items = { () in
-            return entryObjects.map {
-                GithubObjectItemBuilder(entryObject: $0, parentItemIdentifier: parent).build()
-            }
-        }
-
-        DispatchQueue(label: "background").sync {
-            do {
-                let realm = try Realm()
-                realm.beginWrite()
-                for item in items() {
-                    realm.add(item, update: true)
-                }
-                try realm.commitWrite()
-            } catch let e {
-                NSLog("Error: \(e)")
-                return
-            }
-        }
-
-        return items()
     }
 }

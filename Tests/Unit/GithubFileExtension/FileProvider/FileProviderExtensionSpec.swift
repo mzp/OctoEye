@@ -11,22 +11,27 @@ import FileProvider
 import JetToTheFuture
 import Nimble
 import Quick
-import RealmSwift
 import Result
 
 // swiftlint:disable force_try
 internal class FileProviderExtensionSpec: QuickSpec {
+    func make(name: String, parent: FileItemIdentifier) -> GithubObjectItem {
+        let owner = OwnerObject(login: "mzp")
+        let repository = RepositoryObject(owner: owner, name: "OctoEye")
+        let object = BlobObject(byteSize: 42)
+        return GithubObjectItem(
+            entryObject: EntryObject(
+                repository: repository,
+                oid: "oid",
+                name: name,
+                type: "blob",
+                object: object),
+            // swiftlint:disable:next force_unwrapping
+            parent: parent)!
+    }
+
     // swiftlint:disable:next function_body_length
     override func spec() {
-        beforeEach {
-            // swiftlint:disable force_try
-            let realm = try! Realm()
-            try! realm.write {
-                realm.deleteAll()
-            }
-            // swiftlint:enable force_try
-        }
-
         describe("URL") {
             var subject: FileProviderExtension {
                 let response: String! = fixture(name: "content", ofType: "txt")
@@ -37,27 +42,27 @@ internal class FileProviderExtensionSpec: QuickSpec {
             }
             var url: URL!
             beforeEach {
-                let item = GithubObjectItem()
-
-                // swiftlint:disable:next force_try
-                let realm = try! Realm()
-                item.itemIdentifier = NSFileProviderItemIdentifier("foo")
-                item.filename = "bar"
-                // swiftlint:disable:next force_try
-                try! realm.write {
-                    realm.add(item, update: true)
-                }
-                url = subject.urlForItem(withPersistentIdentifier: item.itemIdentifier)
+                let parent = FileItemIdentifier.repository(owner: "mzp", name: "OctoEye")
+                try! FileItemStore().append(parent: parent, entries: [
+                    "foo": self.make(name: "foo", parent: parent)
+                ])
+                let identifier = FileItemIdentifier.entry(owner: "mzp", name: "OctoEye", oid: "_", path: ["foo"])
+                url = subject.urlForItem(withPersistentIdentifier: identifier.identifer)
             }
 
             it("returns flat url") {
-                expect(url?.path).to(endWith("foo/bar"))
+                expect(url?.path).to(endWith("foo"))
             }
 
             it("extract identifier from url") {
                 // swiftlint:disable force_unwrapping
                 let identifier = subject.persistentIdentifierForItem(at: url!)
-                expect(identifier) == NSFileProviderItemIdentifier("foo")
+                expect(identifier) == FileItemIdentifier.entry(
+                    owner: "mzp",
+                    name: "OctoEye",
+                    oid: "_",
+                    path: ["foo"]
+                ).identifer
             }
 
             it("create placeholder file") {
@@ -129,25 +134,33 @@ internal class FileProviderExtensionSpec: QuickSpec {
             context("repository root") {
                 beforeEach {
                     response = fixture(name: "defaultBranch", ofType: "json")
-                    items = self.run(subject, NSFileProviderItemIdentifier("repository.mzp.LoveLiver"))
+                    items = self.run(subject, FileItemIdentifier.repository(owner: "mzp", name: "LoveLiver").identifer)
                 }
                 it("enumarates top level items") {
                     expect(items).to(haveCount(2))
                     expect(items?[0].filename) == ".gitignore.show-extension"
                     expect(items?[1].filename) == "LICENSE.show-extension"
                 }
-                it("stores to realm db") {
-                    // swiftlint:disable:next force_try
-                    let realm = try! Realm()
-                    realm.refresh()
-                    let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
+                it("stores") {
+                    let store = FileItemStore()
+                    let stored = store[.entry(
+                        owner: "mzp",
+                        name: "LoveLiver",
+                        oid: "oid",
+                        path: [".gitignore"]
+                    )]
                     expect(stored).toNot(beNil())
                 }
             }
             context("tree object") {
                 beforeEach {
                     response = fixture(name: "treeObject", ofType: "json")
-                    items = self.run(subject, NSFileProviderItemIdentifier("gitobject.mzp.LoveLiver.oid"))
+                    items = self.run(subject, FileItemIdentifier.entry(
+                        owner: "mzp",
+                        name: "LoveLiver",
+                        oid: "oid",
+                        path: ["sample"]
+                    ).identifer)
                 }
                 it("enumarates top level items") {
                     expect(items).to(haveCount(2))
@@ -155,10 +168,13 @@ internal class FileProviderExtensionSpec: QuickSpec {
                     expect(items?[1].filename) == "original"
                 }
                 it("stores to realm db") {
-                    // swiftlint:disable:next force_try
-                    let realm = try! Realm()
-                    realm.refresh()
-                    let stored = realm.object(ofType: GithubObjectItem.self, forPrimaryKey: items?[0].itemIdentifier)
+                    let store = FileItemStore()
+                    let stored = store[.entry(
+                        owner: "mzp",
+                        name: "LoveLiver",
+                        oid: "oid",
+                        path: ["sample", "livephoto"]
+                    )]
                     expect(stored).toNot(beNil())
                 }
             }
