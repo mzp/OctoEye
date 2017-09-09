@@ -14,11 +14,6 @@ PODS:
     - ReactiveSwift (~> 2.0)
   - ReactiveSwift (2.0.0):
     - Result (~> 3.2)
-  - Realm (2.9.1):
-    - Realm/Headers (= 2.9.1)
-  - Realm/Headers (2.9.1)
-  - RealmSwift (2.9.1):
-    - Realm (= 2.9.1)
   - Result (3.2.3)
   - SwiftLint (0.21.0)
   - UTIKit (2.0.1)
@@ -34,7 +29,6 @@ DEPENDENCIES:
   - Quick
   - ReactiveCocoa (~> 6.0)
   - ReactiveSwift (~> 2.0)
-  - RealmSwift
   - Result (~> 3.2.3)
   - SwiftLint
   - UTIKit (~> 2.0.1)
@@ -51,13 +45,11 @@ SPEC CHECKSUMS:
   Quick: dafc587e21eed9f4cab3249b9f9015b0b7a7f71d
   ReactiveCocoa: ca689e37b6a922f0273918220d735c43368de550
   ReactiveSwift: 36339167e571774d936482d0f6512f5118a74731
-  Realm: f91fb43bd474c4f731a116ebf7392c75dd015920
-  RealmSwift: 207f12a4a36b696c5183c60a1c06d70234a23e56
   Result: 128640a6347e8d2ae48b142556739a2d13f90ce6
   SwiftLint: 6de8b2d15f43c482bdec2953b8cfd696faa876e8
   UTIKit: 5b16488927ed6df479189acd9ff1ad6a7b19f8ff
   ※ikemen: c04aecee4293a2b6deb2119f7e67e7a82c6dea06
 
-PODFILE CHECKSUM: a16dadc11f8d46602e662d518bf96df1b5cb4f8c
+PODFILE CHECKSUM: a6ce79e426d452a07183bb2f36a71e1481b5f3ac
 
 COCOAPODS: 1.3.0
