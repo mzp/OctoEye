@@ -12,10 +12,16 @@ import Nimble
 import Quick
 
 internal class ArrayEnumeratorSpec: QuickSpec {
+    class Item: NSObject, NSFileProviderItem {
+        var itemIdentifier: NSFileProviderItemIdentifier = NSFileProviderItemIdentifier(rawValue: "")
+        var parentItemIdentifier: NSFileProviderItemIdentifier = NSFileProviderItemIdentifier(rawValue: "")
+        var filename: String = ""
+        var typeIdentifier: String = ""
+    }
     override func spec() {
         let items: [NSFileProviderItemProtocol] = [
-            GithubObjectItem() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("0") },
-            GithubObjectItem() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("1") }
+            Item() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("0") },
+            Item() ※ { $0.itemIdentifier = NSFileProviderItemIdentifier("1") }
         ]
 
         let enumrator = EnumeratorRunner(enumerator: ArrayEnumerator(items: items))
