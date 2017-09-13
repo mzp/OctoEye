@@ -36,4 +36,20 @@ platform :ios do
       scheme: 'OctoEye'
     )
   end
+
+  desc 'Prepare for screenshots'
+  lane :screenshots do
+    snapshot
+    frameit(path: './screenshots/', white: true)
+  end
+
+  desc 'Prepare for review'
+  lane :gm do
+    deliver(username: 'mzpppp+apple@gmail.com',
+            skip_app_version_update: false,
+            screenshots_path: './screenshots',
+            skip_binary_upload: true,
+            skip_metadata: true,
+            overwrite_screenshots: true)
+  end
 end
