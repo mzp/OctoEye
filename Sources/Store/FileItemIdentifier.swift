@@ -36,7 +36,8 @@ internal enum FileItemIdentifier: Equatable {
             case "repository":
                 return .repository(owner: xs[1], name: xs[2])
             case "entry":
-                return .entry(owner: xs[1], name: xs[2], oid: xs[3], path: Array(xs.dropFirst(4)))
+                let path = Array(xs.dropFirst(4)).map { decode($0) }
+                return .entry(owner: xs[1], name: xs[2], oid: xs[3], path: path)
             default:
                 return nil
             }
@@ -50,8 +51,9 @@ internal enum FileItemIdentifier: Equatable {
         case .repository(owner: let owner, name: let name):
             return NSFileProviderItemIdentifier(rawValue: "repository.\(owner).\(name)")
         case .entry(owner: let owner, name: let name, let oid, path: let path):
+            let paths = path.map { FileItemIdentifier.encode($0) }.joined(separator: ".")
             return NSFileProviderItemIdentifier(
-                rawValue: "entry.\(owner).\(name).\(oid).\(path.joined(separator: "."))"
+                rawValue: "entry.\(owner).\(name).\(oid).\(paths)"
             )
         }
     }
@@ -65,5 +67,24 @@ internal enum FileItemIdentifier: Equatable {
         case .entry(owner: let owner, name: let name, oid: _, path: let path):
             return .entry(owner: owner, name: name, oid: oid, path: path + [filename])
         }
+    }
+
+    private static func encode(_ str: String) -> String {
+        // TODO: use more smart way.
+        // "." and "/" in path components should be escaped.
+        // Instead of using parser, I escape all symbol by base64.
+        //
+        // This is quick and dirty hack, should be replace with smart and proper way.
+        guard let data = str.data(using: .utf8) else {
+            return str
+        }
+        return data.base64EncodedString(options: [])
+    }
+
+    private static func decode(_ str: String) -> String {
+        guard let data = Data(base64Encoded: str, options: []) else {
+            return str
+        }
+        return String(data: data, encoding: .utf8) ?? str
     }
 }
