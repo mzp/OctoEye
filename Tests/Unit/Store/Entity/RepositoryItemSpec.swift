@@ -35,18 +35,5 @@ internal class RepositoryItemSpec: QuickSpec {
                 }
             }
         }
-
-        describe("parse") {
-            it("parses item identifier") {
-                let repository = RepositoryItem.parse(itemIdentifier: item.itemIdentifier)
-                expect(repository?.0) == "mzp"
-                expect(repository?.1) == "OctoEye"
-            }
-
-            it("cannot parse item identifier") {
-                let repository = RepositoryItem.parse(itemIdentifier: NSFileProviderItemIdentifier("????"))
-                expect(repository).to(beNil())
-            }
-        }
     }
 }

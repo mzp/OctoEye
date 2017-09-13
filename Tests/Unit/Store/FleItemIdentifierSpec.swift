@@ -14,7 +14,8 @@ internal class FileItemIdentifierSpec: QuickSpec {
         let xs: [FileItemIdentifier] = [
             .root,
             .repository(owner: "mzp", name: "OctoEye"),
-            .entry(owner: "mzp", name: "OctoEye", oid: "baz", path: ["foo", "bar"])
+            .entry(owner: "mzp", name: "OctoEye", oid: "baz", path: ["foo", "bar"]),
+            .entry(owner: "mzp", name: "OctoEye", oid: "baz", path: ["foo", "README.md"])
         ]
 
         for x in xs {
