@@ -36,14 +36,4 @@ internal class RepositoryItem: NSObject, NSFileProviderItem {
     var typeIdentifier: String {
         return "public.folder"
     }
-
-    class func parse(itemIdentifier: NSFileProviderItemIdentifier) -> (String, String)? {
-        let xs = itemIdentifier.rawValue.components(separatedBy: ".")
-
-        if xs.count == 3 && xs[0] == "repository" {
-            return (xs[1], xs[2])
-        } else {
-            return nil
-        }
-    }
 }
