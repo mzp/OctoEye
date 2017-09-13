@@ -10,7 +10,8 @@ import Foundation
 public func fixture(name: String, ofType: String) -> String! {
     guard let url =
         Bundle.main.url(forResource: "PlugIns/Tests.xctest/\(name)", withExtension: ofType) ??
-        Bundle.main.url(forResource: "PlugIns/UITest.xctest/\(name)", withExtension: ofType)
+        Bundle.main.url(forResource: "PlugIns/UITest.xctest/\(name)", withExtension: ofType) ??
+        Bundle.main.url(forResource: "PlugIns/Snapshot.xctest/\(name)", withExtension: ofType)
     else {
         return nil
     }

@@ -50,6 +50,16 @@
                ReferencedContainer = "container:OctoEye.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "135C92E91F68EE5400094FF8"
+               BuildableName = "Snapshot.xctest"
+               BlueprintName = "Snapshot"
+               ReferencedContainer = "container:OctoEye.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
