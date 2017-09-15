@@ -10,14 +10,30 @@ import Ikemen
 import OAuthSwift
 import SafariServices
 
-internal class GithubAuthorization: NSObject {
+internal class AuthenticationSession: OAuthSwiftURLHandlerType {
+    private var session: SFAuthenticationSession?
+    private let cancel: () -> Void
+    init(cancel: @escaping () -> Void) {
+        self.cancel = cancel
+    }
+
+    func handle(_ url: URL) {
+        self.session = SFAuthenticationSession(url: url, callbackURLScheme: nil) {  (url, _) in
+            guard let url = url else {
+                self.cancel()
+                return
+            }
+            OAuth2Swift.handle(url: url)
+        }
+        session?.start()
+    }
+}
+
+internal class GithubAuthorization {
     // store as member field to prevent GC remove this before authorization process complete.
     private let oauth: OAuth2Swift
-    private let viewController: UIViewController
-    private var complete: Future<OAuthSwiftCredential?, OAuthSwiftError>.CompletionCallback?
 
-    init(viewController: UIViewController) {
-        self.viewController = viewController
+    init() {
         oauth = OAuth2Swift(
             consumerKey: "dbcd395d464652fb1dc3",
             consumerSecret: "3574b156263a04f59903b9ec418e215d52e8590d",
@@ -30,10 +46,10 @@ internal class GithubAuthorization: NSObject {
 
     func call() -> Future<OAuthSwiftCredential?, OAuthSwiftError> {
         return Future { complete in
-            self.complete = complete
-            oauth.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauth) ※ {
-                    $0.delegate = self
-                }
+            oauth.authorizeURLHandler = AuthenticationSession {
+                self.oauth.cancel()
+                complete(.success(nil))
+            }
             oauth.authorize(
                 // swiftlint:disable:next force_unwrapping
                 withCallbackURL: URL(string: "octo-eye://oauth-callback")!,
@@ -50,11 +66,5 @@ internal class GithubAuthorization: NSObject {
 
     class func handleCallback(url: URL) {
         OAuth2Swift.handle(url: url)
-    }
-}
-
-extension GithubAuthorization: SFSafariViewControllerDelegate {
-    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
-        complete?(.success(nil))
     }
 }
