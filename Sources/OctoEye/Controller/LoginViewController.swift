@@ -12,7 +12,9 @@ import UIKit
 
 internal class LoginViewController: UIViewController {
     private let loginButton: UIButton = UIButton(type: .system)
-    private let authorization: GithubAuthorization = GithubAuthorization()
+    private lazy var authorization: GithubAuthorization = {
+        GithubAuthorization(viewController: self)
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

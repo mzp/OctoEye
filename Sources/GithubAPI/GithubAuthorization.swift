@@ -10,20 +10,10 @@ import Ikemen
 import OAuthSwift
 
 internal class GithubAuthorization {
-    // Becasue OAuthSwift default url handler is not working on iOS 11,
-    // custom version is created here.
-    private class OpenURL: OAuthSwiftURLHandlerType {
-        func handle(_ url: URL) {
-            UIApplication.shared.open(url, options: [:], completionHandler: { _ in
-                ()
-            })
-        }
-    }
-
     // store as member field to prevent GC remove this before authorization process complete.
     private let oauth: OAuth2Swift
 
-    init() {
+    init(viewController: UIViewController) {
         oauth = OAuth2Swift(
             consumerKey: "dbcd395d464652fb1dc3",
             consumerSecret: "3574b156263a04f59903b9ec418e215d52e8590d",
@@ -32,7 +22,7 @@ internal class GithubAuthorization {
             responseType: "token",
             contentType: "application/json"
         ) ※ {
-            $0.authorizeURLHandler = OpenURL()
+            $0.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: $0)
         }
     }
 
