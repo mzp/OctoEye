@@ -44,7 +44,10 @@ internal class LoginViewController: UIViewController {
             .observeResult { result in
                 switch result {
                 case .success(let credential):
-                    Authentication.accessToken = credential.oauthToken
+                    guard let oauthToken = credential?.oauthToken else {
+                        return
+                    }
+                    Authentication.accessToken = oauthToken
                     DispatchQueue.main.async {
                         self.present(MainNavigationViewController(), animated: true) {}
                     }

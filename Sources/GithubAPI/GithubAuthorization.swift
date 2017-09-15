@@ -8,12 +8,16 @@
 import BrightFutures
 import Ikemen
 import OAuthSwift
+import SafariServices
 
-internal class GithubAuthorization {
+internal class GithubAuthorization: NSObject {
     // store as member field to prevent GC remove this before authorization process complete.
     private let oauth: OAuth2Swift
+    private let viewController: UIViewController
+    private var complete: Future<OAuthSwiftCredential?, OAuthSwiftError>.CompletionCallback?
 
     init(viewController: UIViewController) {
+        self.viewController = viewController
         oauth = OAuth2Swift(
             consumerKey: "dbcd395d464652fb1dc3",
             consumerSecret: "3574b156263a04f59903b9ec418e215d52e8590d",
@@ -21,13 +25,15 @@ internal class GithubAuthorization {
             accessTokenUrl: "https://github.com/login/oauth/access_token",
             responseType: "token",
             contentType: "application/json"
-        ) ※ {
-            $0.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: $0)
-        }
+        )
     }
 
-    func call() -> Future<OAuthSwiftCredential, OAuthSwiftError> {
+    func call() -> Future<OAuthSwiftCredential?, OAuthSwiftError> {
         return Future { complete in
+            self.complete = complete
+            oauth.authorizeURLHandler = SafariURLHandler(viewController: viewController, oauthSwift: oauth) ※ {
+                    $0.delegate = self
+                }
             oauth.authorize(
                 // swiftlint:disable:next force_unwrapping
                 withCallbackURL: URL(string: "octo-eye://oauth-callback")!,
@@ -44,5 +50,11 @@ internal class GithubAuthorization {
 
     class func handleCallback(url: URL) {
         OAuth2Swift.handle(url: url)
+    }
+}
+
+extension GithubAuthorization: SFSafariViewControllerDelegate {
+    public func safariViewControllerDidFinish(_ controller: SFSafariViewController) {
+        complete?(.success(nil))
     }
 }
