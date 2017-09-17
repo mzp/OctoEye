@@ -102,5 +102,22 @@ internal class WatchingRepositoriesSpec: QuickSpec {
                 ]
             }
         }
+
+        xdescribe("default value") {
+            beforeEach {
+                UserDefaults(suiteName: kSuiteName)?.removeSuite(named: kSuiteName)
+            }
+
+            it("return default values") {
+                expect(xs.count) == 1
+                expect(xs[0]) == RepositoryObject(owner: OwnerObject(login: "mzp"), name: "OctoEye")
+            }
+
+            it("can remove defaut values") {
+                expect(xs.count) == 1
+                xs.remove(at: 0)
+                expect(xs.count) == 0
+            }
+        }
     }
 }

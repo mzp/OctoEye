@@ -15,7 +15,7 @@ internal class WatchingRepositories {
     // MARK: - serialize
     private var array: [RepositoryObject] {
         get {
-            let xs = UserDefaults(suiteName: kSuiteName)?.value(forKey: "watching.repositories") as? [String] ?? []
+            let xs = UserDefaults(suiteName: kSuiteName)?.value(forKey: "watching.repositories") as? [String] ?? ["mzp/OctoEye"]
             return xs.flatMap { RepositoryObject(identifier: $0) }
         }
         set {
